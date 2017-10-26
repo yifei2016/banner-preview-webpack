@@ -1,0 +1,51 @@
+{
+    "Client": "lorem ipsum",
+    "Project": "Lorem ipsum",
+    "ClickTAG": "http://example.com",
+    "DemoPath": "client_name/project_name",
+    "Format": [
+        {
+            "width": 160,
+            "height": 600,
+            "filesize": 50,
+            "type": "html",
+            "clicktag_type": "adform"
+        },
+        {
+            "width": 250,
+            "height": 360,
+            "filesize": 60,
+            "type": "html",
+            "clicktag_type": "adform"
+        },
+        {
+            "width": 300,
+            "height": 250,
+            "filesize": 40,
+            "type": "html",
+            "clicktag_type": "adform"
+        },
+        {
+            "width": 320,
+            "height": 320,
+            "filesize": 50,
+            "type": "html",
+            "clicktag_type": "adform"
+        },
+        {
+            "width": 980,
+            "height": 300,
+            "filesize": 150,
+            "type": "html",
+            "clicktag_type": "adform"
+        },
+        {
+            "vimeo_id": "222507866", 
+            "type": "video"
+        },
+        {
+            "vimeo_id": "239824287", 
+            "type": "video"
+        }
+    ]
+}
