@@ -1,0 +1,35 @@
+body {
+	/*background-color: #333;*/
+}
+.landing {
+	height: 100vh;
+}
+.main-content {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.sidebar {
+	background-color: #fff;
+	list-style: none;
+	height: 100vh;
+}
+h4{
+	margin-bottom:0;
+}
+.image{
+	margin-left: 5%;
+	width:12%;
+	height:5%;
+}
+.showIframe{
+	display: none;
+}
+.list{
+	margin-right: 35%;
+}
+.mode{
+	padding-top: 2%;
+}
+.fully{
+	padding-right: 2%;
+}
