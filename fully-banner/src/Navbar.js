@@ -9,7 +9,8 @@ class Navbar extends Component {
     
   // }
   render() {
-    return <nav className="navbar navbar-toggleable-md navbar-light">
+    return <header>
+      <nav className="navbar  fixed-top navbar-toggleable-md navbar-light">
       <button className="navbar-toggler navbar-toggler-right tog" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -25,6 +26,7 @@ class Navbar extends Component {
         </ul>
       </div>
     </nav>
+    </header>
   }
 }
 export default Navbar;

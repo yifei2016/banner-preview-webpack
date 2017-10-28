@@ -9,22 +9,21 @@ class Post extends Component {
 		this.state = {
 			w: this.props.width
 		};
-		// this.clickA = this.clickA.bind(this);
+		this.clickA = this.clickA.bind(this);
 	}
-	// clickA(){
+	clickA(){
+	   this.setState({
+	      w: this.props.eachPost.width
+	   }, (x)=>{
+	   	this.props.set(this.props.eachPost.width,this.props.eachPost.height);
+	   })
 
-	//    this.setState({
-	//       w: this.props.eachPost.width
-	//    }, (x)=>{
-	//    	this.props.set(this.props.eachPost.width,this.props.eachPost.height);
-	//    })
-
-	// }
+	}
 	render() {
 		if (this.props.eachPost.width !== undefined) {
 			return (
 				<li className="nav-link">
-					<a onClick={this.clickA} href="">
+					<a onClick={this.clickA} href="#">
 						{this.props.eachPost.width}*{this.props.eachPost.height}
 					</a>
 				</li>

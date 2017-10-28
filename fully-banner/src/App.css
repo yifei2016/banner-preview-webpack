@@ -9,12 +9,28 @@ body {
 	/*background-color: #0A2A4F;*/
 	color:white;
 }
-
+.container-fluid{
+	margin-top: 50px;
+}
 .sidebar {
+	position: fixed;
+	top: 51px;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	padding: 10px 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color:#0A2A4F;
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+/* .sidebar {
 	background-color:#0A2A4F;
 	list-style: none;
 	height: 100vh;
-}
+} */
 h4{
 	margin-bottom:0;
 }

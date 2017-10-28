@@ -55,12 +55,12 @@ var aData =
       "posts": [
       {
         "type": "video",
-        "title": "Lorem ipsun",
+        "title": "ICA.se MP4",
         "vimeo_id": "222507866"
       },
       {
         "type": "video",
-        "title": "Lorem ipsum 2",
+        "title": "Lorem.se",
         "vimeo_id": "239824287"
       }
       ]
