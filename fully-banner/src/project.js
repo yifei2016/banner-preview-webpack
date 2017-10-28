@@ -1,7 +1,7 @@
 var aData = 
   {
-    "client": "lorem ipsum",
-    "project": "Lorem ipsum",
+    "client": "Fully Studios",
+    "project": "Banner",
     "clickTAG": "http://example.com",
     "serverPath": "client_name/project_name",
     "sections": [
