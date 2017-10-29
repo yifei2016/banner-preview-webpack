@@ -1,7 +1,4 @@
-body {
-	background-color: #0A2A4F;
-	color:white;
-}
+
 .landing {
 	height: 100vh;
 }
@@ -21,7 +18,7 @@ body {
 	padding: 10px 0;
 	overflow-x: hidden;
 	overflow-y: auto;
-	background-color:#0A2A4F;
+	/* background-color:#0A2A4F; */
 	list-style: none;
 	display: flex;
 	justify-content: center;
@@ -57,9 +54,9 @@ a:active {
 .list{
 	margin-right: 35%;
 }
-.m{
+/* .m{
 	color:white;
-}
+} */
 .mm{
 	padding-right: 2%;
 }

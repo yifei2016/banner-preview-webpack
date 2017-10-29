@@ -6,9 +6,9 @@ import Iframe from "./Iframe";
 class Post extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			w: this.props.width
-		};
+		// this.state = {
+		// 	w: this.props.width
+		// };
 		this.clickA = this.clickA.bind(this);
 	}
 	clickA(){
@@ -23,9 +23,9 @@ class Post extends Component {
 		if (this.props.eachPost.width !== undefined) {
 			return (
 				<li className="nav-link">
-					<a onClick={this.clickA} href="#">
+					<button  onClick={this.clickA} >
 						{this.props.eachPost.width}*{this.props.eachPost.height}
-					</a>
+					</button>
 				</li>
 			);
 		} else {
