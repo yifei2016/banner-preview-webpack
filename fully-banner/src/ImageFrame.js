@@ -8,7 +8,9 @@ class ImageFrame extends Component {
 		super(props);
     this.state = {
 			width: this.props.data.width,
-			height: this.props.data.height
+      height: this.props.data.height,
+      frameWidth: this.props.data.width > this.props.data.height ? 980 : 300,
+      frameHeight: this.props.data.width > this.props.data.height ? 300 : 980
 		};
 	}
   render() {
@@ -17,8 +19,8 @@ class ImageFrame extends Component {
         title="image"
         key={`${this.state.width}x${this.state.height}`}
         src={`../dist/${this.state.width}x${this.state.height}/index.html`}
-        width='980'
-        height='300'
+        width={this.state.width}
+        height={this.state.height}
         className="align-self-center">
       </iframe>
     )

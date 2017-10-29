@@ -28,20 +28,23 @@ class App extends Component {
       } />
     )
     return (
-      <div>
-        <Navbar />
-        <Sidebar />
-        <Router>
-          <div>
-            {imageRoutes}
-            {videoRoutes}
-          </div>
-
-          {/* <div>
+      <div style={window.getModeStyle()}>
+        <div style={{padding: "0 3em"}}>
+          <Navbar />
+          <div className="d-flex flex-row">
+            <Sidebar />
+            <Router>
+              <div className="align-self-center" style={{ margin: "auto" }}>
+                {imageRoutes}
+                {videoRoutes}
+              </div>
+              {/* <div>
               <Route path="/222507866" component={VideoICAFrame} />
               <Route path="/239824287" component={VideoLoremFrame} />
             </div> */}
-        </Router>
+            </Router>
+          </div>
+        </div>
       </div>
     )
   }

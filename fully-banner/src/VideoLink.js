@@ -12,7 +12,7 @@ class VideoLink extends Component {
   render() {
     return (
       <li className="nav-link">
-        <a href={`/${this.state.vimeo_id}`}>
+        <a style={window.getModeStyle()} href={`/${this.state.vimeo_id}?mode=${window.getMode()}`}>
           {this.state.title}
         </a>
       </li>

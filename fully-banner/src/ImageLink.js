@@ -13,7 +13,7 @@ class ImageLink extends Component {
 	render() {
 		return (
 			<li className="nav-link">
-				<a href={`/${this.state.width}x${this.state.height}`}>
+				<a style={window.getModeStyle()} href={`/${this.state.width}x${this.state.height}?mode=${window.getMode()}`}>
 					{this.state.width}*{this.state.height}
 				</a>
 			</li>
