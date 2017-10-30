@@ -1,0 +1,16 @@
+{
+    "version": "1.0",
+    "title": "Standard HTML Ad",
+    "description": "Adform Standard banner; Version 1.0",
+    "width": 250,
+    "height": 480,
+    "events": {
+        "enabled": 0,
+        "list": {
+        }
+    },
+    "clicktags": {
+        "clickTAG": "https:\/\/www.snarthemma.se\/"
+    },
+    "source": "index.html"
+}
