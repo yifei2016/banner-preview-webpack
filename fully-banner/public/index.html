@@ -10,35 +10,34 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-  <!-- <script src="./project.js"></script> -->
   <title>Fully Banners</title>
   </head>
-  <body>
-    <script>
-      function getModeStyle() {
-        var style = {
-          backgroundColor: '#0A2A4F',
-          color: 'white'
-        }
-        var mode = getMode();
-        if (mode === 'articleMode') {
-          style.backgroundColor = 'white';
-          style.color = 'black';
-        }
-        return style;
-      }
-      function getMode() {
-          var mode = window.location.search.split('=')
-          if (mode[1] === 'articleMode') {
-            return 'articleMode'
-          } else {
-            return 'cleanMode'
-          }
-        }
-    </script>
-    <div id="root">
+  <body id="body" onload="getModeStyle()">
+    <div id="root" >
     </div>
-    <!-- <div id="article">
-      </div> -->
+    <script>
+    function getMode() {
+      var mode = window.location.search.split('=')
+      if (mode[1] === 'articleMode') {
+        return 'articleMode'
+      } else {
+        return 'cleanMode'
+      }
+    } 
+    function getModeStyle() {
+      var style = {
+        backgroundColor: '#0A2A4F',
+        color: 'white'
+      }
+      var mode = getMode();
+      if (mode === 'articleMode') {
+        style.backgroundColor = 'white';
+        style.color = 'black';
+        document.getElementById("body").classList.add('articleClass');
+      }
+      document.getElementById("body").classList.add('myClass');
+      return style;
+    }
+    </script>
   </body>
   </html>

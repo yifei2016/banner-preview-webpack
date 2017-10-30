@@ -1,10 +1,17 @@
 .landing {
 	height: 100vh;
 }
+.myClass{
+	background-color:#0A2A4F;
+}
 .main {
 	/*background-color: #0A2A4F;*/
 	color:white;
 }
+.articleClass{
+	background-color: white;
+}
+
 /* .container-fluid{
 	margin-top: 50px;
 } */
@@ -31,25 +38,35 @@ h4{
 }
 
 a:hover{
-	color: #DC143C;
+	color: #FFC1B4 !important;
 	border-bottom: none;
 	text-decoration: none;
 }
 a:active {
-    color: #DC143C;
+    color: #FFC1B4;
     text-decoration: none;
 } 
 
 .image{
-	margin-left: 7%;
-	width:2em;
-	height: 3em
+	margin-left: em;
+	width:2.5em;
+	height: 2.328em;
+	margin-top: 1em
 }
 .modeSpace{
 	margin-right: 19px;
 }
-.tog{
-	background-color:#DC143C ;
+/* img, iframe{
+  max-width: 100%;
+} */
+:root {
+  --ourcolor: brown;
+}
+.article_a{
+	fill:#ddd;
+}
+.article_b{
+	fill: var(--ourcolor);
 }
 
 /* .m{
@@ -58,6 +75,9 @@ a:active {
 /* .mm{
 	padding-right: 2%;
 } */
+.nav-link{
+	padding: 0.5em 0;
+}
 .fullystudios{
 	margin-right: 2%;
 }
@@ -74,9 +94,9 @@ a:active {
 	margin-top: -30px;
 	flex-grow: 1;
 } */
-@media(max-width: 200px){
+/* @media(max-width: 200px){
 	.m{
 		margin-bottom: 0;
 		margin-top: 0;
 	}
-}
+} */

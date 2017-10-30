@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import aData from './project';
 import ImageLink from './ImageLink';
 import VideoLink from './VideoLink';
+import {getMode, getModeStyle} from './modeHelper';
 
 class Sidebar extends Component {
 	constructor(props){
@@ -16,7 +17,7 @@ class Sidebar extends Component {
 		const client = aData.client;
 		const project = aData.project;
     return(
-      <div className="d-flex justify-content-start" style={window.getModeStyle()}>
+      <div className="d-flex justify-content-start" style={ getModeStyle()}>
         <ul style={{padding: 0}}>
           <li className="nav-link"></li>
           <li className="nav-link"><h4>Client</h4></li>

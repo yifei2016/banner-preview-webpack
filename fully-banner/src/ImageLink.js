@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import logo from './logo.svg';
-import "./App.css";
+import {getMode, getModeStyle} from './modeHelper';
 
 class ImageLink extends Component {
 	constructor(props) {
@@ -13,8 +12,8 @@ class ImageLink extends Component {
 	render() {
 		return (
 			<li className="nav-link">
-				<a style={window.getModeStyle()} href={`/${this.state.width}x${this.state.height}?mode=${window.getMode()}`}>
-					{this.state.width}*{this.state.height}
+				<a  style={ getModeStyle()} href={`/${this.state.width}x${this.state.height}?mode=${ getMode()}`}>
+					{this.state.width}×{this.state.height}
 				</a>
 			</li>
 		)

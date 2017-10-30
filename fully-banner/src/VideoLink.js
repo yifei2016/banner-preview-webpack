@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import {getMode, getModeStyle} from './modeHelper';
 
 class VideoLink extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class VideoLink extends Component {
   render() {
     return (
       <li className="nav-link">
-        <a style={window.getModeStyle()} href={`/${this.state.vimeo_id}?mode=${window.getMode()}`}>
+        <a style={ getModeStyle()} href={`/${this.state.vimeo_id}?mode=${ getMode()}`}>
           {this.state.title}
         </a>
       </li>

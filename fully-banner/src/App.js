@@ -11,7 +11,7 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import VideoFrame from './VideoFrame';
 import ImageFrame from './ImageFrame';
-
+import {getMode, getModeStyle} from './modeHelper';
 import registerServiceWorker from './registerServiceWorker';
 
 class App extends Component {
@@ -28,13 +28,13 @@ class App extends Component {
       } />
     )
     return (
-      <div style={window.getModeStyle()}>
+      <div style={ getModeStyle()}>
         <div style={{padding: "0 3em"}}>
           <Navbar />
           <div className="d-flex flex-row">
             <Sidebar />
             <Router>
-              <div className="align-self-center" style={{ margin: "auto" }}>
+              <div className="align-self-center" style={{ margin: "auto", maxWidth: '100%', overflow: 'auto'}}>
                 {imageRoutes}
                 {videoRoutes}
               </div>
