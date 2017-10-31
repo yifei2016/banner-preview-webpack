@@ -4,14 +4,13 @@
 .myClass{
 	background-color:#0A2A4F;
 }
-.main {
-	/*background-color: #0A2A4F;*/
-	color:white;
-}
 .articleClass{
 	background-color: white;
 }
-
+.main{
+	width: 100vw;
+	height: 100vh;
+}
 /* .container-fluid{
 	margin-top: 50px;
 } */
@@ -36,7 +35,10 @@
 h4{
 	margin-bottom:0;
 }
-
+#root{
+	width: 100vw;
+	height: 100vh;
+}
 a:hover{
 	color: #FFC1B4 !important;
 	border-bottom: none;
@@ -51,7 +53,8 @@ a:active {
 	margin-left: em;
 	width:2.5em;
 	height: 2.328em;
-	margin-top: 1em
+	margin-top: 1em;
+	color: white!important;
 }
 .modeSpace{
 	margin-right: 19px;
@@ -66,7 +69,7 @@ a:active {
 	fill:#ddd;
 }
 .article_b{
-	fill: var(--ourcolor);
+	fill:#fff;
 }
 
 /* .m{
@@ -87,6 +90,20 @@ a:active {
 .html5{
 	margin-top: 15%;
 }
+.hambuger{
+	border-radius: 10px;
+}
+.hambuger:focus{
+	outline: 0;
+}
+
+.navMargin{
+	margin-bottom: 3em;
+}
+/* .banner{
+	width: 20em;
+	height: 20em;
+} */
 /* .frame{
 	display: flex;
 	justify-content: center;
@@ -94,9 +111,33 @@ a:active {
 	margin-top: -30px;
 	flex-grow: 1;
 } */
-/* @media(max-width: 200px){
-	.m{
-		margin-bottom: 0;
-		margin-top: 0;
+.sidenav {
+	height: 100%; /* 100% Full-height */
+	width: 0; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 0;
+	left: 0;
+	background-color: #111; /* Black*/
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 60px; /* Place content 60px from the top */
+	 /* 0.5 second transition effect to slide in the sidenav */
+}
+.mobileIframe{ 
+	padding: 0 3em;
+ }
+ .side{
+	display: block;
+} 
+@media (max-width: 700px) {
+	.side{
+		display: none;
+	} 
+	.mobileIframe{
+		padding: 0 0.5em;
+	} 
+	#navbarSupportedContent{
+		width: 70vw;
+		margin-left:4em;
 	}
-} */
+}

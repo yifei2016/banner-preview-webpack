@@ -42,7 +42,10 @@ class ImageFrame extends Component {
             className="align-self-center"
           >
           </iframe>
-          <img style={{margin: `${this.state.margin}`}} src={`http://via.placeholder.com/${this.state.width}x${this.state.height}`} />
+          <img style={{margin: `${this.state.margin}`}} 
+          width={this.state.width}
+          height={this.state.height}
+          src={`../dist/fallbacks/${this.state.width}x${this.state.height}.png`}/>
         </div>
       )
     }else{
@@ -54,25 +57,27 @@ class ImageFrame extends Component {
         <rect className="article_a" x="51" y="66" width="49" height="34"/><rect className="article_a" x="2" y="45" width="96" height="4"/><rect className="article_a" x="2" y="50" 
         width="79" height="4"/>
         <rect className="article_b" x="2" y="92" width="39" height="4"/>
-        <rect className="article_b" x="53" y="92" width="39" height="4"/><rect className="article_a" x="2" y="56" width="6" height="1"/><rect className="article_a" x="9" y="56" 
-        width="42" height="1"/></svg>
-          <iframe ref="remoteFrame"
-            title="image"
-            key={`${this.state.width}x${this.state.height}`}
-            src={`../dist/${this.state.width}x${this.state.height}/index.html`}
-            width={this.state.width}
-            height={this.state.height}
-            frameBorder="0"
-            className="align-self-center">
-          </iframe>
-          <svg style={{margin: `${this.state.margin}`}} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100vh" viewBox="0 0 100 100"><defs>
-        <style></style>
-        </defs><title>article</title><rect className="article_a" width="100" height="43"/><rect className="article_a" y="66" width="49" height="34"/>
-        <rect className="article_a" x="51" y="66" width="49" height="34"/><rect className="article_a" x="2" y="45" width="96" height="4"/><rect className="article_a" x="2" y="50" 
-        width="79" height="4"/>
-        <rect className="article_b" x="2" y="92" width="39" height="4"/>
-        <rect className="article_b" x="53" y="92" width="39" height="4"/><rect className="article_a" x="2" y="56" width="6" height="1"/><rect className="article_a" x="9" y="56" 
-        width="42" height="1"/></svg>
+        <rect className="article_b" x="53" y="92" width="39" height="4" /><rect className="article_a" x="2" y="56" width="6" height="1" /><rect className="article_a" x="9" y="56"
+          width="42" height="1" /></svg>
+        <iframe ref="remoteFrame"
+          title="image"
+          key={`${this.state.width}x${this.state.height}`}
+          src={`../dist/${this.state.width}x${this.state.height}/index.html`}
+          width={this.state.width}
+          height={this.state.height}
+          frameBorder="0"
+          className="align-self-center">
+        </iframe>
+        <svg style={{ margin: `${this.state.margin}` }} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" 
+        width="100%" height="100vh" viewBox="0 0 100 100"><defs>
+          <style></style>
+        </defs><title>article</title><rect className="article_a" width="100" height="43" /><rect className="article_a" y="66" width="49" height="34" />
+          <rect className="article_a" x="51" y="66" width="49" height="34" /><rect className="article_a" x="2" y="45" width="96" height="4" />
+          <rect className="article_a" x="2" y="50"
+            width="79" height="4" />
+          <rect className="article_b" x="2" y="92" width="39" height="4" />
+          <rect className="article_b" x="53" y="92" width="39" height="4" /><rect className="article_a" x="2" y="56" width="6" height="1" /><rect className="article_a" x="9" y="56"
+            width="42" height="1" /></svg>
         </div>
       )
     }   

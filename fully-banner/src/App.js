@@ -15,6 +15,12 @@ import {getMode, getModeStyle} from './modeHelper';
 import registerServiceWorker from './registerServiceWorker';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      showSidebar: false
+    }
+  }
   render() {
     let key = 1;
     const videoRoutes = aData.videos.map(video =>
@@ -28,13 +34,13 @@ class App extends Component {
       } />
     )
     return (
-      <div style={ getModeStyle()}>
-        <div style={{padding: "0 3em"}}>
-          <Navbar />
+      <div className="main" style={getModeStyle()}>
+        <div  className="mobileIframe">
+          <Navbar sidebar = {this.state.showSidebar}/>
           <div className="d-flex flex-row">
-            <Sidebar />
+            <Sidebar sidebar = {this.state.showSidebar}/>
             <Router>
-              <div className="align-self-center" style={{ margin: "auto", maxWidth: '100%', overflow: 'auto'}}>
+              <div className="align-self-center" style={{ margin: "auto", maxWidth: '100%', overflow: 'auto' }}>
                 {imageRoutes}
                 {videoRoutes}
               </div>

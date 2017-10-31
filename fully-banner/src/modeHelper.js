@@ -16,9 +16,24 @@ function getModeStyle() {
   if (mode === 'articleMode') {
     style.backgroundColor = 'white';
     style.color = 'black';
-    style.setProperty("--ourcolor", 'white');
   }
   return style;
 }
-
-export {getMode, getModeStyle};
+function getImageStyle() {
+  var style = {
+    fill: 'white'
+  }
+  var mode = getMode();
+  if (mode === 'articleMode') {
+    style.fill = 'black';
+  }
+  return style;
+}
+function getButtonStyle() {
+  var style = {
+    backgroundColor: 'white',
+    margin: 'auto 0'
+  }
+  return style;
+}
+export {getMode, getModeStyle, getImageStyle, getButtonStyle};
