@@ -21,7 +21,7 @@ class Sidebar extends Component {
     const project = aData.project;
     if (this.state.showSidebar === false) {
       return (
-        <div className="side" id="navbarSupportedContent"  style={getModeStyle()}>
+        <div className="" id="navbarSupportedContent"  style={getModeStyle()}>
           <div className="d-flex justify-content-start" style={getModeStyle()}>
             <ul style={{ padding: 0 }}>
               <li className="nav-link"></li>
@@ -39,7 +39,7 @@ class Sidebar extends Component {
       )
     }else{
       return (
-        <div className="d-flex justify-content-start mobileSidebar" style={getModeStyle()}>
+        <div className="side d-flex justify-content-start" style={getModeStyle()}>
             <ul style={{ padding: 0 }}>
               <li className="nav-link"></li>
               <li className="nav-link"><h4>Client</h4></li>

@@ -12,30 +12,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <title>Fully Banners</title>
   </head>
-  <body id="body">
+  <body id="body" >
     <div id="root" >
     </div>
-    <script>
-    function getMode() {
-      var mode = window.location.search.split('=')
-      if (mode[1] === 'articleMode') {
-        return 'articleMode'
-      } else {
-        return 'cleanMode'
-      }
-    } 
-    function getModeStyle() {
-      var style = {
-        backgroundColor: '#0A2A4F',
-        color: 'white'
-      }
-      var mode = getMode();
-      if (mode === 'articleMode') {
-        style.backgroundColor = 'white';
-        style.color = 'black';
-      }
-      return style;
-    }
-    </script>
   </body>
   </html>
