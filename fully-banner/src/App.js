@@ -11,6 +11,8 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import VideoFrame from './VideoFrame';
 import ImageFrame from './ImageFrame';
+import GifFrame from './GifFrame';
+import GifLink from './GifLink';
 import ImageLink from './ImageLink';
 import VideoLink from './VideoLink';
 import {getMode, getModeStyle} from './modeHelper';
@@ -35,9 +37,14 @@ class App extends Component {
         <VideoFrame data={video}/>
       } />
     )
-    const imageRoutes = aData.html.map(image =>
-      <Route key={k++} path={`/${image.width}x${image.height}`} render={(props) => 
-        <ImageFrame data={image}/>
+    const htmlRoutes = aData.html.map(html =>
+      <Route key={k++} path={`/${html.width}x${html.height}`} render={(props) => 
+        <ImageFrame data={html}/>
+      } />
+    )
+    const gifRoutes = aData.gif.map(gif =>
+      <Route key={k++} path={`/${gif.width}x${gif.height}`} render={(props) => 
+        <GifFrame data={gif}/>
       } />
     )
 		const imageList = aData.html.map(image => {return <ImageLink key={k++}  image={image} />});
@@ -51,8 +58,9 @@ class App extends Component {
           <Sidebar ref="sidebar" />
           <Router>
             <div className="" style={{width:'100%', display: 'flex', justifyContent: 'center'}}>
-              {imageRoutes}
+              {htmlRoutes}
               {videoRoutes}
+              {gifRoutes}
             </div>
             {/* <div>
               <Route path="/222507866" component={VideoICAFrame} />

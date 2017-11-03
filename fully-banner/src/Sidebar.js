@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import aData from './project';
 import ImageLink from './ImageLink';
 import VideoLink from './VideoLink';
-import {getMode, getModeStyle} from './modeHelper';
+import GifLink from './GifLink';
+import {getMode, getModeStyle,getClientStyle} from './modeHelper';
 import { slide as Menu } from 'react-burger-menu';
 
 class Sidebar extends Component {
@@ -27,14 +28,15 @@ class Sidebar extends Component {
 	render() {	
 		let k = 1;
 		const imageList = aData.html.map(image => {return <ImageLink key={k++}  image={image} />});
-		const videoList = aData.video.map(video =>  {return <VideoLink key={k++}  video={video} />});
+    const videoList = aData.video.map(video =>  {return <VideoLink key={k++}  video={video} />});
+    const gifList = aData.gif.map(gif =>  {return <GifLink key={k++}  gif={gif} />});
 		const client = aData.client;
     const project = aData.project;
       return (
          <div className="sidebar toggle " ref="sidebar"  style={getModeStyle()}>
          <div className="d-flex justify-content-start" style={getModeStyle()}>
            <ul>
-             <li className="nav-link menu-item clientProject">
+             <li className="nav-link menu-item" style={getClientStyle()}>
              <li className="nav-link menu-item font"><h4>Client</h4></li>
              <li className="nav-link menu-item font"><p>{client}</p></li>
              <li className="nav-link menu-item font"><h4>Project</h4></li>
@@ -44,6 +46,8 @@ class Sidebar extends Component {
              {imageList}
              <li className="nav-link html5 font"><h4>Video</h4></li>
              {videoList}
+             <li className="nav-link html5 font"><h4>Gif</h4></li>
+             {gifList}
            </ul>
          </div>
        </div>

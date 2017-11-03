@@ -32,7 +32,7 @@ class ImageFrame extends Component {
   render() {
     if(getMode() === 'cleanMode'){
       return (
-        <div className={this.state.className} style={{marginTop:'2.1em', display:'flex', flexGrow:0.5}}>
+        <div className={this.state.className} style={{marginTop:'2.1em', display:'flex'}}>
           <div>
             <iframe ref="remoteFrame"
               title="image"
@@ -43,7 +43,7 @@ class ImageFrame extends Component {
               frameBorder="0"
             >
             </iframe>
-            <div style={{ width: this.state.width }} className="d-flex justify-content-end">
+            <div className="d-flex justify-content-end text" >
               <p>{this.state.width}x{this.state.height} <span className="kbMargin">html</span> <span className="kbMargin">-</span>
                 <span className="kbMargin">{this.state.filesize}</span><span className="kbMargin">kb</span> <span className="kbMargin">-</span>
                 {this.state.clicktag}</p>
@@ -54,7 +54,7 @@ class ImageFrame extends Component {
               width={this.state.width}
               height={this.state.height}
               src={`../dist/fallbacks/${this.state.width}x${this.state.height}.png`} />
-            <div style={{ width: this.state.width }} className="d-flex justify-content-end">
+            <div className="d-flex justify-content-end text">
               <p>{this.state.width}x{this.state.height}<span className="kbMargin"> fallback </span><span className="kbMargin">-</span>
                 <span className="kbMargin">{this.state.filesize}</span>
                 <span>kb</span>
@@ -75,15 +75,17 @@ class ImageFrame extends Component {
               <rect className="article_b" x="53" y="92" width="39" height="4" /><rect className="article_a" x="2" y="56" width="6" height="1" /><rect className="article_a" x="9" y="56"
                 width="42" height="1" />
             </svg>
-            <iframe ref="remoteFrame"
-              title="image"
-              key={`${this.state.width}x${this.state.height}`}
-              src={`../dist/${this.state.width}x${this.state.height}/index.html`}
-              width={this.state.width}
-              height={this.state.height}
-              frameBorder="0"
+            <div style={{display:"flex", justifyContent: "center"}}>
+              <iframe ref="remoteFrame"
+                title="image"
+                key={`${this.state.width}x${this.state.height}`}
+                src={`../dist/${this.state.width}x${this.state.height}/index.html`}
+                width={this.state.width}
+                height={this.state.height}
+                frameBorder="0"
               >
-            </iframe>
+              </iframe>
+            </div>
           </div>
         )
       } 

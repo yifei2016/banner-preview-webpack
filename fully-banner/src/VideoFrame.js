@@ -17,7 +17,8 @@ class VideoFrame extends Component {
         src={`https://player.vimeo.com/video/${this.state.vimeo_id}?color=5F11E8&title=0&byline=0&portrait=0`}
         width="640" height="360" frameBorder="0" 
         webkitallowfullscreen mozallowfullscreen allowFullScreen
-        className="align-self-center">
+        className="align-self-center"
+        style={{marginTop: '4em'}}>
       </iframe>
     )
   }
