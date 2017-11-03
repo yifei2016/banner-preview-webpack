@@ -1,7 +1,7 @@
 var aData =
   {
-    "client": "Fully Studios",
-    "project": "Banner",
+    "client": "DDB Ehrenstråle",
+    "project": "Liseberg Jul 2017",
     "clickTAG": "http://example.com",
     "serverPath": "client_name/project_name",
     "video": [

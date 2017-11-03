@@ -38,13 +38,15 @@ class Sidebar extends Component {
            <ul>
              <li className="nav-link menu-item" style={getClientStyle()}>
              <li className="nav-link menu-item font"><h4>Client</h4></li>
-             <li className="nav-link menu-item font"><p>{client}</p></li>
+             <li className="nav-link menu-item font"><h6>{client}</h6></li>
              <li className="nav-link menu-item font"><h4>Project</h4></li>
              <li className="nav-link menu-item font"><h6>{project}</h6></li>
              </li>
-             <li className="nav-link menu-item html5 font"><h4>HTML5</h4></li>
+             <li className="nav-link menu-item html5 font">
+               <h4 className="rubrik">HTML5</h4>
+               </li>
              {imageList}
-             <li className="nav-link html5 font"><h4>Video</h4></li>
+             <li className="nav-link html5 font"><h4 className="rubrik">Video</h4></li>
              {videoList}
              <li className="nav-link html5 font"><h4>Gif</h4></li>
              {gifList}

@@ -11,7 +11,7 @@ class ImageLink extends Component {
 	}
 	render() {
 		return (
-			<li className="nav-link">
+			<li className="nav-link links">
 				<a  style={ getModeStyle()} href={`/${this.state.width}x${this.state.height}?mode=${ getMode()}`}>
 					{this.state.width}×{this.state.height}
 				</a>

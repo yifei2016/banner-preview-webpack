@@ -43,7 +43,7 @@ class ImageFrame extends Component {
               frameBorder="0"
             >
             </iframe>
-            <div className="d-flex justify-content-end text" >
+            <div className="textField text" >
               <p>{this.state.width}x{this.state.height} <span className="kbMargin">html</span> <span className="kbMargin">-</span>
                 <span className="kbMargin">{this.state.filesize}</span><span className="kbMargin">kb</span> <span className="kbMargin">-</span>
                 {this.state.clicktag}</p>
@@ -54,7 +54,7 @@ class ImageFrame extends Component {
               width={this.state.width}
               height={this.state.height}
               src={`../dist/fallbacks/${this.state.width}x${this.state.height}.png`} />
-            <div className="d-flex justify-content-end text">
+            <div className="textField text">
               <p>{this.state.width}x{this.state.height}<span className="kbMargin"> fallback </span><span className="kbMargin">-</span>
                 <span className="kbMargin">{this.state.filesize}</span>
                 <span>kb</span>
