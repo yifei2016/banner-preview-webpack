@@ -1,10 +1,10 @@
 import React,{ Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Link
+  // Switch,
+  // Link
 } from 'react-router-dom';
 import aData from './project.js';
 import Navbar from './Navbar';
@@ -12,11 +12,12 @@ import Sidebar from './Sidebar';
 import VideoFrame from './VideoFrame';
 import ImageFrame from './ImageFrame';
 import GifFrame from './GifFrame';
-import GifLink from './GifLink';
-import ImageLink from './ImageLink';
-import VideoLink from './VideoLink';
-import {getMode, getModeStyle} from './modeHelper';
-import registerServiceWorker from './registerServiceWorker';
+// import GifLink from './GifLink';
+// import ImageLink from './ImageLink';
+// import VideoLink from './VideoLink';
+// import { getMode, getModeStyle } from './modeHelper';
+import {getModeStyle} from './modeHelper';
+// import registerServiceWorker from './registerServiceWorker';
 
 class App extends Component {
   constructor(props){
@@ -47,10 +48,10 @@ class App extends Component {
         <GifFrame data={gif}/>
       } />
     )
-		const imageList = aData.html.map(image => {return <ImageLink key={k++}  image={image} />});
-		const videoList = aData.video.map(video =>  {return <VideoLink key={k++}  video={video} />});
-		const client = aData.client;
-    const project = aData.project;
+		// const imageList = aData.html.map(image => {return <ImageLink key={k++}  image={image} />});
+		// const videoList = aData.video.map(video =>  {return <VideoLink key={k++}  video={video} />});
+		// const client = aData.client;
+    // const project = aData.project;
     return (
       <div className="main" style={getModeStyle()}>
         <Navbar onHambugerClick={this.toggleSidebar}/>      

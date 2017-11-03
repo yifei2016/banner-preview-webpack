@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import {getMode, getModeStyle} from './modeHelper';
+// import { getMode, getModeStyle } from './modeHelper';
+import { getMode } from './modeHelper';
 
 class ImageFrame extends Component {
   constructor(props){
@@ -53,7 +54,8 @@ class ImageFrame extends Component {
             <img
               width={this.state.width}
               height={this.state.height}
-              src={`../dist/fallbacks/${this.state.width}x${this.state.height}.png`} />
+              src={`../dist/fallbacks/${this.state.width}x${this.state.height}.png`}
+              alt={`${this.state.width}x${this.state.height}`} />
             <div className="textField text">
               <p>{this.state.width}x{this.state.height}<span className="kbMargin"> fallback </span><span className="kbMargin">-</span>
                 <span className="kbMargin">{this.state.filesize}</span>

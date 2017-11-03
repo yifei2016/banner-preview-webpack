@@ -43,8 +43,8 @@ function getClientStyle() {
   }
   var mode = getMode();
   if (mode === 'articleMode') {
-    style.boxShadow = "3px 3px 0 0 #0A2A4F",
-    style.borderColor = "#0A2A4F"
+    style.boxShadow = "3px 3px 0 0 #0A2A4F";
+    style.borderColor = "#0A2A4F";
   }
   
   return style;

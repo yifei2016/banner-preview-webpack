@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import {getMode, getModeStyle, getImageStyle,getButtonStyle} from './modeHelper';
+// import { getMode, getModeStyle, getImageStyle, getButtonStyle } from './modeHelper';
+import { getModeStyle, getImageStyle } from './modeHelper';
 
 class Navbar extends Component {
   constructor(props){
@@ -26,7 +27,7 @@ class Navbar extends Component {
       // let button = document.getElementById('openmenu')
       this.refs.openmenu.classList.remove("menu-open")
     }else{
-      let button = document.getElementById('openmenu')
+      // let button = document.getElementById('openmenu')
       this.refs.openmenu.classList.add("menu-open")
     }
   }
@@ -55,10 +56,10 @@ class Navbar extends Component {
         </a>
        </div>
        
-        {/* <button 
-          onClick={this.clickHambuger}
-          className="hambuger btn" type="button">sdfsdf
-        </button> */}
+        // <button 
+        //   onClick={this.clickHambuger}
+        //   className="hambuger btn" type="button">sdfsdf
+        // </button>
       // </div>
   }
 }

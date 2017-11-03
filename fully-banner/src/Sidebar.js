@@ -4,8 +4,9 @@ import aData from './project';
 import ImageLink from './ImageLink';
 import VideoLink from './VideoLink';
 import GifLink from './GifLink';
-import {getMode, getModeStyle,getClientStyle} from './modeHelper';
-import { slide as Menu } from 'react-burger-menu';
+// import { getMode, getModeStyle, getClientStyle } from './modeHelper';
+import { getModeStyle,getClientStyle } from './modeHelper';
+// import { slide as Menu } from 'react-burger-menu';
 
 class Sidebar extends Component {
   constructor(props){
@@ -18,7 +19,7 @@ class Sidebar extends Component {
   componentDidMount(){
     this.setState({
        sideBarPicker: this.refs.sidebar
-    },()=>{console.log(this.state.sideBarPicker)})
+    })
   }
   toggle(){
     var a = this.refs.sidebar;
