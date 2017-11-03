@@ -1,5 +1,29 @@
+@font-face {
+	font-family: 'moderat';
+	src: url('./moderat-subset/moderat-regular-webfont.woff2') format('woff2'),
+			 url('./moderat-subset/moderat-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'moderat';
+	src: url('./moderat-subset/moderat-bold-webfont.woff2') format('woff2'),
+			 url('./moderat-subset/moderat-bold-webfont.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+html, body {
+	height: 100%;
+	background-color: rgb(10, 42, 79);	
+}
+body {
+	font-size: calc( 10px + 0.5vw );
+}
 .landing {
 	height: 100vh;
+}
+.font{
+	font-family: 'Fira Mono', monospace; 
 }
 .myClass{
 	background-color:#0A2A4F;
@@ -7,53 +31,158 @@
 .articleClass{
 	background-color: white;
 }
-.main{
-	width: 100vw;
-	height: 100vh;
+.kbMargin{
+	margin-right: 2px;
 }
-/* .container-fluid{
-	margin-top: 50px;
-} */
-/* .sidebar {
-	position: fixed;
-	top: 51px;
-	bottom: 0;
-	left: 0;
-	z-index: 1000;
-	padding: 10px 0;
-	overflow-x: hidden;
-	overflow-y: auto;
-	list-style: none;
+.main{
+	height: 100%;
+}
+.main-content {
 	display: flex;
-	justify-content: center;
-} */
-/* .sidebar {
-	background-color:#0A2A4F;
-	list-style: none;
-	height: 100vh;
-} */
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+.modeRight{
+	margin-right: 2px;
+}
+.m{
+	flex-grow: 0.2;
+}
+/* set relative to navBar, an element’s original position remains in the flow of the document, is positioned relative to its normal position. */
+/* set absolute to navBar, the element is removed from the 
+flow of the document and other elements will behave as if it’s not even there whilst all the other positional properties will work on it. */
+.navBar{
+	position: relative; 
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 1;
+	padding: 1em 2em;
+	display: flex;
+	justify-content: space-between;
+}
+@media(max-width:400px){
+	.navBar{
+		position: relative; 
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		z-index: 1;
+		padding: 1em 2em;
+		display: flex;
+		justify-content: space-between;
+	}
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
 h4{
 	margin-bottom:0;
 }
 #root{
-	width: 100vw;
-	height: 100vh;
+
 }
 a:hover{
 	color: #FFC1B4 !important;
 	border-bottom: none;
 	text-decoration: none;
 }
+.sidebar{
+	transition: transform 0.4s;
+	transition-delay: 0;
+	transform: translateX(-100%);
+	padding-right:2em;
+	padding-left: 2em;
+	padding-bottom: 1em;
+	height: 30vh!important;
+	/* overflow-y: scroll;  */
+}
+.clientProject{
+	border: 2px solid white;
+	margin-left: -10px;
+	padding-left: 15px!important;
+}
+@media (max-width: 500px) {
+	.sidebar {
+		width: 100%;
+		position:fixed;
+		top: 0px;
+		left: 0;
+		bottom: 0;
+		transform: translateX(0);
+		padding-top: 100px;
+		/* height: 100vh!important; */
+	}
+}
+.liggandeBanner{
+	display: flex;
+	flex-direction: column;
+	margin: 0 2em;
+}
+.liggandeBanner img{
+	margin-top:2em;
+}
+.liggandeBanner svg{
+	margin-bottom:2em;
+}
+.standBanner{
+	display: flex;
+	justify-content: space-around;
+	margin:  2em 0;
+}
+.standBanner img{
+	margin-left: 2em;
+}
+.standBanner svg{
+	margin-right: 2em;
+}
+.standBanner svg{
+	margin-left: 2em;
+}
+
+@media(max-width: 500px){
+	.liggandeBanner{
+		display: flex;
+		flex-direction: column;
+	}
+	.liggandeBanner img{
+		margin-top:2em;
+	}
+	.liggandeBanner svg{
+		margin-top:2em;
+	}
+	.standBanner{
+		display: flex;
+		flex-direction: column;
+	}
+	.standBanner img{
+		margin-top:2em;
+	}
+	.standBanner svg{
+		margin-top:2em;
+	}
+}
+.toggle{
+	transform: translateX(0);
+} 
+@media (max-width: 400px) {
+	.toggle {
+		transform: translateX(-100%);
+	}
+}
+
 a:active {
     color: #FFC1B4;
     text-decoration: none;
 } 
-
 .image{
-	margin-left: em;
 	width:2.5em;
 	height: 2.328em;
 	margin-top: 1em;
+	margin-right:1em;
 	color: white!important;
 }
 .modeSpace{
@@ -71,13 +200,6 @@ a:active {
 .article_b{
 	fill:#fff;
 }
-
-/* .m{
-	color:white;
-} */
-/* .mm{
-	padding-right: 2%;
-} */
 .nav-link{
 	padding: 0.5em 0;
 }
@@ -100,37 +222,140 @@ a:active {
 .navMargin{
 	margin-bottom: 3em;
 }
-/* .banner{
-	width: 20em;
-	height: 20em;
-} */
-/* .frame{
-	display: flex;
-	justify-content: center;
-	align-self: center;
-	margin-top: -30px;
-	flex-grow: 1;
-} */
 
 .mobileIframe{ 
 	padding: 0 3em;
  }
- .side{
-	display: block;
+ 
+@media (max-width: 400px) {
+	.menu{
+		width: 70%!important;
+	}
+}
+
+
+/* navbutton  */
+* {
+  box-sizing: border-box;
+}
+
+/**
+* Buttons
+*/
+.button {
+  border: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0);
+  /* user-select: none; */
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+}
+/* @media (min-width: 400px) {
+  .button {
+    font-size: 0.8em;
+  }
+} */
+.clientProject{
+  box-shadow: 3px 3px 0 0 white;
+}
+
+.button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  /* z-index: -1; */
+  transform: translateX(-3px);
+  transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+}
+.button:hover:after, .button:focus:after {
+  transform: translateX(0);
+}
+.button:focus, .button:active {
+  outline: none;
+}
+.button span {
+  padding: 0.55em 1.5em 0.45em;
+  background-color: #5f11e8;
+  border: 2px solid #ffffff;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  transform: translate3D(0, -3px, 0);
+  position: relative;
+}
+.button:hover span, .button:focus span {
+  transform: translate3D(0, 0, 0);
+}
+.button:active span {
+  transform: translate3D(0, 0, 0);
+  border: 2px solid transparent;
+  background-color: transparent;
+  color: #5f11e8;
+}
+/* .button:active span :after {
+  background-color: none;
+} */
+.button--nav span, .button--icon span {
+  line-height: 0;
+  position: relative;
+  z-index: 2;
+}
+/* .button--nav svg, .button--icon svg {
+  margin: 0;
+  width: 3em;
+  height: 3em;
+} */
+.button--nav__line, .button--icon__line {
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transition: transform 0.3s cubic-bezier(0.14, 0.79, 0.39, 1);
+}
+.button--nav:active .button--nav__line, .button--icon:active .button--nav__line {
+  background-color: #5f11e8;
 } 
-@media (max-width: 700px) {
-	.side{
-		display: none;
-	
-	} 
-	.mobileSidebar{
-		width: 100%;
+.button--nav .button--nav__line:nth-child(1), .button--nav line:nth-child(1), .button--nav .button--nav__line:nth-child(3), .button--nav line:nth-child(3), .button--icon .button--nav__line:nth-child(1), .button--icon line:nth-child(1), .button--icon .button--nav__line:nth-child(3), .button--icon line:nth-child(3) {
+  transform-origin: top left;
+}
+.button--nav .button--nav__line:nth-child(2), .button--nav line:nth-child(2), .button--icon .button--nav__line:nth-child(2), .button--icon line:nth-child(2) {
+  transform-origin: center left;
+} 
+.button--nav.menu-open .button--nav__line:nth-child(1), .button--nav.menu-open line:nth-child(1), .button--icon.menu-open .button--nav__line:nth-child(1), .button--icon.menu-open line:nth-child(1) {
+  transform: rotate(45deg) translate3D(2.5px, -2.5px, 0);
+}
+.button--nav.menu-open .button--nav__line:nth-child(2), .button--nav.menu-open line:nth-child(2), .button--icon.menu-open .button--nav__line:nth-child(2), .button--icon.menu-open line:nth-child(2) {
+  transform: scaleX(0);
+}
+.button--nav.menu-open .button--nav__line:nth-child(3), .button--nav.menu-open line:nth-child(3), .button--icon.menu-open .button--nav__line:nth-child(3), .button--icon.menu-open line:nth-child(3) {
+  transform: rotate(-45deg) translate3D(1px, 1px, 0);
+}
+.button--nav {
+  width: 48px;
+	height: 48px;
+	display: none;
+}
+@media (max-width:400px){
+	.button--nav{
+		display: inline-block;
 	}
-	.mobileIframe{
-		padding: 0 0.5em;
-	} 
-	#navbarSupportedContent{
-		width: 70vw;
-		margin-left:4em;
-	}
+}
+.button--nav span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 12px;
+}
+.button--nav:focus {
+  z-index: 12;
 }

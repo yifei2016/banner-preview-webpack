@@ -4,53 +4,60 @@ var aData =
     "project": "Banner",
     "clickTAG": "http://example.com",
     "serverPath": "client_name/project_name",
-    "videos": [
+    "video": [
       {
-        "type": "video",
         "title": "ICA.se MP4",
         "vimeo_id": "222507866"
       },
       {
-        "type": "video",
         "title": "Lorem.se",
         "vimeo_id": "239824287"
       }
     ],
-    "images": [
+    "html": [
       {
-        "type": "html",
         "width": 160,
         "height": 600,
         "filesize": 50,
-        "clicktag_type": "adform"
+        "clicktag_type": "Adform"
       },
       {
-        "type": "html",
+        "width": 160,
+        "height": 600,
+        "filesize": 100,
+        "clicktag_type": "Adform",
+        "modifier": "di"
+      },
+      {
         "width": 250,
         "height": 360,
         "filesize": 60,
-        "clicktag_type": "adform"
+        "clicktag_type": "Adform"
       },
       {
-        "type": "html",
         "width": 300,
         "height": 250,
         "filesize": 40,
-        "clicktag_type": "adform"
+        "clicktag_type": "Adform"
       },
       {
-        "type": "html",
         "width": 320,
         "height": 320,
         "filesize": 50,
-        "clicktag_type": "adform"
+        "clicktag_type": "Adform"
       },
       {
-        "type": "html",
         "width": 980,
         "height": 300,
         "filesize": 150,
-        "clicktag_type": "adform"
+        "clicktag_type": "Adform"
+      }
+    ],
+    "gif": [
+      {
+        "width": 320,
+        "height": 320,
+        "filesize": 100  
       }
     ]
   }

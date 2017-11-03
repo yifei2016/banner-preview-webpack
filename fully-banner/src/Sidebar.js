@@ -10,51 +10,46 @@ class Sidebar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      showSidebar: this.props.sidebar
+      sideBarPicker: this.props.sideBarPicker
     }
+    this.toggle = this.toggle.bind(this);
+  }
+  componentDidMount(){
+    this.setState({
+       sideBarPicker: this.refs.sidebar
+    },()=>{console.log(this.state.sideBarPicker)})
+  }
+  toggle(){
+    var a = this.refs.sidebar;
+    //a.classList.toggle("sidebar");
+    a.classList.toggle("toggle");
   }
 	render() {	
 		let k = 1;
-		const imageList = aData.images.map(image => {return <ImageLink key={k++}  image={image} />});
-		const videoList = aData.videos.map(video =>  {return <VideoLink key={k++}  video={video} />});
+		const imageList = aData.html.map(image => {return <ImageLink key={k++}  image={image} />});
+		const videoList = aData.video.map(video =>  {return <VideoLink key={k++}  video={video} />});
 		const client = aData.client;
     const project = aData.project;
-    if (this.state.showSidebar === false) {
       return (
-        <div className="side" id="navbarSupportedContent"  style={getModeStyle()}>
-          <div className="d-flex justify-content-start" style={getModeStyle()}>
-            <ul style={{ padding: 0 }}>
-              <li className="nav-link"></li>
-              <li className="nav-link"><h4>Client</h4></li>
-              <li className="nav-link"><p>{client}</p></li>
-              <li className="nav-link"><h4>Project</h4></li>
-              <li className="nav-link"><h6>{project}</h6></li>
-              <li className="nav-link html5"><h4>HTML5</h4></li>
-              {imageList}
-              <li className="nav-link html5"><h4>Video</h4></li>
-              {videoList}
-            </ul>
-          </div>
-        </div>
-      )
-    }else{
-      return (
-        <div className="d-flex justify-content-start mobileSidebar" style={getModeStyle()}>
-            <ul style={{ padding: 0 }}>
-              <li className="nav-link"></li>
-              <li className="nav-link"><h4>Client</h4></li>
-              <li className="nav-link"><p>{client}</p></li>
-              <li className="nav-link"><h4>Project</h4></li>
-              <li className="nav-link"><h6>{project}</h6></li>
-              <li className="nav-link html5"><h4>HTML5</h4></li>
-              {imageList}
-              <li className="nav-link html5"><h4>Video</h4></li>
-              {videoList}
-            </ul>
-          </div>
+         <div className="sidebar toggle " ref="sidebar"  style={getModeStyle()}>
+         <div className="d-flex justify-content-start" style={getModeStyle()}>
+           <ul>
+             <li className="nav-link menu-item clientProject">
+             <li className="nav-link menu-item font"><h4>Client</h4></li>
+             <li className="nav-link menu-item font"><p>{client}</p></li>
+             <li className="nav-link menu-item font"><h4>Project</h4></li>
+             <li className="nav-link menu-item font"><h6>{project}</h6></li>
+             </li>
+             <li className="nav-link menu-item html5 font"><h4>HTML5</h4></li>
+             {imageList}
+             <li className="nav-link html5 font"><h4>Video</h4></li>
+             {videoList}
+           </ul>
+         </div>
+       </div>
       )
     }
   }
-}
+
 export default Sidebar;
  
