@@ -40,10 +40,10 @@ class Navbar extends Component {
           </span>
         </button>
        {/* <div className="d-flex justify-content-end m"> */}
-       <div className="align-self-end d-flex justify-content-between" style={{ flexGrow: 0.04 }}>
+       <div className="mode-selector" style={{ flexGrow: 0.04 }}>
           <a style={getModeStyle()} href={'?mode=cleanMode'} >Clean mode</a>
           {/* <a className="m" href="/#/clean mode">Clean mode</a> */}
-          <span>|</span>
+          <span className="mode-selector__seperator">|</span>
           <a style={getModeStyle()} href={'?mode=articleMode'} className="modeRight">Article mode</a>
         </div>
         <a onClick={this.clickLogo} className="" href="https://fullystudios.se/">

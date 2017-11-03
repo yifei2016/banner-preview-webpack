@@ -39,18 +39,12 @@ function getButtonStyle() {
 function getClientStyle() {
   var style = {
     boxShadow: "3px 3px 0 0 white",
-    border: "2px solid white",
-    marginLeft: "-1.2em",
-    paddingLeft: "15px",
-    width: '13em'
+    borderColor: "white"
   }
   var mode = getMode();
   if (mode === 'articleMode') {
-    style.boxShadow = "3px 3px 0 0 #0A2A4F";
-    style.border = "2px solid #0A2A4F";
-    style.marginLeft = "-1.2em";
-    style.paddingLeft = "15px";
-    style.width= '13em';
+    style.boxShadow = "3px 3px 0 0 #0A2A4F",
+    style.borderColor = "#0A2A4F"
   }
   
   return style;

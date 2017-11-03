@@ -36,20 +36,18 @@ class Sidebar extends Component {
          <div className="sidebar toggle " ref="sidebar"  style={getModeStyle()}>
          <div className="d-flex justify-content-start" style={getModeStyle()}>
            <ul>
-             <li className="nav-link menu-item" style={getClientStyle()}>
-             <li className="nav-link menu-item font"><h4>Client</h4></li>
-             <li className="nav-link menu-item font"><h6>{client}</h6></li>
-             <li className="nav-link menu-item font"><h4>Project</h4></li>
-             <li className="nav-link menu-item font"><h6>{project}</h6></li>
-             </li>
-             <li className="nav-link menu-item html5 font">
-               <h4 className="rubrik">HTML5</h4>
-               </li>
-             {imageList}
-             <li className="nav-link html5 font"><h4 className="rubrik">Video</h4></li>
-             {videoList}
-             <li className="nav-link html5 font"><h4>Gif</h4></li>
-             {gifList}
+              <li className="nav-link nav-link--info menu-item" style={getClientStyle()}>
+                <div className="nav-link menu-item"><strong>Client</strong></div>
+                <div className="nav-link menu-item font"><p>{client}</p></div>
+                <div className="nav-link menu-item"><strong>Project</strong></div>
+                <div className="nav-link menu-item font"><p>{project}</p></div>
+              </li>
+              <li className="nav-link menu-item html5"><h4>HTML5</h4></li>
+              {imageList}
+              <li className="nav-link html5"><h4>Video</h4></li>
+              {videoList}
+              <li className="nav-link html5"><h4>Gif</h4></li>
+              {gifList}
            </ul>
          </div>
        </div>
