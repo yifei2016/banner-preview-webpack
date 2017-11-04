@@ -12,12 +12,7 @@ import Sidebar from './Sidebar';
 import VideoFrame from './VideoFrame';
 import ImageFrame from './ImageFrame';
 import GifFrame from './GifFrame';
-// import GifLink from './GifLink';
-// import ImageLink from './ImageLink';
-// import VideoLink from './VideoLink';
-// import { getMode, getModeStyle } from './modeHelper';
 import {getModeStyle} from './modeHelper';
-// import registerServiceWorker from './registerServiceWorker';
 
 class App extends Component {
   constructor(props){
@@ -44,14 +39,10 @@ class App extends Component {
       } />
     )
     const gifRoutes = aData.gif.map(gif =>
-      <Route key={k++} path={`/${gif.width}x${gif.height}`} render={(props) => 
+      <Route key={k++} path={`/gif/${gif.width}x${gif.height}`} render={(props) => 
         <GifFrame data={gif}/>
       } />
     )
-		// const imageList = aData.html.map(image => {return <ImageLink key={k++}  image={image} />});
-		// const videoList = aData.video.map(video =>  {return <VideoLink key={k++}  video={video} />});
-		// const client = aData.client;
-    // const project = aData.project;
     return (
       <div className="main" style={getModeStyle()}>
         <Navbar onHambugerClick={this.toggleSidebar}/>      

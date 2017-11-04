@@ -4,7 +4,6 @@ import aData from './project';
 import ImageLink from './ImageLink';
 import VideoLink from './VideoLink';
 import GifLink from './GifLink';
-// import { getMode, getModeStyle, getClientStyle } from './modeHelper';
 import { getModeStyle,getClientStyle } from './modeHelper';
 // import { slide as Menu } from 'react-burger-menu';
 
@@ -23,7 +22,6 @@ class Sidebar extends Component {
   }
   toggle(){
     var a = this.refs.sidebar;
-    //a.classList.toggle("sidebar");
     a.classList.toggle("toggle");
   }
 	render() {	

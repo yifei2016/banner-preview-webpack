@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class VideoFrame extends Component {
+class GIfFrame extends Component {
   constructor(props){
 		super(props);
 		this.state = {
-			gifid: this.props.data.gifid
+      gifWidth: this.props.data.width,
+      gifHeight: this.props.data.height
 		};
 	}
   render() {
     return (
-      <img src="" alt=""/>
-      // <iframe ref="videoFrame"
-      //   title="video"
-      //   src={`https://player.vimeo.com/video/${this.state.gifid}?color=5F11E8&title=0&byline=0&portrait=0`}
-      //   width="640" height="360" frameBorder="0" 
-      //   webkitallowfullscreen mozallowfullscreen allowFullScreen
-      //   className="align-self-center"
-      //   style={{marginTop: '4em'}}>
-      // </iframe>
-     
+      <img src="https://lh3.googleusercontent.com/bmW1Dh20vsH9OWsbEOvVIQN2wIUMdEuK3HAkySqOQhpznII_KO2Dtc0mmcO9S_2iBvw=w170" 
+      width={this.state.gifWidth} height={this.state.gifHeight} alt=""/>
     )
   }
 }
 
-export default VideoFrame;
+export default GIfFrame;

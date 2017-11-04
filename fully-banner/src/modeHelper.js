@@ -19,7 +19,7 @@ function getModeStyle() {
   }
   return style;
 }
-function getImageStyle() {
+function getLogoStyle() {
   var style = {
     fill: 'white'
   }
@@ -29,13 +29,13 @@ function getImageStyle() {
   }
   return style;
 }
-function getButtonStyle() {
-  var style = {
-    backgroundColor: 'white',
-    margin: 'auto 0'
-  }
-  return style;
-}
+// function getButtonStyle() {
+//   var style = {
+//     backgroundColor: 'white',
+//     margin: 'auto 0'
+//   }
+//   return style;
+// }
 function getClientStyle() {
   var style = {
     boxShadow: "3px 3px 0 0 white",
@@ -49,4 +49,4 @@ function getClientStyle() {
   
   return style;
 }
-export {getMode, getModeStyle, getImageStyle, getClientStyle, getButtonStyle};
+export {getMode, getModeStyle, getLogoStyle, getClientStyle};
