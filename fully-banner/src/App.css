@@ -307,36 +307,20 @@ a:active {
 	}
 }
 
+/* Buttons */
 
-/* navbutton  */
-* {
-  box-sizing: border-box;
-}
-
-/**
-* Buttons
-*/
 .button {
   border: none;
-  background-color: transparent;
-  color: rgba(255, 255, 255, 0);
-  /* user-select: none; */
+  user-select: none;
   position: relative;
-  z-index: 1;
-  padding: 0;
-  display: inline-block;
+  /* z-index: 1; */
+	padding: 0;
+	/* perspective: 1000px; */
+	transition: transform;
   -webkit-tap-highlight-color: transparent;
 }
-/* @media (min-width: 400px) {
-  .button {
-    font-size: 0.8em;
-  }
-} */
-/* .clientProject{
-  box-shadow: 3px 3px 0 0 white;
-} */
 
-.button:after {
+.button::after {
   content: "";
   position: absolute;
   top: 0;
@@ -345,90 +329,80 @@ a:active {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
-  /* z-index: -1; */
-  transform: translateX(-3px);
-  transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+	transform: translateX(-3px);
 }
 .button:hover:after, .button:focus:after {
   transform: translateX(0);
 }
-.button:focus, .button:active {
-  outline: none;
-}
+/* ? */
 .button span {
-  padding: 0.55em 1.5em 0.45em;
+  /* padding: 0.55em 1.5em 0.45em; */
   background-color: #5f11e8;
   border: 2px solid #ffffff;
   display: block;
   width: 100%;
   height: 100%;
   transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
-  transform: translate3D(0, -3px, 0);
-  position: relative;
+	transform: translateY(-3px);
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+	padding: 12px;
+	position: relative;
+	z-index: 2;
 }
 .button:hover span, .button:focus span {
-  transform: translate3D(0, 0, 0);
+  transform: translateY(0);
 }
 .button:active span {
   transform: translate3D(0, 0, 0);
   border: 2px solid transparent;
-  background-color: transparent;
   color: #5f11e8;
 }
-/* .button:active span :after {
-  background-color: none;
-} */
-.button--nav span, .button--icon span {
-  line-height: 0;
-  position: relative;
-  z-index: 2;
-}
-/* .button--nav svg, .button--icon svg {
-  margin: 0;
-  width: 3em;
-  height: 3em;
-} */
-.button--nav__line, .button--icon__line {
+.button--nav__line{
   width: 100%;
   height: 2px;
   background-color: #ffffff;
   transition: transform 0.3s cubic-bezier(0.14, 0.79, 0.39, 1);
 }
-.button--nav:active .button--nav__line, .button--icon:active .button--nav__line {
-  background-color: #5f11e8;
-} 
-.button--nav .button--nav__line:nth-child(1), .button--nav line:nth-child(1), .button--nav .button--nav__line:nth-child(3), .button--nav line:nth-child(3), .button--icon .button--nav__line:nth-child(1), .button--icon line:nth-child(1), .button--icon .button--nav__line:nth-child(3), .button--icon line:nth-child(3) {
+/* .button--nav__line:nth-child(1),
+.button--nav__line:nth-child(3) {
   transform-origin: top left;
+} */
+.menu-open .button--nav__line:nth-child(1){
+	transform-origin: top left;
+  transform: rotate(45deg) translate3d(2.5px, -2.5px, 0);
 }
-.button--nav .button--nav__line:nth-child(2), .button--nav line:nth-child(2), .button--icon .button--nav__line:nth-child(2), .button--icon line:nth-child(2) {
-  transform-origin: center left;
-} 
-.button--nav.menu-open .button--nav__line:nth-child(1), .button--nav.menu-open line:nth-child(1), .button--icon.menu-open .button--nav__line:nth-child(1), .button--icon.menu-open line:nth-child(1) {
-  transform: rotate(45deg) translate3D(2.5px, -2.5px, 0);
+.menu-open .button--nav__line:nth-child(3){
+	transform-origin: top left;
+  transform: rotate(-45deg) translate3d(1px, 1px, 0);
 }
-.button--nav.menu-open .button--nav__line:nth-child(2), .button--nav.menu-open line:nth-child(2), .button--icon.menu-open .button--nav__line:nth-child(2), .button--icon.menu-open line:nth-child(2) {
+
+.menu-open .button--nav__line:nth-child(2){
+	transform-origin: center left;
   transform: scaleX(0);
 }
-.button--nav.menu-open .button--nav__line:nth-child(3), .button--nav.menu-open line:nth-child(3), .button--icon.menu-open .button--nav__line:nth-child(3), .button--icon.menu-open line:nth-child(3) {
-  transform: rotate(-45deg) translate3D(1px, 1px, 0);
-}
+
 .button--nav {
   width: 48px;
 	height: 48px;
 	display: none;
 }
+.button--nav span{
+  line-height: 0;
+}
+.button:focus, .button:active {
+  outline: none;
+} 
+* {
+  box-sizing: border-box;
+}
 @media (max-width:400px){
 	.button--nav{
 		display: inline-block;
 	}
-}
-.button--nav span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 12px;
 }
 .button--nav:focus {
   z-index: 12;

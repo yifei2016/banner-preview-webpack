@@ -33,10 +33,17 @@ class App extends Component {
         <VideoFrame data={video}/>
       } />
     )
-    const htmlRoutes = aData.html.map(html =>
-      <Route key={k++} path={`/${html.width}x${html.height}`} render={(props) => 
-        <ImageFrame data={html}/>
-      } />
+    const htmlRoutes = aData.html.map(html =>{
+      if(html.modifier){
+        return <Route key={k++} path={`/${html.width}x${html.height}-${html.modifier}`} render={(props) => 
+          <ImageFrame data={html}/>
+        } />
+      }else{
+       return  <Route key={k++} path={`/${html.width}x${html.height}`} render={(props) => 
+          <ImageFrame data={html}/>
+        } />
+      }
+    } 
     )
     const gifRoutes = aData.gif.map(gif =>
       <Route key={k++} path={`/gif/${gif.width}x${gif.height}`} render={(props) => 
