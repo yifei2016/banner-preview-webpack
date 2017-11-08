@@ -56,7 +56,7 @@ body {
 }
 @media(max-width:500px){
 	.main-content{
-		/* overflow: auto; */
+		 overflow: auto; 
 		-webkit-overflow-scrolling: touch;
 	}
 }
