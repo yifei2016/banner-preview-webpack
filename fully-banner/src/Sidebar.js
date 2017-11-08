@@ -11,7 +11,7 @@ class Sidebar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      sideBarPicker: this.props.sideBarPicker
+      style: getModeStyle()
     }
     this.toggle = this.toggle.bind(this);
   }
@@ -26,7 +26,7 @@ class Sidebar extends Component {
   }
 	render() {	
 		let k = 1;
-		const imageList = aData.html.map(image => {return <ImageLink key={k++}  image={image} />});
+		const imageList = aData.html.map(image => {return <ImageLink style key={k++}  image={image} />});
     const videoList = aData.video.map(video =>  {return <VideoLink key={k++}  video={video} />});
     const gifList = aData.gif.map(gif =>  {return <GifLink key={k++}  gif={gif} />});
 		const client = aData.client;

@@ -7,7 +7,6 @@ class Navbar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      sideBarPicker: this.props.sideBarPicker,
       click: -1
     }
     this.clickHambuger = this.clickHambuger.bind(this);

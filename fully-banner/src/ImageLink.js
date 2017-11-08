@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {getMode, getModeStyle} from './modeHelper';
+import {getMode, getModeStyle,getClickStyle} from './modeHelper';
 
 class ImageLink extends Component {
 	constructor(props) {
@@ -8,13 +8,20 @@ class ImageLink extends Component {
 			width: this.props.image.width,
 			height: this.props.image.height,
 			modifier: this.props.image.modifier
+			
 		};
+		this.clickTag = this.clickTag.bind(this)
 	}
+	clickTag(){
+		this.setState({
+			style:getClickStyle()
+		},()=>{console.log(this.state.style)}
+	)}
 	render() {
 		if(this.props.image.modifier){
 			return (
 				<li className="nav-link links">
-					<a  style={ getModeStyle()} href={`/${this.state.width}x${this.state.height}-${this.state.modifier}?mode=${ getMode()}`}>
+					<a  onClick={this.clickTag}  style={this.state.style}  href={`/${this.state.width}x${this.state.height}-${this.state.modifier}?mode=${ getMode()}`}>
 						{this.state.width}×{this.state.height} <span>-{this.props.image.modifier}</span>
 					</a>
 				</li>
@@ -22,7 +29,7 @@ class ImageLink extends Component {
 		}else{
 			return (
 				<li className="nav-link links">
-					<a  style={ getModeStyle()} href={`/${this.state.width}x${this.state.height}?mode=${ getMode()}`}>
+					<a  onClick={this.clickTag}   style={this.state.style} href={`/${this.state.width}x${this.state.height}?mode=${ getMode()}`}>
 						{this.state.width}×{this.state.height}
 					</a>
 				</li>

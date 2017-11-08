@@ -33,7 +33,7 @@ class ImageFrame extends Component {
       if(this.state.modifier){
         return (
           <div className={this.state.className} style={{marginTop:'2.1em', display:'flex'}}>
-            <div>
+            <div className="textDiv">
               <iframe ref="remoteFrame"
                 title="image"
                 key={`${this.state.width}x${this.state.height}`}
@@ -69,7 +69,7 @@ class ImageFrame extends Component {
       }
       return (
         <div className={this.state.className} style={{marginTop:'2.1em', display:'flex'}}>
-          <div>
+          <div className="textDiv">
             <iframe ref="remoteFrame"
               title="image"
               key={`${this.state.width}x${this.state.height}`}

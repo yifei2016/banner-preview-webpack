@@ -19,6 +19,19 @@ function getModeStyle() {
   }
   return style;
 }
+function getClickStyle() {
+  var style = {
+    backgroundColor: '#0A2A4F',
+    color: 'red'
+
+  }
+  var mode = getMode();
+  if (mode === 'articleMode') {
+    style.backgroundColor = 'white';
+    style.color = 'red';
+  }
+  return style;
+}
 function getLogoStyle() {
   var style = {
     fill: 'white'
@@ -49,4 +62,4 @@ function getClientStyle() {
   
   return style;
 }
-export {getMode, getModeStyle, getLogoStyle, getClientStyle};
+export {getMode, getModeStyle, getLogoStyle, getClientStyle,getClickStyle};
