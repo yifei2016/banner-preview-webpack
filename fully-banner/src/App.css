@@ -46,17 +46,18 @@ body {
 .main{
 	height: 130%;
 }
-
 .main-content {
 	display: flex;
 	padding-top: 2em;
 	padding-bottom: 2em;
-	/* overflow: auto; */
-	width: 100%;
+	/*width: 100%;*/
 }
+/*.iframeScroll{
+	overflow: auto; 
+}*/
 @media(max-width:500px){
 	.main-content{
-		 overflow: auto; 
+		overflow: scroll; 
 		-webkit-overflow-scrolling: touch;
 	}
 }
@@ -124,13 +125,16 @@ strong {
 #root{
   height: 120vh!important;
 }
-a:hover{
+/*a{
+	color: white;
+	border-bottom: none;
+	text-decoration: none;
+}*/
+a:hover, a:active, a:focus{
 	color: #FFC1B4 !important;
 	border-bottom: none;
 	text-decoration: none;
 }
-
-
 .textDiv{
 	margin-right: 2em;
 }

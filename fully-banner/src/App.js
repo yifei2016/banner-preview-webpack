@@ -53,10 +53,11 @@ class App extends Component {
     return (
       <div className="main" style={getModeStyle()}>
         <Navbar onHambugerClick={this.toggleSidebar}/>      
-        <div className="main-content"  >
-          <Sidebar ref="sidebar" />
+        <div >
           <Router>
-            <div className="" style={{width:'100%', display: 'flex', justifyContent: 'center'}}>
+            <div className="main-content">
+            <Sidebar ref="sidebar" />
+            <div className="" style={{width:'100%', display: 'flex', justifyContent: 'left'}}>
               {htmlRoutes}
               {videoRoutes}
               {gifRoutes}
@@ -64,7 +65,8 @@ class App extends Component {
             {/* <div>
               <Route path="/222507866" component={VideoICAFrame} />
               <Route path="/239824287" component={VideoLoremFrame} />
-            </div> */}
+            </div> */}  
+            </div>
           </Router>
         </div>
       </div>
