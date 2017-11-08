@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { getMode, getModeStyle,getLogoStyle } from './modeHelper';
 
 class GIfFrame extends Component {
   constructor(props){
@@ -12,7 +13,7 @@ class GIfFrame extends Component {
   render() {
     return (
       <img src="https://lh3.googleusercontent.com/bmW1Dh20vsH9OWsbEOvVIQN2wIUMdEuK3HAkySqOQhpznII_KO2Dtc0mmcO9S_2iBvw=w170" 
-      width={this.state.gifWidth} height={this.state.gifHeight} alt=""/>
+      width={this.state.gifWidth} height={this.state.gifHeight} alt="" />
     )
   }
 }

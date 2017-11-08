@@ -13,6 +13,7 @@ function getModeStyle() {
 
   }
   var mode = getMode();
+  console.log(mode)
   if (mode === 'articleMode') {
     style.backgroundColor = 'white';
     style.color = '#0A2A4F';
@@ -30,24 +31,17 @@ function getLogoStyle() {
   }
   return style;
 }
-// function getButtonStyle() {
+// function getBodyStyle() {
 //   var style = {
-//     backgroundColor: 'white',
-//     margin: 'auto 0'
+//     marginBottom: '0',
+//     backgroundColor: '#0A2A4F',
+//   }
+//   var mode = getMode();
+//   if (mode === 'articleMode') {
+//     style.marginBottom = '2em';
+//     style.backgroundColor = 'white';
 //   }
 //   return style;
 // }
-function getClientStyle() {
-  var style = {
-    boxShadow: "3px 3px 0 0 white",
-    borderColor: "white"
-  }
-  var mode = getMode();
-  if (mode === 'articleMode') {
-    style.boxShadow = "3px 3px 0 0 #0A2A4F";
-    style.borderColor = "#0A2A4F";
-  }
-  
-  return style;
-}
-export {getMode, getModeStyle, getLogoStyle, getClientStyle};
+
+export {getMode, getModeStyle, getLogoStyle};

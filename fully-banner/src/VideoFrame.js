@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 // import aData from './project';
+import { getMode, getModeStyle,getLogoStyle } from './modeHelper';
 
 class VideoFrame extends Component {
   constructor(props){
@@ -18,7 +19,7 @@ class VideoFrame extends Component {
         width="640" height="360" frameBorder="0" 
         webkitallowfullscreen mozallowfullscreen allowFullScreen
         className="align-self-center"
-        style={{marginTop: '4em'}}>
+        >
       </iframe>
     )
   }

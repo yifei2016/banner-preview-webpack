@@ -13,16 +13,12 @@
 	font-style: normal;
 }
 html, body {
-	height: 100%;
-	background-color: rgb(10, 42, 79);	
-}
-body {
+	height: 100vh;
+	background-color: rgb(10, 42, 79);
 	font-size: calc( 12px + 0.4vw );
 	font-family: 'Moderat', sans-serif;
 }
-.landing {
-	height: 100vh;
-}
+
 .font{
 	font-family: 'Fira Mono', monospace; 
 	font-size: 1.3em;
@@ -44,14 +40,15 @@ body {
 	margin-right: 2px;
 }
 .main{
-	height: 130%;
+	height: 100vh;
 }
 .main-content {
 	display: flex;
-	padding-top: 2em;
-	padding-bottom: 2em;
-	/*width: 100%;*/
+	/* padding-top: 2em; */
+	/* padding-bottom: 1em; */
+	width: 100%;
 }
+/*  */
 /*.iframeScroll{
 	overflow: auto; 
 }*/
@@ -123,7 +120,7 @@ strong {
 	font-weight: 700;
 }
 #root{
-  height: 120vh!important;
+  height: 100vh!important;
 }
 /*a{
 	color: white;
@@ -145,7 +142,7 @@ a:hover, a:active, a:focus{
 	padding-right:2em;
 	padding-left: 2em;
 	padding-bottom: 1em;
-	flex: 1 0 14em;
+
 	z-index: 7;
 	/* width: 100%; */
 	/* overflow-y: scroll;  */
@@ -153,6 +150,10 @@ a:hover, a:active, a:focus{
 /* .clientProject{
 
 } */
+.iframeStyle{
+	 display: flex;
+	 justify-content: center;
+}
 @media (max-width: 500px) {
 	.sidebar {
 		width: 100%;
@@ -166,39 +167,57 @@ a:hover, a:active, a:focus{
 		/* height: 100vh!important; */
 	}
 }
+/*style={{width:'100%', display: 'flex', justifyContent: 'center'}}*/
+.banners{
+	overflow: auto;
+	display: 'flex'; 
+	flex: 2;
+	justify-content: 'center';
+}
+@media(max-width: 500px){
+	.banners{
+		/* width:'100%'; */
+		display: 'flex'; 
+		flex: 2;
+		justify-content: 'center';
+		margin-right: 1em;
+		margin-left:1em;
+		margin-top:4em;
+	}
+}
 iframe{
   display: block;
 }
-.text{
-	margin-top: 5px;
-	font-style: italic;
-}
+
 .textField{
 	display: flex;
 	justify-content: flex-end;
+	margin-top: 5px;
+	font-style: italic;
 }
 @media(max-width:500px){
    .textField{
 			display: flex;
-			justify-content: center;
+			justify-content: flex-end;
+		
 	 }
 }
 
 .liggandeBanner{
 	display: flex;
 	flex-direction: column;
-	margin: 0 2em;
+	margin: auto;
 }
 .liggandeBanner img{
 	margin-top:2em;
 }
 .liggandeBanner svg{
-	margin-bottom:2em;
+	margin-bottom:1em;
 }
 .standBanner{
 	display: flex;
 	justify-content: space-around;
-	margin:  2em 0;
+	/* margin:  1em 0; */
 }
 .standBanner img{
 	margin-left: 2em;
@@ -216,7 +235,7 @@ iframe{
 		flex-direction: column;
 	}
 	.liggandeBanner img{
-		margin-top:2em;
+		margin: auto;
 	}
 	.liggandeBanner svg{
 		margin-top:2em;
@@ -237,7 +256,6 @@ iframe{
 	}
 	.standBanner svg{
 		margin-left: 0em;
-		margin-bottom: 2em;
 	}
 	#root{
 		height: 143vh!important;
