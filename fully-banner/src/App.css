@@ -137,6 +137,7 @@ a:hover{
 	padding-left: 2em;
 	padding-bottom: 1em;
 	flex: 1 0 14em;
+	z-index: 7;
 	/* width: 100%; */
 	/* overflow-y: scroll;  */
 }
@@ -152,6 +153,7 @@ a:hover{
 		bottom: 0;
 		transform: translateX(0);
 		padding-top: 100px;
+		z-index: 7;
 		/* height: 100vh!important; */
 	}
 }
