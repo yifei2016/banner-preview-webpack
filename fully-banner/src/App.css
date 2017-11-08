@@ -81,7 +81,7 @@ flow of the document and other elements will behave as if it’s not even there 
 	justify-content: space-between;
 	align-items: center;
 }
-@media(max-width:400px){
+@media(max-width:500px){
 	.navBar{
 		position: relative; 
 		top: 0;
@@ -242,7 +242,7 @@ iframe{
 /* .toggle{
 	transform: translateX(0);
 }  */
-@media (max-width: 400px) {
+@media (max-width: 500px) {
 	.toggle {
 		transform: translateX(-100%);
 	}
@@ -308,7 +308,7 @@ a:active {
 	padding: 0 3em;
  } */
  
-@media (max-width: 400px) {
+@media (max-width: 500px) {
 	.menu{
 		width: 70%!important;
 	}
@@ -406,7 +406,7 @@ a:active {
 * {
   box-sizing: border-box;
 }
-@media (max-width:400px){
+@media (max-width:500px){
 	.button--nav{
 		display: inline-block;
 	}
