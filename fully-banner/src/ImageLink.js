@@ -14,23 +14,34 @@ class ImageLink extends Component {
 			modeStyle: this.props.modeStyle
 		}
 		this.setMode = this.setMode.bind(this);
+		this.checkIfModifier = this.checkIfModifier.bind(this);
 	}
 	setMode(modeStyle){
 		this.setState({
       modeStyle: modeStyle
      })
 	}
+	checkIfModifier(){
+		let text = `${this.state.width}×${this.state.height}`,
+				modifier = this.state.modifier || null;
+		if (modifier){
+			return (
+				<p>
+					{text} <span>-</span> {modifier}
+				</p>
+			)
+		}
+		return text;
+	}
 	render() {
 		var source = `/${this.state.width}x${this.state.height}`;
-		var text = `${this.state.width}×${this.state.height}`;
 		if (this.props.image.modifier) {
 			source = `/${this.state.width}x${this.state.height}-${this.state.modifier}`;
-		  text = `${this.state.width}×${this.state.height} <span style={{color: 'red'}}>-${this.state.modifier}</span>`;
 		}
 		return (
 			<li className="nav-link links">
 				<Link style={this.state.modeStyle} to={source}>
-					{text}
+					{this.checkIfModifier()}
 				</Link>
 			</li>
 		)
