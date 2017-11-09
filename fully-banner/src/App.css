@@ -164,19 +164,17 @@ a:hover, a:active, a:focus{
 		transform: translateX(0);
 		padding-top: 100px;
 		z-index: 7;
-		/* height: 100vh!important; */
 	}
 }
-/*style={{width:'100%', display: 'flex', justifyContent: 'center'}}*/
 .banners{
 	overflow: auto;
 	display: 'flex'; 
 	flex: 2;
+	margin: 2em 1em 0 2em;
 	justify-content: 'center';
 }
 @media(max-width: 500px){
 	.banners{
-		/* width:'100%'; */
 		display: 'flex'; 
 		flex: 2;
 		justify-content: 'center';
@@ -296,7 +294,7 @@ a:active {
 	fill:#fff;
 }
 .nav-link{
-	padding: 0.1em 0;
+	padding: 0.05em 0;
 }
 .nav-link--info {
 	box-shadow: 3px 3px 0 0 white;
@@ -313,7 +311,7 @@ a:active {
 	color: white;
 }
 .html5{
-	margin-top: 15%;
+	margin-top: 1em;
 }
 .hambuger{
 	border-radius: 10px;

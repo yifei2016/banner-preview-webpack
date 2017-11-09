@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  // Switch,
+  Switch,
   Link
 } from 'react-router-dom';
 import aData from './project.js';
@@ -12,12 +12,13 @@ import VideoFrame from './VideoFrame';
 import ImageFrame from './ImageFrame';
 import ImageFrameArticle from './ImageFrameArticle';
 import GifFrame from './GifFrame';
+import DefaultIframe from './DefaultIframe';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      mode: 'articleMode',
+      mode: 'cleanMode',
       modeStyle: {
         backgroundColor: '#0A2A4F',
         color: 'white'
@@ -68,6 +69,7 @@ class App extends Component {
   )}
   render() {
     let k = 1;
+    // const defaultRoutes = 
     const videoRoutes = aData.video.map(video =>
       <Route  key={k++} path={`/${video.vimeo_id}`} render={(props) => 
         <VideoFrame data={video}/>
@@ -95,7 +97,7 @@ class App extends Component {
       } />
     )
     return (
-        <Router >
+        <Router>
         <div className="main"  style={this.state.modeStyle}>
           <div  className="navBar">
             <button  type="button" className="button button--nav " ref="openmenu" id="openmenu"
@@ -106,7 +108,7 @@ class App extends Component {
                 <div className="button--nav__line"></div>
               </span>
             </button>
-            <div className="mode-selector" style={{ flexGrow: 0.04 }}>
+            <div className="mode-selector">
             <a href="#" onClick={(ev)=>this.setModeColor(ev, 'cleanMode')} style={this.state.modeStyle}>Clean mode</a>
               {/* <Link onClick={this.setModeColor} style={this.state.modeStyle} to={'?mode=cleanMode'} >Clean mode</Link> */}
               <span className="mode-selector__seperator">|</span>
@@ -124,9 +126,12 @@ class App extends Component {
           <div style={this.state.modeStyle} className="main-content" >
               <Sidebar modeStyle={this.state.modeStyle} ref="sidebar" />
               <div className="banners" >
+              <Switch>
+              <Route exact path="/" component={DefaultIframe}> </Route>
                 {htmlRoutes}
                 {videoRoutes}
                 {gifRoutes}
+              </Switch>
               </div>
               {/* <div>
               <Route path="/222507866" component={VideoICAFrame} />

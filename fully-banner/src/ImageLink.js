@@ -22,13 +22,15 @@ class ImageLink extends Component {
 	}
 	render() {
 		var source = `/${this.state.width}x${this.state.height}`;
+		var text = `${this.state.width}×${this.state.height}`;
 		if (this.props.image.modifier) {
 			source = `/${this.state.width}x${this.state.height}-${this.state.modifier}`;
+		  text = `${this.state.width}×${this.state.height} <span style={{color: 'red'}}>-${this.state.modifier}</span>`;
 		}
 		return (
 			<li className="nav-link links">
 				<Link style={this.state.modeStyle} to={source}>
-					{this.state.width}×{this.state.height} <span>-{this.props.image.modifier}</span>
+					{text}
 				</Link>
 			</li>
 		)
