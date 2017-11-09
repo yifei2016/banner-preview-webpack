@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { getMode, getModeStyle,getLogoStyle } from './modeHelper';
+// import { getMode, getModeStyle,getLogoStyle } from './modeHelper';
 
 class ImageFrame extends Component {
   constructor(props){

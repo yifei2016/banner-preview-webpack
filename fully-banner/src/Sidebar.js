@@ -4,13 +4,11 @@ import aData from './project';
 import ImageLink from './ImageLink';
 import VideoLink from './VideoLink';
 import GifLink from './GifLink';
-import { getModeStyle,getClientStyle } from './modeHelper';
-// import { slide as Menu } from 'react-burger-menu';
+// import { getModeStyle,getClientStyle } from './modeHelper';
 
 class Sidebar extends Component {
   constructor(props){
     super(props);
-    
     this.state = {
       modeStyle: this.props.modeStyle,
       clientStyle: this.props.clientStyle
@@ -20,8 +18,6 @@ class Sidebar extends Component {
   }
   
   setMode(modeStyle, clientStyle){
-    let k = 1;
-    console.log(modeStyle);
      this.setState({
       modeStyle: modeStyle,
       clientStyle: clientStyle

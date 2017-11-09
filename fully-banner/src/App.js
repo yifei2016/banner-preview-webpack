@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-// import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
   Route,
@@ -13,7 +12,6 @@ import VideoFrame from './VideoFrame';
 import ImageFrame from './ImageFrame';
 import ImageFrameArticle from './ImageFrameArticle';
 import GifFrame from './GifFrame';
-import {getModeStyle,getBodyStyle,getLogoStyle} from './modeHelper';
 
 class App extends Component {
   constructor(props){
@@ -43,7 +41,6 @@ class App extends Component {
       newModeStyle.backgroundColor = 'white';
       newModeStyle.color = '#0A2A4F';
       newlogoStyle.fill = '#0A2A4F';
-
     }else{
       newModeStyle.backgroundColor = '#0A2A4F';
       newModeStyle.color = 'white';
@@ -87,7 +84,8 @@ class App extends Component {
         } />
       }else {
         return <Route key={k++} path={path} render={(props) =>
-          <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} logoStyle={this.state.logoStyle}/>
+          <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} 
+          logoStyle={this.state.logoStyle}/>
         } />
       }
     })
@@ -97,7 +95,6 @@ class App extends Component {
       } />
     )
     return (
-      // <div  style={getModeStyle()}>
         <Router >
         <div className="main"  style={this.state.modeStyle}>
           <div  className="navBar">
@@ -138,7 +135,6 @@ class App extends Component {
             </div>
           </div>
         </Router>
-      // </div>
     )
   }
 }
