@@ -69,16 +69,15 @@ class App extends Component {
   )}
   render() {
     let k = 1;
-    // const defaultRoutes = 
     const videoRoutes = aData.video.map(video =>
-      <Route  key={k++} path={`/${video.vimeo_id}`} render={(props) => 
+      <Route  key={k++} path={`/banner-preview/${video.vimeo_id}`} render={(props) => 
         <VideoFrame data={video}/>
       } />
     )
     const htmlRoutes = aData.html.map(html => {
-      var path = `/${html.width}x${html.height}`;
+      var path = `/banner-preview/${html.width}x${html.height}`;
       if (html.modifier) {
-        path = `/${html.width}x${html.height}-${html.modifier}`
+        path = `/banner-preview/${html.width}x${html.height}-${html.modifier}`
       }
       if (this.state.mode === 'cleanMode') {
         return <Route key={k++} path={path} render={(props) =>
@@ -92,7 +91,7 @@ class App extends Component {
       }
     })
     const gifRoutes = aData.gif.map(gif =>
-      <Route key={k++} path={`/gif/${gif.width}x${gif.height}`} render={(props) => 
+      <Route key={k++} path={`/banner-preview/gif/${gif.width}x${gif.height}`} render={(props) => 
         <GifFrame data={gif}/>
       } />
     )
@@ -112,7 +111,7 @@ class App extends Component {
             <a href="#" onClick={(ev)=>this.setModeColor(ev, 'cleanMode')} style={this.state.modeStyle}>Clean mode</a>
               {/* <Link onClick={this.setModeColor} style={this.state.modeStyle} to={'?mode=cleanMode'} >Clean mode</Link> */}
               <span className="mode-selector__seperator">|</span>
-               <a href="#" onClick={(ev)=>this.setModeColor(ev, 'articleMode')} style={this.state.modeStyle} className="modeRight">Article mode</a>
+               <a href="#" onClick={(ev)=>this.setModeColor(ev, 'articleMode')} style={this.state.modeStyle}>Article mode</a>
               {/* <Link onClick={this.setModeColor} style={this.state.modeStyle} to={'?mode=articleMode'} className="modeRight">Article mode</Link> */}
             </div>
             <a  className="" href="https://fullystudios.se/">
@@ -127,7 +126,7 @@ class App extends Component {
               <Sidebar modeStyle={this.state.modeStyle} ref="sidebar" />
               <div className="banners" >
               <Switch>
-              <Route exact path="/" component={DefaultIframe}> </Route>
+              <Route exact path="/banner-preview" component={DefaultIframe}> </Route>
                 {htmlRoutes}
                 {videoRoutes}
                 {gifRoutes}

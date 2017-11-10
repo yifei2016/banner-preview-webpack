@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
-// import aData from './project';
-import { getMode, getModeStyle,getLogoStyle } from './modeHelper';
 
 class VideoFrame extends Component {
   constructor(props){

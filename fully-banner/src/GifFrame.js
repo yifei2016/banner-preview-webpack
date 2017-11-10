@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getMode, getModeStyle,getLogoStyle } from './modeHelper';
 
 class GIfFrame extends Component {
   constructor(props){

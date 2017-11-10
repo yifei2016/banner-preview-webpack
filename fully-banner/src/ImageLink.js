@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {getMode, getModeStyle} from './modeHelper';
 import {
   Link
 } from 'react-router-dom';
@@ -26,17 +25,17 @@ class ImageLink extends Component {
 				modifier = this.state.modifier || null;
 		if (modifier){
 			return (
-				<p>
+				<span>
 					{text} <span>-</span> {modifier}
-				</p>
+				</span>
 			)
 		}
 		return text;
 	}
 	render() {
-		var source = `/${this.state.width}x${this.state.height}`;
+		var source = `/banner-preview/${this.state.width}x${this.state.height}`;
 		if (this.props.image.modifier) {
-			source = `/${this.state.width}x${this.state.height}-${this.state.modifier}`;
+			source = `/banner-preview/${this.state.width}x${this.state.height}-${this.state.modifier}`;
 		}
 		return (
 			<li className="nav-link links">

@@ -4,7 +4,6 @@ import aData from './project';
 import ImageLink from './ImageLink';
 import VideoLink from './VideoLink';
 import GifLink from './GifLink';
-// import { getModeStyle,getClientStyle } from './modeHelper';
 
 class Sidebar extends Component {
   constructor(props){

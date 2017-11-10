@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import {getMode, getModeStyle} from './modeHelper';
 import {
   Link
 } from 'react-router-dom';
@@ -23,7 +22,7 @@ class VideoLink extends Component {
   render() {
     return (
       <li className="nav-link">
-        <Link style={this.state.modeStyle}  to={`/${this.state.vimeo_id}`}>
+        <Link style={this.state.modeStyle}  to={`/banner-preview/${this.state.vimeo_id}`}>
           {this.state.title}
         </Link>
       </li>

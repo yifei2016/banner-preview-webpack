@@ -22,6 +22,12 @@ var aData =
         "clicktag_type": "Adform"
       },
       {
+        "width": 250,
+        "height": 480,
+        "filesize": 50,
+        "clicktag_type": "Adform"
+      },
+      {
         "width": 160,
         "height": 600,
         "filesize": 100,
@@ -43,6 +49,12 @@ var aData =
       {
         "width": 320,
         "height": 320,
+        "filesize": 50,
+        "clicktag_type": "Adform"
+      },
+      {
+        "width": 930,
+        "height": 600,
         "filesize": 50,
         "clicktag_type": "Adform"
       },

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-// import { getMode, getModeStyle,getLogoStyle } from './modeHelper';
 
 class ImageFrameArticle extends Component {
   constructor(props){
@@ -39,7 +38,8 @@ class ImageFrameArticle extends Component {
     }
     return (
       <div className={this.state.className} >
-        <svg style={{fill: '#0A2A4F'}} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100vh" viewBox="0 0 100 100">
+        <svg style={{fill: '#0A2A4F'}} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="100%" 
+        height="100vh" viewBox="0 0 100 100">
           <defs>
             <style></style>
           </defs><title>article</title>

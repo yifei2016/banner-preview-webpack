@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-// import { getMode, getModeStyle,getLogoStyle } from './modeHelper';
 
 class ImageFrame extends Component {
   constructor(props){
@@ -40,7 +39,7 @@ class ImageFrame extends Component {
     return (
       <div className={this.state.className} >
         <div className="textDiv" style={{width: this.state.width}}>
-          <iframe ref="remoteFrame"
+        <iframe ref="remoteFrame"
             title="image"
             key={`${this.state.width}x${this.state.height}`}
             src={iframSource}
