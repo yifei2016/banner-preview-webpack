@@ -70,14 +70,14 @@ class App extends Component {
   render() {
     let k = 1;
     const videoRoutes = aData.video.map(video =>
-      <Route  key={k++} path={`/banner-preview/${video.vimeo_id}`} render={(props) => 
+      <Route  key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) => 
         <VideoFrame data={video}/>
       } />
     )
     const htmlRoutes = aData.html.map(html => {
-      var path = `/banner-preview/${html.width}x${html.height}`;
+      var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
       if (html.modifier) {
-        path = `/banner-preview/${html.width}x${html.height}-${html.modifier}`
+        path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
       }
       if (this.state.mode === 'cleanMode') {
         return <Route key={k++} path={path} render={(props) =>
@@ -91,7 +91,7 @@ class App extends Component {
       }
     })
     const gifRoutes = aData.gif.map(gif =>
-      <Route key={k++} path={`/banner-preview/gif/${gif.width}x${gif.height}`} render={(props) => 
+      <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) => 
         <GifFrame data={gif}/>
       } />
     )
@@ -126,7 +126,7 @@ class App extends Component {
               <Sidebar modeStyle={this.state.modeStyle} ref="sidebar" />
               <div className="banners" >
               <Switch>
-              <Route exact path="/banner-preview" component={DefaultIframe}> </Route>
+              <Route exact path="process.env.PUBLIC_URL" component={DefaultIframe}> </Route>
                 {htmlRoutes}
                 {videoRoutes}
                 {gifRoutes}

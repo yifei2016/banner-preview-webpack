@@ -22,7 +22,7 @@ class VideoLink extends Component {
   render() {
     return (
       <li className="nav-link">
-        <Link style={this.state.modeStyle}  to={`/banner-preview/${this.state.vimeo_id}`}>
+        <Link style={this.state.modeStyle}  to={`${process.env.PUBLIC_URL}/${this.state.vimeo_id}`}>
           {this.state.title}
         </Link>
       </li>

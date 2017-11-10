@@ -33,9 +33,9 @@ class ImageLink extends Component {
 		return text;
 	}
 	render() {
-		var source = `/banner-preview/${this.state.width}x${this.state.height}`;
+		var source = `${process.env.PUBLIC_URL}/${this.state.width}x${this.state.height}`;
 		if (this.props.image.modifier) {
-			source = `/banner-preview/${this.state.width}x${this.state.height}-${this.state.modifier}`;
+			source = `${process.env.PUBLIC_URL}/${this.state.width}x${this.state.height}-${this.state.modifier}`;
 		}
 		return (
 			<li className="nav-link links">

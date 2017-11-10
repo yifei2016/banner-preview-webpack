@@ -21,7 +21,7 @@ class GifLink extends Component {
 	render() {
 		return (
 			<li className="nav-link links">
-				<Link style={this.state.modeStyle} to={`/banner-preview/gif/${this.state.width}x${this.state.height}}`}>
+				<Link style={this.state.modeStyle} to={`${process.env.PUBLIC_URL}/gif/${this.state.width}x${this.state.height}}`}>
 					{this.state.width}×{this.state.height}
 				</Link>
 			</li>
