@@ -11,7 +11,7 @@ class GIfFrame extends Component {
 	}
   render() {
     return (
-      <img src="https://lh3.googleusercontent.com/bmW1Dh20vsH9OWsbEOvVIQN2wIUMdEuK3HAkySqOQhpznII_KO2Dtc0mmcO9S_2iBvw=w170" 
+      <img src="https://media.giphy.com/media/3o85xt08p2Y0hanhwQ/giphy.gif" 
       width={this.state.gifWidth} height={this.state.gifHeight} alt="" />
     )
   }

@@ -10,6 +10,10 @@
     "react-router-dom": "^4.2.2",
     "react-view-switch": "^0.1.4"
   },
+  "browsers": {
+    "development": "last 1 version",
+    "production": "last 2 versions, > 5%"
+  },
   "devDependencies": {
     "react-scripts": "1.0.14"
   },
