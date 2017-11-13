@@ -1,9 +1,9 @@
 import React,{ Component } from 'react';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
   Switch,
-  Link
+  NavLink
 } from 'react-router-dom';
 import aData from './project.js';
 //import Navbar from './Navbar';
@@ -25,7 +25,8 @@ class App extends Component {
       },
       logoStyle: {
         fill: 'white'
-      }
+      },
+
     }
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.setModeColor = this.setModeColor.bind(this);
@@ -91,12 +92,12 @@ class App extends Component {
       }
     })
     const gifRoutes = aData.gif.map(gif =>
-      <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) => 
+        <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) => 
         <GifFrame data={gif}/>
       } />
     )
     return (
-        <Router>
+        <BrowserRouter>
         <div className="main"  style={this.state.modeStyle}>
           <div  className="navBar">
             <button  type="button" className="button button--nav " ref="openmenu" id="openmenu"
@@ -138,7 +139,7 @@ class App extends Component {
             </div> */}
             </div>
           </div>
-        </Router>
+        </BrowserRouter>
     )
   }
 }

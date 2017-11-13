@@ -69,6 +69,20 @@ flow of the document and other elements will behave as if it’s not even there 
 	justify-content: space-between;
 	align-items: center;
 }
+.videoStyle{
+	width: calc(640px + 40em);
+	height: calc(360px + 40em);
+	max-width: 1080px;
+	max-height: auto;
+	margin-top:-10em;
+}
+@media(max-width: 500px){
+	.videoStyle{
+		width: 640px;
+		height: 360px;
+		margin: 0 0;
+	}
+}
 @media(max-width:500px){
 	.navBar{
 		position: relative; 
@@ -117,10 +131,14 @@ strong {
 	border-bottom: none;
 	text-decoration: none;
 }*/
-a:hover, a:active, a:focus{
+a:hover, a:active{
 	color: #FFC1B4 !important;
-	border-bottom: none;
-	text-decoration: none;
+	border-bottom: none!important;
+	text-decoration: none!important;
+}
+.active{
+	color: #FFC1B4!important;
+	text-decoration: none!important;
 }
 .textDiv{
 	margin-right: 2em;
@@ -133,7 +151,7 @@ a:hover, a:active, a:focus{
 	padding-left: 2em;
 	padding-bottom: 1em;
 	z-index: 7;
-	/* overflow-y: scroll;  */
+	overflow-y: auto; 
 }
 
 .iframeStyle{
@@ -159,6 +177,7 @@ a:hover, a:active, a:focus{
 	margin: 2em 0em 0 2em;
 	justify-content: center;
 	align-items: center;
+
 }
 @media(max-width: 800px){
 	.banners{
@@ -178,6 +197,12 @@ iframe{
 	display: flex;
 	justify-content: flex-end;
 	margin-top: 5px;
+	font-style: italic;
+}
+.textField2{
+	display: flex;
+	justify-content: flex-end;
+	margin-top:-1em;
 	font-style: italic;
 }
 @media(max-width:500px){
@@ -249,7 +274,7 @@ iframe{
 }
 
 a:active {
-    color: #FFC1B4;
+    /* color: #FFC1B4; */
     text-decoration: none;
 } 
 .image{

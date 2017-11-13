@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import {
-  Link
+  NavLink
 } from 'react-router-dom';
 
 class VideoLink extends Component {
@@ -22,9 +22,9 @@ class VideoLink extends Component {
   render() {
     return (
       <li className="nav-link">
-        <Link style={this.state.modeStyle}  to={`${process.env.PUBLIC_URL}/${this.state.vimeo_id}`}>
+        <NavLink style={this.state.modeStyle}  to={`${process.env.PUBLIC_URL}/${this.state.vimeo_id}`}>
           {this.state.title}
-        </Link>
+        </NavLink>
       </li>
     );
   }

@@ -6,13 +6,22 @@ class GIfFrame extends Component {
 		super(props);
 		this.state = {
       gifWidth: this.props.data.width,
-      gifHeight: this.props.data.height
+      gifHeight: this.props.data.height,
+      fileSize: this.props.data.fileSize
 		};
 	}
   render() {
     return (
-      <img src="https://media.giphy.com/media/3o85xt08p2Y0hanhwQ/giphy.gif" 
-      width={this.state.gifWidth} height={this.state.gifHeight} alt="" />
+      <div>
+        <img src="https://media.giphy.com/media/3o85xt08p2Y0hanhwQ/giphy.gif"
+          width={this.state.gifWidth} height={this.state.gifHeight} alt="" />
+          <p className="textField">{this.state.gifWidth}x{this.state.gifHeight}<span className="kbMargin">-</span>
+          <span className="kbMargin"> gif </span>
+              <span className="kbMargin">-</span>
+              <span className="kbMargin">{this.state.filesize}</span>
+              <span>kb</span>
+            </p>
+      </div>
     )
   }
 }

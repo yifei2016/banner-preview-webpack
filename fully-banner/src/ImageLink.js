@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-  Link
+  NavLink
 } from 'react-router-dom';
 
 class ImageLink extends Component {
@@ -39,9 +39,9 @@ class ImageLink extends Component {
 		}
 		return (
 			<li className="nav-link links">
-				<Link style={this.state.modeStyle} to={source}>
+				<NavLink style={this.state.modeStyle} activeClassName="active" onlyActiveOnIndex to={source}>
 					{this.checkIfModifier()}
-				</Link>
+				</NavLink>
 			</li>
 		)
 	}

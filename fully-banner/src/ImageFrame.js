@@ -48,13 +48,16 @@ class ImageFrame extends Component {
             frameBorder="0"
           >
           </iframe>
-          <div className="textField" >
-            <p>{this.state.width}x{this.state.height}-{this.state.modifier} <span className="kbMargin">html</span>
-              <span className="kbMargin">-</span>
-              <span className="kbMargin">{this.state.filesize}</span><span className="kbMargin">kb</span>
-              <span className="kbMargin">-</span>
-              {this.state.clicktag}</p>
-          </div>
+        <div className="textField" >
+          <p>{this.state.width}x{this.state.height}-{this.state.modifier} <span className="kbMargin">html</span>
+            {/* <span className="kbMargin">-</span> */}
+          </p>
+        </div>
+          <p className="textField2">
+            <span className="kbMargin">{this.state.filesize}</span><span className="kbMargin">kb</span>
+            <span className="kbMargin">-</span>
+            {this.state.clicktag}
+          </p>
         </div>
         <div style={{width: this.state.width}}>
           <img
@@ -64,9 +67,11 @@ class ImageFrame extends Component {
             alt={`${this.state.width}x${this.state.height}`} />
           <div className="textField">
             <p>{this.state.width}x{this.state.height}-{this.state.modifier}<span className="kbMargin"> fallback </span>
-              <span className="kbMargin">-</span>
-              <span className="kbMargin">{this.state.filesize}</span>
-              <span>kb</span>
+              {/* <span className="kbMargin">-</span> */}
+              <p>
+                <span className="kbMargin">{this.state.filesize}</span>
+                <span>kb</span>
+              </p>
             </p>
           </div>
         </div>
