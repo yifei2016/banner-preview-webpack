@@ -10,7 +10,8 @@ class ImageLink extends Component {
 			width: this.props.image.width,
 			height: this.props.image.height,
 			modifier: this.props.image.modifier,
-			modeStyle: this.props.modeStyle
+			modeStyle: this.props.modeStyle,
+			toggle: this.props.toggle
 		}
 		this.setMode = this.setMode.bind(this);
 		this.checkIfModifier = this.checkIfModifier.bind(this);
@@ -39,7 +40,7 @@ class ImageLink extends Component {
 		}
 		return (
 			<li className="nav-link links">
-				<NavLink style={this.state.modeStyle} activeClassName="active" onlyActiveOnIndex to={source}>
+				<NavLink onClick={this.state.toggle}  style={this.state.modeStyle} activeClassName="active" onlyActiveOnIndex to={source}>
 					{this.checkIfModifier()}
 				</NavLink>
 			</li>
