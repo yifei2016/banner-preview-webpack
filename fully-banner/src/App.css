@@ -41,9 +41,12 @@ html, body {
 }
 .main{
 	height: 100vh;
+	display: flex;
 }
 .main-content {
 	display: flex;
+	flex-direction: column;
+	flex: 2;
 }
 @media(max-width:900px){
 	.main-content{
@@ -70,12 +73,13 @@ flow of the document and other elements will behave as if it’s not even there 
 	align-items: center;
 }
 .videoStyle{
-	width: calc(640px + 40em);
-	height: calc(360px + 40em);
+	width: calc(640px + 30em);
+	height: calc(360px + 20em);
 	max-width: 1080px;
 	max-height: auto;
-	margin-top:-10em;
+	margin-bottom: -3.5em;
 }
+
 @media(max-width: 500px){
 	.videoStyle{
 		width: 640px;
@@ -152,6 +156,7 @@ a:hover, a:active{
 	padding-bottom: 1em;
 	z-index: 7;
 	overflow-y: auto; 
+	padding-top: 3em;
 }
 
 .iframeStyle{
