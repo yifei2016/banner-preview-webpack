@@ -74,11 +74,11 @@ flow of the document and other elements will behave as if it’s not even there 
 	align-items: center;
 }
 .videoStyle{
-	width: calc(640px + 30em);
-	height: calc(360px + 20em);
-	max-width: 1080px;
+	width: calc(640px + 10em);
+	height: calc(360px + 7em);
+	max-width: 980px;
 	max-height: auto;
-	margin-bottom: calc(20px + -4em);
+	margin-bottom: calc(20px + -1em);
 	margin-top: -4em;
 }
 
@@ -133,11 +133,7 @@ strong {
 #root{
   height: 100vh!important;
 }
-/*a{
-	color: white;
-	border-bottom: none;
-	text-decoration: none;
-}*/
+
 a:hover, a:active{
 	color: #FFC1B4 !important;
 	border-bottom: none!important;
@@ -157,11 +153,15 @@ a:hover, a:active{
 	padding-right:2em;
 	padding-left: 2em;
 	padding-bottom: 1em;
-	z-index: 7;
+	z-index: 19;
 	overflow-y: auto; 
 	padding-top: 3em;
 }
-
+@media(max-width:1500px){
+  .main-content{
+     max-width: 800px;
+	}
+}
 .iframeStyle{
 	 display: flex;
 	 justify-content: center;
@@ -206,6 +206,7 @@ iframe{
 	justify-content: flex-end;
 	margin-top: 5px;
 	font-style: italic;
+	line-height: 1.2em;
 }
 .textField2{
 	display: flex;
@@ -441,8 +442,8 @@ a:active {
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 260px;
+  height: 74px;
 }
 
 /* Hide default HTML checkbox */
@@ -470,13 +471,17 @@ a:active {
   bottom: 4px;
   background-color: white;
   -webkit-transition: .4s;
-  transition: .4s;
+	transition: .4s;
+	
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+	background-color: #2196F3;
+	
 }
-
+.modeText{
+	z-index: 7;
+}
 input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
@@ -484,5 +489,5 @@ input:focus + .slider {
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  transform: translateX(130px);
 }

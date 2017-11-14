@@ -32,7 +32,6 @@ class App extends Component {
     }
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.setModeColor = this.setModeColor.bind(this);
-    // this.to = this.to.bind(this);
   }
   //toggle sidebar and toggle button exterior after click
   toggleSidebar(){
@@ -154,10 +153,10 @@ class App extends Component {
               <Route path="/239824287" component={VideoLoremFrame} />
             </div> */}
 
-              {/* <label className="switch">
-                <input type="checkbox" />
+              <label className="switch">
+                <input id="clean" type="checkbox" />
                 <span className="slider"></span>
-              </label> */}
+              </label>
           </div>
           </div>
         </BrowserRouter>
