@@ -11,7 +11,7 @@ class VideoFrame extends Component {
 	}
   render() {
     return (
-      <div className="videoStyle">
+      <div className="">
         <iframe ref="videoFrame"
         title="video"
         src={`https://player.vimeo.com/video/${this.state.vimeo_id}?color=5F11E8&title=0&byline=0&portrait=0`}

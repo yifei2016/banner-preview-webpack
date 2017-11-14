@@ -10,7 +10,7 @@ class GifLink extends Component {
 			width: this.props.gif.width,
 			height: this.props.gif.height,
 			modeStyle: this.props.modeStyle,
-			toggle: this.props.toggle
+			toggoleSideBar: this.props.toggoleSideBar
 		}
 		this.setMode = this.setMode.bind(this);
 	}
@@ -22,7 +22,7 @@ class GifLink extends Component {
 	render() {
 		return (
 			<li className="nav-link links">
-				<NavLink onClick={this.state.toggle} style={this.state.modeStyle} to={`${process.env.PUBLIC_URL}/gif/${this.state.width}x${this.state.height}`}>
+				<NavLink onClick={this.state.toggoleSideBar} style={this.state.modeStyle} to={`${process.env.PUBLIC_URL}/gif/${this.state.width}x${this.state.height}`}>
 					{this.state.width}×{this.state.height}
 				</NavLink>
 			</li>

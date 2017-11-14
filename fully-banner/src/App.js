@@ -6,7 +6,6 @@ import {
   Navlink
 } from 'react-router-dom';
 import aData from './project.js';
-//import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import VideoFrame from './VideoFrame';
 import ImageFrame from './ImageFrame';
@@ -29,17 +28,19 @@ class App extends Component {
       },
       logoStyle: {
         fill: 'white'
-      },
-
+      }
     }
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.setModeColor = this.setModeColor.bind(this);
+    // this.to = this.to.bind(this);
   }
+  //toggle sidebar and toggle button exterior after click
   toggleSidebar(){
     var a  = this.refs.sidebar;
     this.refs.openmenu.classList.toggle("menu-open")
     a.toggle();
   }
+  //update state according to different mode
   setModeColor(ev, mode) {
     var newModeStyle = {};
     var newlogoStyle = {};
@@ -110,10 +111,11 @@ class App extends Component {
         <GifFrame data={gif}/>
       } />
     )
+   
     return (
         <BrowserRouter>
         <div className="main"  style={this.state.modeStyle}>
-         {<Sidebar modeStyle={this.state.sideBarMode} ref="sidebar" />}
+         {<Sidebar  toggoleSideBar={this.toggleSidebar} modeStyle={this.state.sideBarMode} ref="sidebar" />}
           <div style={this.state.modeStyle} className="main-content" >
             <div className="navBar">
               <button type="button" className="button button--nav " ref="openmenu" id="openmenu"
@@ -129,7 +131,6 @@ class App extends Component {
                 {/* <Link onClick={this.setModeColor} style={this.state.modeStyle} to={'?mode=cleanMode'} >Clean mode</Link> */}
                 <span className="mode-selector__seperator">|</span>
                 <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} style={this.state.modeStyle}>Article mode</a>
-                {/* <Link onClick={this.setModeColor} style={this.state.modeStyle} to={'?mode=articleMode'} className="modeRight">Article mode</Link> */}
               </div>
               <a className="" href="https://fullystudios.se/">
                 <svg style={this.state.logoStyle} className="image" id="img" xmlns="http://www.w3.org/2000/svg" width="463.13" height="431.42"
@@ -152,7 +153,12 @@ class App extends Component {
               <Route path="/222507866" component={VideoICAFrame} />
               <Route path="/239824287" component={VideoLoremFrame} />
             </div> */}
-            </div>
+
+              {/* <label className="switch">
+                <input type="checkbox" />
+                <span className="slider"></span>
+              </label> */}
+          </div>
           </div>
         </BrowserRouter>
     )

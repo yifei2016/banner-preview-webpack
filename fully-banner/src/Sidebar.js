@@ -10,7 +10,8 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       modeStyle: this.props.modeStyle,
-      clientStyle: this.props.clientStyle
+      clientStyle: this.props.clientStyle,
+      toggoleSideBar: this.props.toggoleSideBar
     }
     this.toggle = this.toggle.bind(this);
     this.setMode = this.setMode.bind(this);
@@ -37,9 +38,12 @@ class Sidebar extends Component {
     a.classList.toggle("toggle");
   }
 	render() {	
-    var imageList = aData.html.map((image,index) => { return <ImageLink modeStyle={this.state.modeStyle} ref={`image${index}`} key={index} image={image} toggle={this.toggle}/> });
-    var videoList = aData.video.map((video,index) => { return <VideoLink  modeStyle={this.state.modeStyle} ref={`video${index}`} key={index} toggle={this.toggle} video={video} /> });
-    var gifList = aData.gif.map((gif,index) => { return <GifLink modeStyle={this.state.modeStyle} toggle={this.toggle} ref={`gif${index}`} key={index} gif={gif} /> });
+    var imageList = aData.html.map((image,index) => { return <ImageLink  modeStyle={this.state.modeStyle} ref={`image${index}`} 
+    key={index} image={image} toggoleSideBar={this.state.toggoleSideBar}/> });
+    var videoList = aData.video.map((video,index) => { return <VideoLink 
+    modeStyle={this.state.modeStyle} ref={`video${index}`} key={index} video={video} toggoleSideBar={this.state.toggoleSideBar} /> });
+    var gifList = aData.gif.map((gif,index) => { return <GifLink 
+    modeStyle={this.state.modeStyle} ref={`gif${index}`} key={index} gif={gif} toggoleSideBar={this.state.toggoleSideBar} /> });
 		const client = aData.client;
     const project = aData.project;
       return (

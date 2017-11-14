@@ -11,7 +11,7 @@ class VideoLink extends Component {
       vimeo_id: this.props.video.vimeo_id,
       title: this.props.video.title,
       modeStyle: this.props.modeStyle,
-      toggle: this.props.toggle
+      toggoleSideBar: this.props.toggoleSideBar
     }
     this.setMode = this.setMode.bind(this);
   }
@@ -23,7 +23,7 @@ class VideoLink extends Component {
   render() {
     return (
       <li className="nav-link">
-        <NavLink onClick={this.state.toggle} style={this.state.modeStyle}  to={`${process.env.PUBLIC_URL}/${this.state.vimeo_id}`}>
+        <NavLink onClick={this.state.toggoleSideBar} style={this.state.modeStyle}  to={`${process.env.PUBLIC_URL}/${this.state.vimeo_id}`}>
           {this.state.title}
         </NavLink>
       </li>
