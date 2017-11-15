@@ -170,12 +170,10 @@ class App extends Component {
             </div>
            
             <div className="banners" >
-              <Switch>
-                <Route exact path="process.env.PUBLIC_URL" component={DefaultIframe}> </Route>
+                <Route  path={`${process.env.PUBLIC_URL}/`}  exact component={DefaultIframe}/> 
                 {htmlRoutes}
                 {videoRoutes}
                 {gifRoutes}
-              </Switch>
             </div>
             {/* <div>
               <Route path="/222507866" component={VideoICAFrame} />
