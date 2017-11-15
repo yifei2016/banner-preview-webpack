@@ -14,7 +14,7 @@ class GIfFrame extends Component {
     return (
       <div>
         <img src="https://media.giphy.com/media/3o85xt08p2Y0hanhwQ/giphy.gif"
-          width={this.state.gifWidth} height={this.state.gifHeight} alt="" />
+          width={this.state.gifWidth} height={this.state.gifHeight} alt="" className="imageDiv"/>
           <p className="textField">{this.state.gifWidth}x{this.state.gifHeight}<span className="kbMargin">-</span>
           <span className="kbMargin"> gif </span>
               <span className="kbMargin">-</span>

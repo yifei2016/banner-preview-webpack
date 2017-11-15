@@ -38,7 +38,7 @@ class ImageFrame extends Component {
     }
     return (
       <div className={this.state.className} >
-        <div className="textDiv" style={{width: this.state.width}}>
+        <div className="textDiv " style={{width: this.state.width}}>
         <iframe ref="remoteFrame"
             title="image"
             key={`${this.state.width}x${this.state.height}`}
@@ -46,6 +46,7 @@ class ImageFrame extends Component {
             width={this.state.width}
             height={this.state.height}
             frameBorder="0"
+            className="imageDiv"
           >
           </iframe>
         <div className="textField" >
@@ -59,12 +60,14 @@ class ImageFrame extends Component {
             {this.state.clicktag}
           </p>
         </div>
-        <div style={{width: this.state.width}}>
+        <div style={{width: this.state.width}} >
           <img
             width={this.state.width}
             height={this.state.height}
             src={imageSource}
-            alt={`${this.state.width}x${this.state.height}`} />
+            className="imageDiv"
+            alt={`${this.state.width}x${this.state.height}`} 
+            />
           <div className="textField">
             <p>{this.state.width}x{this.state.height}-{this.state.modifier}<span className="kbMargin"> fallback </span>
               {/* <span className="kbMargin">-</span> */}
