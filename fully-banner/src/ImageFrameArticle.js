@@ -30,14 +30,14 @@ class ImageFrameArticle extends Component {
     }
   }
   render() {
-    var iframSource = `${process.env.PUBLIC_URL}/dist/${this.state.width}x${this.state.height}/index.html`;
-    // var imageSource = `${process.env.PUBLIC_URL}/dist/fallbacks/${this.state.width}x${this.state.height}.png`;
+    var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
+    // var imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
     if (this.state.modifier) {
-      iframSource = `${process.env.PUBLIC_URL}/dist/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
-      // imageSource = `${process.env.PUBLIC_URL}/dist/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
+      iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
+      // imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
     }
     return (
-      <div className={this.state.className} >
+      <div className={this.state.className} style={{maxWidth: "1920px"}}>
         <svg style={{fill: '#0A2A4F'}} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="100%" 
         height="100vh" viewBox="0 0 100 100">
           <defs>

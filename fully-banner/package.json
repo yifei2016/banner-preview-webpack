@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://demo.fullystudios.se/banner-preview/",
   "dependencies": {
+    "axios": "^0.17.1",
     "react": "^16.0.0",
     "react-burger-menu": "^2.1.10",
     "react-dom": "^16.0.0",

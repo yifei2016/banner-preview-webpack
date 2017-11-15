@@ -40,14 +40,15 @@ html, body {
 	margin-right: 2px;
 }
 .main{
-	height: 100%;
+	min-height: 100%;
+	width: 100%;
 	display: flex;
 }
 .main-content {
 	display: flex;
 	flex-direction: column;
 	flex: 2;
-	max-width: 100vw;
+	/* max-width: 100vw; */
 }
 .modes{
 	align-self: flex-end;
@@ -58,7 +59,7 @@ html, body {
 	.main-content{
 		/* overflow: scroll;  */
 		-webkit-overflow-scrolling: touch;
-
+		
 	}
 }
 .m{
@@ -80,12 +81,15 @@ flow of the document and other elements will behave as if it’s not even there 
 	margin-bottom: 2em;
 	/* align-items: center; */
 }
+.loader{
+	align-self: center;
+}
 .videoStyle{
-	width: calc(640px + 8.8em);
+	width: calc(640px + 9.5em);
 	height: calc(360px + 4.9em);
-	max-width: 950px;
+	max-width: 980px;
 	max-height: auto;
-	margin-bottom: calc(20px + -1em);
+	background-color: #f8f8f8 ;
 	margin-top: 1em;
 }
 
@@ -137,9 +141,8 @@ strong {
 	text-transform: uppercase;
 	font-weight: 700;
 }
-#root{
-  height: 100%!important;
-}
+
+
 .imageDiv{
 	background-color: #f8f8f8;
 }
@@ -151,6 +154,7 @@ a:hover, a:active{
 .active{
 	color: #FFC1B4!important;
 	text-decoration: none!important;
+	border-bottom: none!important;
 }
 .textDiv{
 	margin-right: 2em;
@@ -182,7 +186,7 @@ a:hover, a:active{
 	flex-direction: row;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 	.sidebar {
 		width: 100%;
 		position:fixed;
@@ -201,7 +205,6 @@ a:hover, a:active{
 	margin: 2em 0em 0 2em;
 	justify-content: center;
 	/* align-items: center; */
-
 }
 @media(max-width: 800px){
 	.banners{
@@ -241,6 +244,10 @@ iframe{
 	display: flex;
 	flex-direction: column;
 	margin: 2em 0;
+	overflow: scroll;
+}
+.liggandeBanner::-webkit-scrollbar { 
+	display: none; 
 }
 
 .liggandeBanner img{
@@ -291,7 +298,7 @@ iframe{
 /* .toggle{
 	transform: translateX(0);
 }  */
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
 	.toggle {
 		transform: translateX(-100%);
 	}
@@ -300,6 +307,10 @@ iframe{
 a:active {
     text-decoration: none;
 } 
+a:visited, a:link{
+	border-bottom: none!important;
+	text-decoration: none;
+}
 .image{
 	width:3.5em;
 	height: 3.328em;
@@ -346,11 +357,11 @@ a:active {
 	margin-bottom: 3em;
 }
  
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
 	.menu{
 		width: 70%!important;
 	}
-}
+} */
 
 /* Buttons */
 

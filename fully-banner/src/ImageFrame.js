@@ -30,11 +30,11 @@ class ImageFrame extends Component {
     }
   }
   render() {
-    var iframSource = `${process.env.PUBLIC_URL}/dist/${this.state.width}x${this.state.height}/index.html`;
-    var imageSource = `${process.env.PUBLIC_URL}/dist/fallbacks/${this.state.width}x${this.state.height}.png`;
+    var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
+    var imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
     if (this.state.modifier) {
-      iframSource = `${process.env.PUBLIC_URL}/dist/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
-      imageSource = `${process.env.PUBLIC_URL}/dist/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
+      iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
+      imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
     }
     return (
       <div className={this.state.className} >

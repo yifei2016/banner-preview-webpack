@@ -40,7 +40,8 @@ class ImageLink extends Component {
 		}
 		return (
 			<li className="nav-link links">
-				<NavLink onClick={this.state.toggoleSideBar}  style={this.state.modeStyle} activeClassName="active" onlyActiveOnIndex to={source}>
+				<NavLink onClick={this.state.toggoleSideBar}  style={this.state.modeStyle} 
+				activeClassName="active"  to={source}>
 					{this.checkIfModifier()}
 				</NavLink>
 			</li>

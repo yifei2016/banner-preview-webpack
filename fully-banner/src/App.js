@@ -1,30 +1,28 @@
+
 import React,{ Component } from 'react';
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Route,
   Switch,
-  Navlink
+  NavLink
 } from 'react-router-dom';
-import aData from './project.js';
 import Sidebar from './Sidebar';
 import VideoFrame from './VideoFrame';
 import ImageFrame from './ImageFrame';
 import ImageFrameArticle from './ImageFrameArticle';
 import GifFrame from './GifFrame';
 import DefaultIframe from './DefaultIframe';
+import axios from 'axios';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
       mode: 'cleanMode',
+      aData: {},
       modeStyle: {
         backgroundColor: '#0A2A4F',
         color: 'white'
-      },
-      modeBox:{
-        backgroundColor: 'white',
-        color: 'black'
       },
       modeBoxBorder: {
         border: '2px solid white'
@@ -33,12 +31,34 @@ class App extends Component {
         backgroundColor: 'rgb(12, 37, 67)',
         color: 'white'
       },
+      cleanModeButtonStyle: App.ACTIVE_BUTTON_STYLE,
+      articleModeButtonStyle: App.BUTTON_STYLE,
       logoStyle: {
         fill: 'white'
       }
     }
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.setModeColor = this.setModeColor.bind(this);
+  }
+  static get ACTIVE_BUTTON_STYLE() {
+    return {
+      color: '#FFC1B4',
+      backgroundColor: '#0A2A4F'
+    }
+  }
+  static get BUTTON_STYLE() {
+    return {
+      color: '#0A2A4F',
+      backgroundColor: 'white'
+    }
+  }
+  //index.html get all js, so do not need to go back to data folder, they are in same folder
+  componentDidMount() {
+    axios.get(`${process.env.PUBLIC_URL}/data/project.json`)
+      .then(res => {
+        const aData = res.data;
+        this.setState({ aData: aData }, () => { });
+      });
   }
   //toggle sidebar and toggle button exterior after click
   toggleSidebar(){
@@ -51,34 +71,36 @@ class App extends Component {
     var newModeStyle = {};
     var newlogoStyle = {};
     var newSideBar = {};
-    var newModeBox = {};
     var newmodeBoxBorder = {};
+    var newCleanModeButtonStyle ;
+    var newArticleModeButtonStyle ;
     if (mode === 'articleMode') {
       newModeStyle.backgroundColor = 'white';
       newModeStyle.color = '#0A2A4F';
       newlogoStyle.fill = '#0A2A4F';
       newSideBar.backgroundColor = '#f8f8f8';
       newSideBar.color = '#0A2A4F';
-      newModeBox.backgroundColor = '#0A2A4F';
-      newModeBox.color = 'white';
       newmodeBoxBorder.border = '2px solid #0A2A4F';
+      newArticleModeButtonStyle = App.ACTIVE_BUTTON_STYLE;
+      newCleanModeButtonStyle = App.BUTTON_STYLE;
     }else{
       newModeStyle.backgroundColor = '#0A2A4F';
       newModeStyle.color = 'white';
       newlogoStyle.fill = 'white';
       newSideBar.backgroundColor = 'rgb(12, 37, 67)';
       newSideBar.color = 'white';
-      newModeBox.backgroundColor = 'white';
-      newModeBox.color = '#0A2A4F';
       newmodeBoxBorder.border = '2px solid white';
+      newArticleModeButtonStyle = App.BUTTON_STYLE;
+      newCleanModeButtonStyle = App.ACTIVE_BUTTON_STYLE;
     }
     this.setState({
       mode: mode,
       modeStyle: newModeStyle,
       sideBarMode: newSideBar,
       logoStyle: newlogoStyle,
-      modeBox: newModeBox,
-      modeBoxBorder: newmodeBoxBorder
+      modeBoxBorder: newmodeBoxBorder,
+      cleanModeButtonStyle: newCleanModeButtonStyle,
+      articleModeButtonStyle: newArticleModeButtonStyle
     }, () => {
       var modeStyle = {
         backgroundColor: this.state.modeStyle.backgroundColor,
@@ -87,10 +109,6 @@ class App extends Component {
       var sideBarMode = {
         backgroundColor: this.state.sideBarMode.backgroundColor,
         color: this.state.sideBarMode.color
-      }
-      var modeBox = {
-        backgroundColor: this.state.modeBox.backgroundColor,
-        color: this.state.modeBox.color
       }
       var clientStyle = {};
       if (this.state.mode === 'articleMode') {
@@ -104,13 +122,17 @@ class App extends Component {
     }
   )}
   render() {
+    const aData = this.state.aData;
+    if (Object.keys(aData).length <= 0) {
+      return (<div></div>)
+    }
     let k = 1;
-    const videoRoutes = aData.video.map(video =>
-      <Route  key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) => 
-        <VideoFrame data={video}/>
+    const videoRoutes = this.state.aData.video.map(video =>
+      <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
+        <VideoFrame data={video} />
       } />
     )
-    const htmlRoutes = aData.html.map(html => {
+    const htmlRoutes = this.state.aData.html.map(html => {
       var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
       if (html.modifier) {
         path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
@@ -119,23 +141,23 @@ class App extends Component {
         return <Route key={k++} path={path} render={(props) =>
           <ImageFrame data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} />
         } />
-      }else {
+      } else {
         return <Route key={k++} path={path} render={(props) =>
-          <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} 
-          logoStyle={this.state.logoStyle}/>
+          <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle}
+            logoStyle={this.state.logoStyle} />
         } />
       }
     })
-    const gifRoutes = aData.gif.map(gif =>
-        <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) => 
-        <GifFrame data={gif}/>
+    const gifRoutes = this.state.aData.gif.map(gif =>
+      <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) =>
+        <GifFrame data={gif} />
       } />
     )
-   
+
     return (
-        <BrowserRouter>
-        <div className="main"  style={this.state.modeStyle}>
-         {<Sidebar  toggoleSideBar={this.toggleSidebar} modeStyle={this.state.sideBarMode} ref="sidebar" />}
+      <Router>
+        <div className="main" style={this.state.modeStyle}>
+          {<Sidebar aData={this.state.aData} toggoleSideBar={this.toggleSidebar} modeStyle={this.state.sideBarMode} ref="sidebar" />}
           <div style={this.state.modeStyle} className="main-content" >
             <div className="navBar">
               <button type="button" className="button button--nav " ref="openmenu" id="openmenu"
@@ -147,11 +169,11 @@ class App extends Component {
                 </span>
               </button>
               {/* <div className="mode-selector">
-                <a href="#" onClick={(ev) => this.setModeColor(ev, 'cleanMode')} style={this.state.modeStyle}>Clean mode</a> */}
-                {/* <Link onClick={this.setModeColor} style={this.state.modeStyle} to={'?mode=cleanMode'} >Clean mode</Link> */}
-                {/* <span className="mode-selector__seperator">|</span>
-                <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} style={this.state.modeStyle}>Article mode</a>
-              </div> */}
+                    <a href="#" onClick={(ev) => this.setModeColor(ev, 'cleanMode')} style={this.state.modeStyle}>Clean mode</a> */}
+              {/* <Link onClick={this.setModeColor} style={this.state.modeStyle} to={'?mode=cleanMode'} >Clean mode</Link> */}
+              {/* <span className="mode-selector__seperator">|</span>
+                    <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} style={this.state.modeStyle}>Article mode</a>
+                  </div> */}
               <a className="" href="https://fullystudios.se/">
                 <svg style={this.state.logoStyle} className="image" id="img" xmlns="http://www.w3.org/2000/svg" width="463.13" height="431.42"
                   viewBox="0 0 463.13 431.42"><title>Fully Studios</title>
@@ -160,30 +182,29 @@ class App extends Component {
                     transform="translate(-26.85 -28.22)" /></svg>
               </a>
               <div className="modes modeBox" style={this.state.modeBoxBorder}>
-                <span className="" style={this.state.modeStyle}>
-                  <a href="#" onClick={(ev) => this.setModeColor(ev, 'cleanMode')} style={this.state.modeStyle}>Clean mode</a>
+                <span className="" style={{backgroundColor: this.state.cleanModeButtonStyle.backgroundColor}} >
+                  <a href="#" onClick={(ev) => this.setModeColor(ev, 'cleanMode')} style={{color: this.state.cleanModeButtonStyle.color}}>Clean mode</a>
                 </span>
-                <span className="" style={this.state.modeBox}>
-                  <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} style={this.state.modeBox}>Article mode</a>
+                <span className="" style={{backgroundColor: this.state.articleModeButtonStyle.backgroundColor}}>
+                  <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} style={{color: this.state.articleModeButtonStyle.color}} >Article mode</a>
                 </span>
               </div>
             </div>
-           
+
             <div className="banners" >
-                <Route  path={`${process.env.PUBLIC_URL}/`}  exact component={DefaultIframe}/> 
-                {htmlRoutes}
-                {videoRoutes}
-                {gifRoutes}
+              <Route path={`${process.env.PUBLIC_URL}/`} exact component={DefaultIframe} />
+              {htmlRoutes}
+              {videoRoutes}
+              {gifRoutes}
             </div>
             {/* <div>
-              <Route path="/222507866" component={VideoICAFrame} />
-              <Route path="/239824287" component={VideoLoremFrame} />
-            </div> */}
-              {/* <span className="mode-selector__seperator">|</span> */}
-            </div>
+                  <Route path="/222507866" component={VideoICAFrame} />
+                  <Route path="/239824287" component={VideoLoremFrame} />
+                </div> */}
+            {/* <span className="mode-selector__seperator">|</span> */}
           </div>
-       
-      </BrowserRouter>
+        </div>
+      </Router>
     )
   }
 }
