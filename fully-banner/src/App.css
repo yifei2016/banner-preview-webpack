@@ -13,7 +13,6 @@
 	font-style: normal;
 }
 html, body {
-	height: 100vh;
 	background-color: rgb(10, 42, 79);
 	font-size: calc( 12px + 0.4vw );
 	font-family: 'Moderat', sans-serif;
@@ -40,9 +39,14 @@ html, body {
 	margin-right: 2px;
 }
 .main{
-	min-height: 100%;
 	width: 100%;
 	display: flex;
+	flex-grow: 1;
+}
+@media(max-width: 900px){
+	#root {
+		flex: 1;
+	}
 }
 .main-content {
 	display: flex;
@@ -59,11 +63,7 @@ html, body {
 	.main-content{
 		/* overflow: scroll;  */
 		-webkit-overflow-scrolling: touch;
-		
 	}
-}
-.m{
-	flex-grow: 0.2;
 }
 /* set relative to navBar, an element’s original position remains in the flow of the document, is positioned relative to its normal position. */
 /* set absolute to navBar, the element is removed from the 
@@ -195,24 +195,19 @@ a:hover, a:active{
 		bottom: 0;
 		transform: translateX(0);
 		padding-top: 100px;
-		z-index: 7;
+		z-index: 17;
 	}
 }
 .banners{
-	/* overflow: auto; */
 	display: flex; 
 	flex: 2;
 	margin: 2em 0em 0 2em;
 	justify-content: center;
-	/* align-items: center; */
 }
 @media(max-width: 800px){
 	.banners{
 		display: flex; 
-		/* flex-direction: column; */
 		flex: 2;
-		/* justify-content: center;
-		align-items: center; */
 		margin: 2em 1em 2em 2.5em;
 	}
 }
@@ -244,12 +239,7 @@ iframe{
 	display: flex;
 	flex-direction: column;
 	margin: 2em 0;
-	overflow: scroll;
 }
-.liggandeBanner::-webkit-scrollbar { 
-	display: none; 
-}
-
 .liggandeBanner img{
 	margin-top:2em;
 }
@@ -259,11 +249,9 @@ iframe{
 .standBanner{
 	display: flex;
 	justify-content: space-around;
-	flex: 0.5;
-
 }
 .standBanner svg{
-	flex: 2;
+	flex-grow: 2;
 	margin-right: 1em;
 	margin-left: 2em;
 }

@@ -13,6 +13,7 @@ import ImageFrameArticle from './ImageFrameArticle';
 import GifFrame from './GifFrame';
 import DefaultIframe from './DefaultIframe';
 import axios from 'axios';
+import ModeColor from './ModeColor.js';
 
 class App extends Component {
   constructor(props){
@@ -20,37 +21,25 @@ class App extends Component {
     this.state = {
       mode: 'cleanMode',
       aData: {},
+      modeBoxBorder: {
+        border: '2px solid white'
+      },
       modeStyle: {
         backgroundColor: '#0A2A4F',
         color: 'white'
       },
-      modeBoxBorder: {
-        border: '2px solid white'
-      },
       sideBarMode: {
-        backgroundColor: 'rgb(12, 37, 67)',
+        backgroundColor: 'rgb(12, 37, 67)',        
         color: 'white'
       },
-      cleanModeButtonStyle: App.ACTIVE_BUTTON_STYLE,
-      articleModeButtonStyle: App.BUTTON_STYLE,
+      cleanModeButtonStyle: ModeColor.ACTIVE_BUTTON_STYLE,
+      articleModeButtonStyle: ModeColor.BUTTON_STYLE,
       logoStyle: {
         fill: 'white'
       }
     }
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.setModeColor = this.setModeColor.bind(this);
-  }
-  static get ACTIVE_BUTTON_STYLE() {
-    return {
-      color: '#FFC1B4',
-      backgroundColor: '#0A2A4F'
-    }
-  }
-  static get BUTTON_STYLE() {
-    return {
-      color: '#0A2A4F',
-      backgroundColor: 'white'
-    }
   }
   //index.html get all js, so do not need to go back to data folder, they are in same folder
   componentDidMount() {
@@ -74,6 +63,7 @@ class App extends Component {
     var newmodeBoxBorder = {};
     var newCleanModeButtonStyle ;
     var newArticleModeButtonStyle ;
+    var newClientStyle = {};
     if (mode === 'articleMode') {
       newModeStyle.backgroundColor = 'white';
       newModeStyle.color = '#0A2A4F';
@@ -81,8 +71,10 @@ class App extends Component {
       newSideBar.backgroundColor = '#f8f8f8';
       newSideBar.color = '#0A2A4F';
       newmodeBoxBorder.border = '2px solid #0A2A4F';
-      newArticleModeButtonStyle = App.ACTIVE_BUTTON_STYLE;
-      newCleanModeButtonStyle = App.BUTTON_STYLE;
+      newClientStyle.boxShadow = "3px 3px 0 0 #0A2A4F";
+      newClientStyle.borderColor = "#0A2A4F";
+      newArticleModeButtonStyle = ModeColor.ACTIVE_BUTTON_STYLE;
+      newCleanModeButtonStyle = ModeColor.BUTTON_STYLE;
     }else{
       newModeStyle.backgroundColor = '#0A2A4F';
       newModeStyle.color = 'white';
@@ -90,41 +82,28 @@ class App extends Component {
       newSideBar.backgroundColor = 'rgb(12, 37, 67)';
       newSideBar.color = 'white';
       newmodeBoxBorder.border = '2px solid white';
-      newArticleModeButtonStyle = App.BUTTON_STYLE;
-      newCleanModeButtonStyle = App.ACTIVE_BUTTON_STYLE;
+      newClientStyle.boxShadow = "3px 3px 0 0 white";
+      newClientStyle.borderColor = "white";
+      newArticleModeButtonStyle = ModeColor.BUTTON_STYLE;
+      newCleanModeButtonStyle = ModeColor.ACTIVE_BUTTON_STYLE;
     }
     this.setState({
       mode: mode,
       modeStyle: newModeStyle,
+      clientMode: newClientStyle,
       sideBarMode: newSideBar,
       logoStyle: newlogoStyle,
       modeBoxBorder: newmodeBoxBorder,
       cleanModeButtonStyle: newCleanModeButtonStyle,
       articleModeButtonStyle: newArticleModeButtonStyle
     }, () => {
-      var modeStyle = {
-        backgroundColor: this.state.modeStyle.backgroundColor,
-        color: this.state.modeStyle.color
-      }
-      var sideBarMode = {
-        backgroundColor: this.state.sideBarMode.backgroundColor,
-        color: this.state.sideBarMode.color
-      }
-      var clientStyle = {};
-      if (this.state.mode === 'articleMode') {
-        clientStyle.boxShadow = "3px 3px 0 0 #0A2A4F";
-        clientStyle.borderColor = "#0A2A4F";
-      }else{
-        clientStyle.boxShadow = "3px 3px 0 0 white";
-        clientStyle.borderColor = "white";
-      }
-      this.refs.sidebar.setMode(sideBarMode,clientStyle);
+      this.refs.sidebar.setMode(this.state.sideBarMode, this.state.clientMode);
     }
   )}
   render() {
     const aData = this.state.aData;
     if (Object.keys(aData).length <= 0) {
-      return (<div></div>)
+      return false;
     }
     let k = 1;
     const videoRoutes = this.state.aData.video.map(video =>
@@ -174,7 +153,7 @@ class App extends Component {
               {/* <span className="mode-selector__seperator">|</span>
                     <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} style={this.state.modeStyle}>Article mode</a>
                   </div> */}
-              <a className="" href="https://fullystudios.se/">
+              <a href="https://fullystudios.se/">
                 <svg style={this.state.logoStyle} className="image" id="img" xmlns="http://www.w3.org/2000/svg" width="463.13" height="431.42"
                   viewBox="0 0 463.13 431.42"><title>Fully Studios</title>
                   <path
@@ -182,11 +161,11 @@ class App extends Component {
                     transform="translate(-26.85 -28.22)" /></svg>
               </a>
               <div className="modes modeBox" style={this.state.modeBoxBorder}>
-                <span className="" style={{backgroundColor: this.state.cleanModeButtonStyle.backgroundColor}} >
-                  <a href="#" onClick={(ev) => this.setModeColor(ev, 'cleanMode')} style={{color: this.state.cleanModeButtonStyle.color}}>Clean mode</a>
+                <span className="" style={{ backgroundColor: this.state.cleanModeButtonStyle.backgroundColor }} >
+                  <a href="#" onClick={(ev) => this.setModeColor(ev, 'cleanMode')} style={{ color: this.state.cleanModeButtonStyle.color }}>Clean mode</a>
                 </span>
-                <span className="" style={{backgroundColor: this.state.articleModeButtonStyle.backgroundColor}}>
-                  <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} style={{color: this.state.articleModeButtonStyle.color}} >Article mode</a>
+                <span className="" style={{ backgroundColor: this.state.articleModeButtonStyle.backgroundColor }}>
+                  <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} style={{ color: this.state.articleModeButtonStyle.color }} >Article mode</a>
                 </span>
               </div>
             </div>

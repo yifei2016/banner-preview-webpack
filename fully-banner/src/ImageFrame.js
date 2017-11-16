@@ -51,7 +51,6 @@ class ImageFrame extends Component {
           </iframe>
         <div className="textField" >
           <p>{this.state.width}x{this.state.height}-{this.state.modifier} <span className="kbMargin">html</span>
-            {/* <span className="kbMargin">-</span> */}
           </p>
         </div>
           <p className="textField2">
@@ -69,13 +68,12 @@ class ImageFrame extends Component {
             alt={`${this.state.width}x${this.state.height}`} 
             />
           <div className="textField">
-            <p>{this.state.width}x{this.state.height}-{this.state.modifier}<span className="kbMargin"> fallback </span>
-              {/* <span className="kbMargin">-</span> */}
+            <p>{this.state.width}x{this.state.height}-{this.state.modifier}<span className="kbMargin"> fallback </span> </p>
               <p>
                 <span className="kbMargin">{this.state.filesize}</span>
                 <span>kb</span>
               </p>
-            </p>
+              
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ class ImageFrameArticle extends Component {
       // imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
     }
     return (
-      <div className={this.state.className} style={{maxWidth: "1920px"}}>
+      <div className={this.state.className}>
         <svg style={{fill: '#0A2A4F'}} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="100%" 
         height="100vh" viewBox="0 0 100 100">
           <defs>
