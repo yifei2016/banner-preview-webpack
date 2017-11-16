@@ -21,11 +21,11 @@ class ImageFrame extends Component {
   componentDidMount() {
     if (this.state.width > this.state.height) {
       this.setState({
-        className: 'liggandeBanner'
+        className: 'banner-landscape'
       }) 
     } else {
       this.setState({
-        className: 'standBanner' 
+        className: 'banner-portrait' 
       }) 
     }
   }
@@ -38,7 +38,7 @@ class ImageFrame extends Component {
     }
     return (
       <div className={this.state.className} >
-        <div className="textDiv " style={{width: this.state.width}}>
+        <div className="banner__wrap" style={{width: this.state.width}}>
         <iframe ref="remoteFrame"
             title="image"
             key={`${this.state.width}x${this.state.height}`}
@@ -46,34 +46,29 @@ class ImageFrame extends Component {
             width={this.state.width}
             height={this.state.height}
             frameBorder="0"
-            className="imageDiv"
+            className="banner"
           >
           </iframe>
-        <div className="textField" >
-          <p>{this.state.width}x{this.state.height}-{this.state.modifier} <span className="kbMargin">html</span>
-          </p>
-        </div>
-          <p className="textField2">
+          <div className="banner__description">
+            {this.state.width}x{this.state.height} -{this.state.modifier} <span className="kbMargin">html</span><br/>
             <span className="kbMargin">{this.state.filesize}</span><span className="kbMargin">kb</span>
             <span className="kbMargin">-</span>
             {this.state.clicktag}
-          </p>
+          </div>
         </div>
-        <div style={{width: this.state.width}} >
+        <div className="fallback__wrap" style={{width: this.state.width}} >
           <img
             width={this.state.width}
             height={this.state.height}
             src={imageSource}
-            className="imageDiv"
+            className="banner"
             alt={`${this.state.width}x${this.state.height}`} 
             />
-          <div className="textField">
-            <p>{this.state.width}x{this.state.height}-{this.state.modifier}<span className="kbMargin"> fallback </span> </p>
-              <p>
-                <span className="kbMargin">{this.state.filesize}</span>
-                <span>kb</span>
-              </p>
-              
+          <div className="banner__description">
+            {this.state.width}x{this.state.height}  -{this.state.modifier}<span className="kbMargin"> fallback </span>
+            <br/>
+            <span className="kbMargin">{this.state.filesize}</span>
+            <span>kb</span>
           </div>
         </div>
       </div>

@@ -21,11 +21,11 @@ class ImageFrameArticle extends Component {
   componentDidMount() {
     if (this.state.width > this.state.height) {
       this.setState({
-        className: 'liggandeBanner'
+        className: 'banner-lansdcape'
       }) 
     } else {
       this.setState({
-        className: 'standBanner' 
+        className: 'banner-portrait' 
       }) 
     }
   }
@@ -52,17 +52,17 @@ class ImageFrameArticle extends Component {
           <rect className="article_a" x="2" y="56" width="6" height="1" /><rect className="article_a" x="9" y="56"
             width="42" height="1" />
         </svg>
-        <div className="iframeStyle">
-          <iframe ref="remoteFrame"
-            title="image"
-            key={`${this.state.width}x${this.state.height}`}
-            src={iframSource}
-            width={this.state.width}
-            height={this.state.height}
-            frameBorder="0"
-          >
-          </iframe>
-        </div>
+        
+        <iframe ref="remoteFrame"
+          title="image"
+          key={`${this.state.width}x${this.state.height}`}
+          src={iframSource}
+          width={this.state.width}
+          height={this.state.height}
+          frameBorder="0"
+        >
+        </iframe>
+        
       </div>
     )
   }

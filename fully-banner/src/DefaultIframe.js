@@ -9,15 +9,15 @@ class DefaultIframe extends Component {
       height: '300',
       clicktag: 'Adform',
       filesize: '150',
-      className: 'liggandeBanner'
+      className: 'liggande-banner'
 		};
 	}
   render() {
     var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
     var imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
     return (
-      <div  style={{width: "980"}}>
-        <div className="textDiv" style={{width: "980px"}}>
+      <div style={{width: "980"}}>
+        <div className="banner__wrap" style={{width: "980px"}}>
           <iframe ref="remoteFrame"
             title="image"
             key={`${this.state.width}x${this.state.height}`}
@@ -27,26 +27,25 @@ class DefaultIframe extends Component {
             frameBorder="0"
           >
           </iframe>
-          <div className="textField" >
-            <p>{this.state.width}x{this.state.height} <span className="kbMargin">html</span>
+          <div className="banner__description" >
+              {this.state.width}x{this.state.height} <span className="kbMargin">html</span>
               <span className="kbMargin">-</span>
               <span className="kbMargin">{this.state.filesize}</span><span className="kbMargin">kb</span>
               <span className="kbMargin">-</span>
-              {this.state.clicktag}</p>
+              {this.state.clicktag}
           </div>
         </div>
-        <div style={{width: "980px"}}>
+        <div className="fallback__wrap" style={{width: "980px"}}>
           <img
             width={this.state.width}
             height={this.state.height}
             src={imageSource}
             alt={`${this.state.width}x${this.state.height}`} />
-          <div className="textField">
-            <p >{this.state.width}x{this.state.height}<span className="kbMargin"> fallback </span>
-              <span className="kbMargin">-</span>
-              <span className="kbMargin">{this.state.filesize}</span>
-              <span>kb</span>
-            </p>
+          <div className="banner__description">
+            {this.state.width}x{this.state.height}<span className="kbMargin"> fallback </span>
+            <span className="kbMargin">-</span>
+            <span className="kbMargin">{this.state.filesize}</span>
+            <span>kb</span>
           </div>
         </div>
       </div>

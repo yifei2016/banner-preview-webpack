@@ -11,18 +11,18 @@ class VideoFrame extends Component {
 	}
   render() {
     return (
-      <div className="">
+      <div className="banner__wrap">
         <iframe ref="videoFrame"
         title="video"
         src={`https://player.vimeo.com/video/${this.state.vimeo_id}?color=5F11E8&title=0&byline=0&portrait=0`}
         frameBorder="0" 
         webkitallowfullscreen mozallowfullscreen allowFullScreen
-        className="align-self-center videoStyle"
+        className="align-self-center video"
         >
       </iframe>
-        <p className="textField videoCaption">
+        <div className="banner__description">
           <span className="kbMargin">{this.state.title}</span>
-        </p>
+        </div>
       </div>
     )
   }
