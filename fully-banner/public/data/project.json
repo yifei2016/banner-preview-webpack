@@ -1,5 +1,4 @@
-var aData =
-  {
+ {
     "client": "DDB Ehrenstråle",
     "project": "Liseberg Jul 2017",
     "clickTAG": "http://example.com",
@@ -73,4 +72,4 @@ var aData =
       }
     ]
   }
-export default aData;
+

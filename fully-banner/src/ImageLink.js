@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-  Link
+  NavLink
 } from 'react-router-dom';
 
 class ImageLink extends Component {
@@ -10,7 +10,8 @@ class ImageLink extends Component {
 			width: this.props.image.width,
 			height: this.props.image.height,
 			modifier: this.props.image.modifier,
-			modeStyle: this.props.modeStyle
+			modeStyle: this.props.modeStyle,
+			toggoleSideBar: this.props.toggoleSideBar
 		}
 		this.setMode = this.setMode.bind(this);
 		this.checkIfModifier = this.checkIfModifier.bind(this);
@@ -33,15 +34,16 @@ class ImageLink extends Component {
 		return text;
 	}
 	render() {
-		var source = `/banner-preview/${this.state.width}x${this.state.height}`;
+		var source = `${process.env.PUBLIC_URL}/${this.state.width}x${this.state.height}`;
 		if (this.props.image.modifier) {
-			source = `/banner-preview/${this.state.width}x${this.state.height}-${this.state.modifier}`;
+			source = `${process.env.PUBLIC_URL}/${this.state.width}x${this.state.height}-${this.state.modifier}`;
 		}
 		return (
 			<li className="nav-link links">
-				<Link style={this.state.modeStyle} to={source}>
+				<NavLink onClick={this.state.toggoleSideBar}  style={this.state.modeStyle} 
+				activeClassName="active"  to={source}>
 					{this.checkIfModifier()}
-				</Link>
+				</NavLink>
 			</li>
 		)
 	}

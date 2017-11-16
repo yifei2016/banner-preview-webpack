@@ -30,15 +30,15 @@ class ImageFrame extends Component {
     }
   }
   render() {
-    var iframSource = `../dist/${this.state.width}x${this.state.height}/index.html`;
-    var imageSource = `../dist/fallbacks/${this.state.width}x${this.state.height}.png`;
+    var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
+    var imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
     if (this.state.modifier) {
-      iframSource = `../dist/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
-      imageSource = `../dist/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
+      iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
+      imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
     }
     return (
       <div className={this.state.className} >
-        <div className="textDiv" style={{width: this.state.width}}>
+        <div className="textDiv " style={{width: this.state.width}}>
         <iframe ref="remoteFrame"
             title="image"
             key={`${this.state.width}x${this.state.height}`}
@@ -46,28 +46,34 @@ class ImageFrame extends Component {
             width={this.state.width}
             height={this.state.height}
             frameBorder="0"
+            className="imageDiv"
           >
           </iframe>
-          <div className="textField" >
-            <p>{this.state.width}x{this.state.height}-{this.state.modifier} <span className="kbMargin">html</span>
-              <span className="kbMargin">-</span>
-              <span className="kbMargin">{this.state.filesize}</span><span className="kbMargin">kb</span>
-              <span className="kbMargin">-</span>
-              {this.state.clicktag}</p>
-          </div>
+        <div className="textField" >
+          <p>{this.state.width}x{this.state.height}-{this.state.modifier} <span className="kbMargin">html</span>
+          </p>
         </div>
-        <div style={{width: this.state.width}}>
+          <p className="textField2">
+            <span className="kbMargin">{this.state.filesize}</span><span className="kbMargin">kb</span>
+            <span className="kbMargin">-</span>
+            {this.state.clicktag}
+          </p>
+        </div>
+        <div style={{width: this.state.width}} >
           <img
             width={this.state.width}
             height={this.state.height}
             src={imageSource}
-            alt={`${this.state.width}x${this.state.height}`} />
+            className="imageDiv"
+            alt={`${this.state.width}x${this.state.height}`} 
+            />
           <div className="textField">
-            <p>{this.state.width}x{this.state.height}-{this.state.modifier}<span className="kbMargin"> fallback </span>
-              <span className="kbMargin">-</span>
-              <span className="kbMargin">{this.state.filesize}</span>
-              <span>kb</span>
-            </p>
+            <p>{this.state.width}x{this.state.height}-{this.state.modifier}<span className="kbMargin"> fallback </span> </p>
+              <p>
+                <span className="kbMargin">{this.state.filesize}</span>
+                <span>kb</span>
+              </p>
+              
           </div>
         </div>
       </div>

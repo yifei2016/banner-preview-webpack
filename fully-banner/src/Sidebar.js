@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import './App.css';
-import aData from './project';
 import ImageLink from './ImageLink';
 import VideoLink from './VideoLink';
 import GifLink from './GifLink';
@@ -10,26 +9,27 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       modeStyle: this.props.modeStyle,
-      clientStyle: this.props.clientStyle
+      toggoleSideBar: this.props.toggoleSideBar,
+      aData: this.props.aData
     }
     this.toggle = this.toggle.bind(this);
     this.setMode = this.setMode.bind(this);
   }
-  
+  //setMode(1,2) function is to change links(image links, video links, gif links) with mode style(client mode, article mode)
   setMode(modeStyle, clientStyle){
      this.setState({
       modeStyle: modeStyle,
       clientStyle: clientStyle
      },()=>{
-       aData.html.forEach((image, index)=>{
+       this.state.aData.html.forEach((image, index) => {
          this.refs[`image${index}`].setMode(this.state.modeStyle)
-        })
-        aData.video.forEach((video, index)=>{
-          this.refs[`video${index}`].setMode(this.state.modeStyle)
-         })
-         aData.gif.forEach((gif, index)=>{
-          this.refs[`gif${index}`].setMode(this.state.modeStyle)
-         })
+       })
+       this.state.aData.video.forEach((video, index) => {
+         this.refs[`video${index}`].setMode(this.state.modeStyle)
+       })
+       this.state.aData.gif.forEach((gif, index) => {
+         this.refs[`gif${index}`].setMode(this.state.modeStyle)
+       })
      })
   }
   toggle(){
@@ -37,13 +37,16 @@ class Sidebar extends Component {
     a.classList.toggle("toggle");
   }
 	render() {	
-    var imageList = aData.html.map((image,index) => { return <ImageLink modeStyle={this.state.modeStyle} ref={`image${index}`} key={index} image={image} /> });
-    var videoList = aData.video.map((video,index) => { return <VideoLink  modeStyle={this.state.modeStyle} ref={`video${index}`} key={index} video={video} /> });
-    var gifList = aData.gif.map((gif,index) => { return <GifLink modeStyle={this.state.modeStyle} ref={`gif${index}`} key={index} gif={gif} /> });
-		const client = aData.client;
-    const project = aData.project;
+    var imageList = this.state.aData.html.map((image,index) => { return <ImageLink  modeStyle={this.state.modeStyle} ref={`image${index}`} 
+    key={index} image={image} toggoleSideBar={this.state.toggoleSideBar}/> });
+    var videoList = this.state.aData.video.map((video,index) => { return <VideoLink 
+    modeStyle={this.state.modeStyle} ref={`video${index}`} key={index} video={video} toggoleSideBar={this.state.toggoleSideBar} /> });
+    var gifList = this.state.aData.gif.map((gif,index) => { return <GifLink 
+    modeStyle={this.state.modeStyle} ref={`gif${index}`} key={index} gif={gif} toggoleSideBar={this.state.toggoleSideBar} /> });
+		const client = this.state.aData.client;
+    const project = this.state.aData.project;
       return (
-        <div className="sidebar toggle" ref="sidebar" style={this.state.modeStyle}>
+        <div className="sidebar toggle" ref="sidebar">
           <div className="d-flex justify-content-start">
             <ul>
               <li className="nav-link nav-link--info menu-item" style={this.state.clientStyle}>

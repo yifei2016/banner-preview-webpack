@@ -13,8 +13,8 @@ class DefaultIframe extends Component {
 		};
 	}
   render() {
-    var iframSource = `../dist/${this.state.width}x${this.state.height}/index.html`;
-    var imageSource = `../dist/fallbacks/${this.state.width}x${this.state.height}.png`;
+    var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
+    var imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
     return (
       <div  style={{width: "980"}}>
         <div className="textDiv" style={{width: "980px"}}>

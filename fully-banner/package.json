@@ -4,11 +4,17 @@
   "private": true,
   "homepage": "https://demo.fullystudios.se/banner-preview/",
   "dependencies": {
+    "axios": "^0.17.1",
     "react": "^16.0.0",
     "react-burger-menu": "^2.1.10",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
+    "react-toggle-button": "^2.1.0",
     "react-view-switch": "^0.1.4"
+  },
+  "browsers": {
+    "development": "last 1 version",
+    "production": "last 2 versions, > 5%"
   },
   "devDependencies": {
     "react-scripts": "1.0.14"
