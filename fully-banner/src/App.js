@@ -155,11 +155,13 @@ class App extends Component {
                     transform="translate(-26.85 -28.22)" /></svg>
               </a>
               <div className="modeselector" style={this.state.modeBoxBorder}>
-                <a href="#" onClick={(ev) => this.setModeColor(ev, 'cleanMode')} className="modeselector__link" style={{ backgroundColor: this.state.cleanModeButtonStyle.backgroundColor }} >
-                  Clean mode
+                <a href="#" onClick={(ev) => this.setModeColor(ev, 'cleanMode')} className="modeselector__link" 
+                style={{ backgroundColor: this.state.cleanModeButtonStyle.backgroundColor }} >
+                  <span style={{color: this.state.cleanModeButtonStyle.color}}>Clean mode</span>
                 </a>
-                <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} className="modeselector__link" style={{ backgroundColor: this.state.articleModeButtonStyle.backgroundColor }}>
-                  Article mode
+                <a href="#" onClick={(ev) => this.setModeColor(ev, 'articleMode')} className="modeselector__link" 
+                style={{ backgroundColor: this.state.articleModeButtonStyle.backgroundColor }}>
+                  <span style={{color: this.state.articleModeButtonStyle.color}}>Article mode</span>
                 </a>
               </div>
             </div>
