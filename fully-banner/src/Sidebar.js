@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ImageLink from './ImageLink';
 import VideoLink from './VideoLink';
 import GifLink from './GifLink';
+import axios from 'axios';
 
 class Sidebar extends Component {
   constructor(props){
@@ -10,7 +11,10 @@ class Sidebar extends Component {
     this.state = {
       modeStyle: this.props.modeStyle,
       toggoleSideBar: this.props.toggoleSideBar,
-      aData: this.props.aData
+      aData: this.props.aData,
+      hasVideo: false,
+      hasHtml: false,
+      hasGif: false
     }
     this.toggle = this.toggle.bind(this);
     this.setMode = this.setMode.bind(this);
@@ -21,9 +25,6 @@ class Sidebar extends Component {
       modeStyle: modeStyle,
       clientStyle: clientStyle
      },()=>{
-         for(let n =1; n < this.state.aData.html.length;  n++){
-          this.refs[this.state.aData.html[n]].setMode(this.state.modeStyle)
-         }
        this.state.aData.html.forEach((image, index) => {
          this.refs[`image${index}`].setMode(this.state.modeStyle)
        })
@@ -35,21 +36,31 @@ class Sidebar extends Component {
        })
      })
   }
+
+  
+
   toggle(){
     var a = this.refs.sidebar;
     a.classList.toggle("toggle");
   }
 	render() {	
-      var imageList = [];
-      console.log('$$$$$$$$$$$$$$$',imageList)
-      for(let n = 1; n < this.state.aData.html.length; n++){
-        imageList.push(<ImageLink ref={this.state.aData.html[n]}  image={this.state.aData.html[n]} toggoleSideBar={this.state.toggoleSideBar}/>)
-      }
+    var imageList;
+    var videoList;
+    var gifList;
+     if(this.state.aData.html){
+       imageList = this.state.aData.html.map((image,index) => { return <ImageLink ref={`image${index}`}  key={index} image={image} toggoleSideBar={this.state.toggoleSideBar}/> });
+     }
+    if(this.state.aData.video){
+       videoList = this.state.aData.video.map((video,index) => { return <VideoLink ref={`video${index}`} key={index} video={video} toggoleSideBar={this.state.toggoleSideBar} /> });
+    }
+    if(this.state.aData.gif){
+       gifList = this.state.aData.gif.map((gif,index) => { return <GifLink ref={`gif${index}`} key={index} gif={gif} toggoleSideBar={this.state.toggoleSideBar} /> });
+    }
     
-    var videoList = this.state.aData.video.map((video,index) => { return <VideoLink ref={`video${index}`} key={index} video={video} toggoleSideBar={this.state.toggoleSideBar} /> });
-    var gifList = this.state.aData.gif.map((gif,index) => { return <GifLink ref={`gif${index}`} key={index} gif={gif} toggoleSideBar={this.state.toggoleSideBar} /> });
 		const client = this.state.aData.client;
     const project = this.state.aData.project;
+
+   
       return (
         <div className="sidebar toggle" ref="sidebar" style={this.state.modeStyle}>
           <div className="d-flex justify-content-start">
@@ -70,8 +81,11 @@ class Sidebar extends Component {
           </div>
         </div>
       )
-    }
+    
+
+
   }
+}
 
 export default Sidebar;
  

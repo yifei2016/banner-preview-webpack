@@ -3,11 +3,18 @@
     "project": "Liseberg Jul 2017",
     "clickTAG": "http://example.com",
     "serverPath": "client_name/project_name",
-    
-    "html": [
+    "fallback": true,
+    "video": [
       {
-        "fallbacks": true
+        "title": "ICA.se MP4",
+        "vimeo_id": "222507866"
       },
+      {
+        "title": "Lorem.se",
+        "vimeo_id": "239824287"
+      }
+    ],
+    "html": [
       {
         "width": 160,
         "height": 600,

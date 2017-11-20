@@ -11,7 +11,7 @@ class ImageFrame extends Component {
       clicktag: this.props.data.clicktag_type,
       filesize: this.props.data.filesize,
       modifier: this.props.data.modifier,
-      checkFallback: this.props.data.fallbacks,
+      checkFallback: this.props.fallback,
       className: '',
       mode: this.props.mode,
       modeStyle: this.props.modeStyle
@@ -31,22 +31,27 @@ class ImageFrame extends Component {
     }
   }
   render() {
-    if(this.state.checkFallback === true){
-      var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
-      var imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
-    }else{
-      var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
-      var imageSource = null;
+    var iframSource;
+    var imageSource;
+    console.log('@@@@@@@@@@',this.state.checkFallback)
+    if(this.state.checkFallback === true && !this.state.modifier){
+      iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
+      imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
     }
-    console.log('!!!!!!!!!',imageSource)
     if (this.state.checkFallback === true && this.state.modifier) {
       iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
       imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
-    }else if(this.state.checkFallback === false && this.state.modifier){
+    }
+    if(this.state.checkFallback === false && this.state.modifier){
       iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
       imageSource = null;
     }
-    if (imageSource === null || imageSource === undefined) {
+    if(this.state.checkFallback === false && !this.state.modifier){
+      iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
+      imageSource = null;
+    }
+    // there is no fallbacks, show html just
+    if (this.state.checkFallback === false) {
       return (
         <div className={this.state.className} >
           <div className="banner__wrap" style={{ width: this.state.width }}>
@@ -69,9 +74,8 @@ class ImageFrame extends Component {
           </div>
         </div>
       )
-    }else if(iframSource === undefined && imageSource===undefined){
-      return <div></div>;
     }
+    //there is fallbacks, show html and fallbacks
     return (
       <div className={this.state.className} >
         <div className="banner__wrap" style={{width: this.state.width}}>
