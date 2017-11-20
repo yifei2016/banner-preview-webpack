@@ -35,7 +35,7 @@ class ImageLink extends Component {
 	}
 	render() {
 		var source = `${process.env.PUBLIC_URL}/${this.state.width}x${this.state.height}`;
-		if (this.props.image.modifier) {
+		if (this.state.modifier) {
 			source = `${process.env.PUBLIC_URL}/${this.state.width}x${this.state.height}-${this.state.modifier}`;
 		}
 		return (

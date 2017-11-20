@@ -21,6 +21,9 @@ class Sidebar extends Component {
       modeStyle: modeStyle,
       clientStyle: clientStyle
      },()=>{
+         for(let n =1; n < this.state.aData.html.length;  n++){
+          this.refs[this.state.aData.html[n]].setMode(this.state.modeStyle)
+         }
        this.state.aData.html.forEach((image, index) => {
          this.refs[`image${index}`].setMode(this.state.modeStyle)
        })
@@ -37,8 +40,12 @@ class Sidebar extends Component {
     a.classList.toggle("toggle");
   }
 	render() {	
-    var imageList = this.state.aData.html.map((image,index) => { return <ImageLink ref={`image${index}`} 
-    key={index} image={image} toggoleSideBar={this.state.toggoleSideBar}/> });
+      var imageList = [];
+      console.log('$$$$$$$$$$$$$$$',imageList)
+      for(let n = 1; n < this.state.aData.html.length; n++){
+        imageList.push(<ImageLink ref={this.state.aData.html[n]}  image={this.state.aData.html[n]} toggoleSideBar={this.state.toggoleSideBar}/>)
+      }
+    
     var videoList = this.state.aData.video.map((video,index) => { return <VideoLink ref={`video${index}`} key={index} video={video} toggoleSideBar={this.state.toggoleSideBar} /> });
     var gifList = this.state.aData.gif.map((gif,index) => { return <GifLink ref={`gif${index}`} key={index} gif={gif} toggoleSideBar={this.state.toggoleSideBar} /> });
 		const client = this.state.aData.client;

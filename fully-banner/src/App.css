@@ -93,9 +93,6 @@ strong {
 	display: flex;
 	flex-wrap: wrap;
 	padding: 0 1em 0 0;
-	-webkit-transition: background 1s;
-	-moz-transition: background 1s;
-	transition: background 1s;
 }
 
 #root {
@@ -117,9 +114,6 @@ strong {
 	*/
 	padding: 0 0 4em 1em;
 	max-width: 100%;
-	-webkit-transition: background 1s;
-	-moz-transition: background 1s;
-	transition: background 1s;
 }
 
 /* The container for the banners and videos */
@@ -245,9 +239,7 @@ Banner type video
 sidebar
 */
 .sidebar {
-	-webkit-transition: background 1s, transform 0.4s;
-	-moz-transition: background 1s, transform 0.4s;
-	transition: background 1s, transform 0.4s;
+	transition: transform 0.4s;
 	background-color: rgb(10, 42, 79);
 	transition-delay: 0;
 	/* transform: translateX(-100%); */
@@ -260,7 +252,6 @@ sidebar
 	min-width: 15em;
 	/* padding-top: 3em; */
 }
-
 
 @media (max-width: 800px) {
 	.sidebar {
@@ -299,7 +290,7 @@ iframe {
 .banner-portrait svg {
 	flex-grow: 2;
 	margin-right: 5em;
-	margin-left: 8em;
+	margin-left: 2em;
 }
 
 
@@ -366,9 +357,6 @@ a:visited, a:link {
 .nav-link a {
 	display: block;
 	padding: 0.2em 0;
-	-webkit-transition: background 1s;
-	-moz-transition: background 1s;
-	transition: background 1s;
 }
 .nav-link a:focus {
 	outline: none;

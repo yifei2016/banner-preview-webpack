@@ -105,37 +105,91 @@ class App extends Component {
       return false;
     }
     let k = 1;
-    const videoRoutes = this.state.aData.video.map(video =>
-      <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
-        <VideoFrame data={video} />
-      } />
-    )
-    const htmlRoutes = this.state.aData.html.map(html => {
-      var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
-      if (html.modifier) {
-        path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
-      }
-      if (this.state.mode === 'cleanMode') {
-        return <Route key={k++} path={path} render={(props) =>
-          <ImageFrame data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} />
+    if(Object.keys(aData).indexOf('video') === -1&& Object.keys(aData).indexOf('gif') === -1){
+      const htmlRoutes = this.state.aData.html.map(html => {
+        var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
+        if (html.modifier) {
+          path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
+        }
+        if (this.state.mode === 'cleanMode') {
+          return <Route key={k++} path={path} render={(props) =>
+            <ImageFrame data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} />
+          } />
+        } else {
+          return <Route key={k++} path={path} render={(props) =>
+            <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle}
+              logoStyle={this.state.logoStyle} />
+          } />
+        }
+      })
+    }else if(Object.keys(aData).indexOf('html') === -1&& Object.keys(aData).indexOf('gif') === -1){
+      const videoRoutes = this.state.aData.video.map(video =>
+        <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
+          <VideoFrame data={video} />
         } />
-      } else {
-        return <Route key={k++} path={path} render={(props) =>
-          <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle}
-            logoStyle={this.state.logoStyle} />
+      )
+    }else if(Object.keys(aData).indexOf('video') === -1&& Object.keys(aData).indexOf('gif') !== -1&& Object.keys(aData).indexOf('html') !== -1){
+      const htmlRoutes = this.state.aData.html.map(html => {
+        var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
+        if (html.modifier) {
+          path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
+        }
+        if (this.state.mode === 'cleanMode') {
+          return <Route key={k++} path={path} render={(props) =>
+            <ImageFrame data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} />
+          } />
+        } else {
+          return <Route key={k++} path={path} render={(props) =>
+            <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle}
+              logoStyle={this.state.logoStyle} />
+          } />
+        }
+      })
+      const gifRoutes = this.state.aData.gif.map(gif =>
+        <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) =>
+          <GifFrame data={gif} />
         } />
-      }
-    })
-    const gifRoutes = this.state.aData.gif.map(gif =>
-      <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) =>
-        <GifFrame data={gif} />
-      } />
-    )
-
+      )
+    }else if(Object.keys(aData).indexOf('video') !== -1 && Object.keys(aData).indexOf('gif') !== -1 && Object.keys(aData).indexOf('html') !== -1){
+      const videoRoutes = this.state.aData.video.map(video =>
+        <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
+          <VideoFrame data={video} />
+        } />
+      )
+      const htmlRoutes = this.state.aData.html.map(html => {
+        var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
+        if (html.modifier) {
+          path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
+        }
+        if (this.state.mode === 'cleanMode') {
+          return <Route key={k++} path={path} render={(props) =>
+            <ImageFrame data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} />
+          } />
+        } else {
+          return <Route key={k++} path={path} render={(props) =>
+            <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle}
+              logoStyle={this.state.logoStyle} />
+          } />
+        }
+      })
+      const gifRoutes = this.state.aData.gif.map(gif =>
+        <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) =>
+          <GifFrame data={gif} />
+        } />
+      )
+    }
+   
+    if (!htmlRoutes && gifRoutes && videoRoutes) {
+      routes = {gifRoutes}{videoRoutes}
+    } else if (!videoRoutes && gifRoutes && htmlRoutes) {
+       routes = {htmlRoutes}{gifRoutes}
+    } else if (!gifRoutes && htmlRoutes && videoRoutes) {
+       routes = {htmlRoutes}{videoRoutes}
+    }
     return (
       <Router>
         <div className="main" style={this.state.modeStyle}>
-          {<Sidebar aData={this.state.aData} toggoleSideBar={this.toggleSidebar} modeStyle={this.state.sideBarMode} ref="sidebar" />}
+          {<Sidebar aData={this.state.aData} html={this.state.aData.html} toggoleSideBar={this.toggleSidebar} modeStyle={this.state.sideBarMode} ref="sidebar" />}
           <div style={this.state.modeStyle} className="main-content" >
             <div className="navigation">
               <button type="button" className="button button--nav " ref="openmenu" id="openmenu"
@@ -168,15 +222,12 @@ class App extends Component {
 
             <div className="banners" >
               <Route path={`${process.env.PUBLIC_URL}/`} exact component={DefaultIframe} />
-              {htmlRoutes}
-              {videoRoutes}
-              {gifRoutes}
+              {routes}
             </div>
             {/* <div>
                   <Route path="/222507866" component={VideoICAFrame} />
                   <Route path="/239824287" component={VideoLoremFrame} />
                 </div> */}
-            {/* <span className="mode-selector__seperator">|</span> */}
           </div>
         </div>
       </Router>

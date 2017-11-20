@@ -11,6 +11,7 @@ class ImageFrame extends Component {
       clicktag: this.props.data.clicktag_type,
       filesize: this.props.data.filesize,
       modifier: this.props.data.modifier,
+      checkFallback: this.props.data.fallbacks,
       className: '',
       mode: this.props.mode,
       modeStyle: this.props.modeStyle
@@ -30,11 +31,46 @@ class ImageFrame extends Component {
     }
   }
   render() {
-    var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
-    var imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
-    if (this.state.modifier) {
+    if(this.state.checkFallback === true){
+      var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
+      var imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
+    }else{
+      var iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
+      var imageSource = null;
+    }
+    console.log('!!!!!!!!!',imageSource)
+    if (this.state.checkFallback === true && this.state.modifier) {
       iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
       imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
+    }else if(this.state.checkFallback === false && this.state.modifier){
+      iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
+      imageSource = null;
+    }
+    if (imageSource === null || imageSource === undefined) {
+      return (
+        <div className={this.state.className} >
+          <div className="banner__wrap" style={{ width: this.state.width }}>
+            <iframe ref="remoteFrame"
+              title="image"
+              key={`${this.state.width}x${this.state.height}`}
+              src={iframSource}
+              width={this.state.width}
+              height={this.state.height}
+              frameBorder="0"
+              className="banner"
+            >
+            </iframe>
+            <div className="banner__description">
+              {this.state.width}x{this.state.height} -{this.state.modifier} <span className="kbMargin">html</span><br />
+              <span className="kbMargin">{this.state.filesize}</span><span className="kbMargin">kb</span>
+              <span className="kbMargin">-</span>
+              {this.state.clicktag}
+            </div>
+          </div>
+        </div>
+      )
+    }else if(iframSource === undefined && imageSource===undefined){
+      return <div></div>;
     }
     return (
       <div className={this.state.className} >
