@@ -13,7 +13,6 @@ class ImageFrame extends Component {
       modifier: this.props.data.modifier,
       checkFallback: this.props.fallback,
       className: '',
-      mode: this.props.mode,
       modeStyle: this.props.modeStyle
       // frameWidth: this.props.data.width > this.props.data.height ? 980 : 300,
       // frameHeight: this.props.data.width > this.props.data.height ? 300 : 980
@@ -33,7 +32,7 @@ class ImageFrame extends Component {
   render() {
     var iframSource;
     var imageSource;
-    console.log('@@@@@@@@@@',this.state.checkFallback)
+  
     if(this.state.checkFallback === true && !this.state.modifier){
       iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
       imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
@@ -105,7 +104,7 @@ class ImageFrame extends Component {
             alt={`${this.state.width}x${this.state.height}`} 
             />
           <div className="banner__description">
-            {this.state.width}x{this.state.height}  -{this.state.modifier}<span className="kbMargin"> fallback </span>
+            {this.state.width}x{this.state.height}  - {this.state.modifier}<span className="kbMargin"> fallback </span>
             <br/>
             <span className="kbMargin">{this.state.filesize}</span>
             <span>kb</span>

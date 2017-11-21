@@ -42,27 +42,31 @@ class App extends Component {
       }
     }
     // this.fallback = false;
-    // this.hasHtml = false;
-    // this.hasGif = false;
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.setModeColor = this.setModeColor.bind(this);
   }
-  //index.html get all js, so do not need to go back to data folder, they are in same folder
+  //url, index.html get all js, so do not need to go back to data folder, they are in same folder
   componentDidMount() {
     axios.get(`${process.env.PUBLIC_URL}/data/project.json`)
       .then(res => {
         const aData = res.data;
-        this.setState({ aData: aData, hasHtml: aData.html ? true : false, hasVideo: aData.video ? true : false, 
-          fallback: aData.fallback ? true : false, hasGif: aData.gif ? true : false}, () => { });
-        // this.hasHtml = aData.html ? true : false;
-        // if(aData.html)this.hasHtml = true;
-        // if(aData.gif)this.hasGif = true;
+        this.setState({ 
+          aData: aData, 
+          fallback: aData.fallback ? true : false,
+          hasHtml: ('html' in aData.sections) ? true : false,
+          hasVideo: ('video' in aData.sections) ? true : false, 
+          hasGif: ('gif' in aData.sections) ? true : false
+        });
+        // not dynamically, will cause problem if we check with aData.html, instead, we check it with 
+        // key in obj
+        //this.hasHtml = aData.html ? true : false;
       });
   }
   //toggle sidebar and toggle button exterior after click
   toggleSidebar(){
     var a  = this.refs.sidebar;
-    this.refs.openmenu.classList.toggle("menu-open")
+    this.refs.openmenu.classList.toggle("menu-open");
+    //a.toggle function is to toggle button exterior. a.toggle function is in sidebar component, we got sidebar component by writing this.refs.sidebar
     a.toggle();
   }
   //update state according to different mode
@@ -112,6 +116,7 @@ class App extends Component {
   )}
   render() {
     const aData = this.state.aData;
+    //check if obj is empty or not
     if (Object.keys(aData).length <= 0) {
       return false;
     }
@@ -120,7 +125,7 @@ class App extends Component {
     var videoRoutes;
     var gifRoutes;
     if(this.state.hasVideo){
-      videoRoutes = this.state.aData.video.map(video =>
+      videoRoutes = this.state.aData.sections.video.map(video =>
         <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
           <VideoFrame data={video} />
         } />
@@ -128,112 +133,38 @@ class App extends Component {
     }
     
     if(this.state.hasHtml){
-      htmlRoutes = this.state.aData.html.map(html => {
+      htmlRoutes = this.state.aData.sections.html.map(html => {
         var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
         if (html.modifier) {
           path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
         }
         if (this.state.mode === 'cleanMode') {
           return <Route key={k++} path={path} render={(props) =>
-            <ImageFrame fallback={this.state.fallback} data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} />
+            <ImageFrame fallback={this.state.fallback} data={html} modeStyle={this.state.modeStyle} />
           } />
-        } else {
+        }else {
+          // else case is article mode
           return <Route key={k++} path={path} render={(props) =>
-            <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle}
-              logoStyle={this.state.logoStyle} />
+            <ImageFrameArticle data={html} modeStyle={this.state.modeStyle}
+              />
           } />
         }
       })
     }
-
+  //check if has gif, if has gif, render a route, and render a component, in GifFrame component, render gif.
     if (this.state.hasGif) {
-      gifRoutes = this.state.aData.gif.map(gif =>
+      gifRoutes = this.state.aData.sections.gif.map(gif =>
         <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) =>
           <GifFrame data={gif} />
-        } />
+        }/>
       )
     }
-
-    
-    // if(Object.keys(aData).indexOf('video') === -1 && Object.keys(aData).indexOf('gif') === -1 && Object.keys(aData).indexOf('html') !== -1 ){
-    //    htmlRoutes = this.state.aData.html.map(html => {
-    //     var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
-    //     if (html.modifier) {
-    //       path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
-    //     }
-    //     if (this.state.mode === 'cleanMode') {
-    //       return <Route key={k++} path={path} render={(props) =>
-    //         <ImageFrame fallback={this.fallback} data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} />
-    //       } />
-    //     } else {
-    //       return <Route key={k++} path={path} render={(props) =>
-    //         <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle}
-    //           logoStyle={this.state.logoStyle} />
-    //       } />
-    //     }
-    //   })
-    // }else if(Object.keys(aData).indexOf('html') === -1 && Object.keys(aData).indexOf('gif') === -1){
-    //    videoRoutes = this.state.aData.video.map(video =>
-    //     <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
-    //       <VideoFrame data={video} />
-    //     } />
-    //   )
-    // }else if(Object.keys(aData).indexOf('video') === -1 && Object.keys(aData).indexOf('gif') !== -1 && Object.keys(aData).indexOf('html') !== -1){
-    //    htmlRoutes = this.state.aData.html.map(html => {
-    //     var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
-    //     if (html.modifier) {
-    //       path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
-    //     }
-    //     if (this.state.mode === 'cleanMode') {
-    //       return <Route key={k++} path={path} render={(props) =>
-    //         <ImageFrame fallback={this.fallback} data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} />
-    //       } />
-    //     } else {
-    //       return <Route key={k++} path={path} render={(props) =>
-    //         <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle}
-    //           logoStyle={this.state.logoStyle} />
-    //       } />
-    //     }
-    //   })
-    //    gifRoutes = this.state.aData.gif.map(gif =>
-    //     <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) =>
-    //       <GifFrame data={gif} />
-    //     } />
-    //   )
-    // }else if(Object.keys(aData).indexOf('video') !== -1 && Object.keys(aData).indexOf('gif') !== -1 && Object.keys(aData).indexOf('html') !== -1){
-    //    videoRoutes = this.state.aData.video.map(video =>
-    //     <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
-    //       <VideoFrame data={video} />
-    //     } />
-    //   )
-    //    htmlRoutes = this.state.aData.html.map(html => {
-    //     var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
-    //     if (html.modifier) {
-    //       path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
-    //     }
-    //     if (this.state.mode === 'cleanMode') {
-    //       return <Route key={k++} path={path} render={(props) =>
-    //         <ImageFrame fallback={this.fallback} data={html} mode={this.state.mode} modeStyle={this.state.modeStyle} />
-    //       } />
-    //     } else {
-    //       return <Route key={k++} path={path} render={(props) =>
-    //         <ImageFrameArticle data={html} mode={this.state.mode} modeStyle={this.state.modeStyle}
-    //           logoStyle={this.state.logoStyle} />
-    //       } />
-    //     }
-    //   })
-    //    gifRoutes = this.state.aData.gif.map(gif =>
-    //     <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) =>
-    //       <GifFrame data={gif} />
-    //     } />
-    //   )
-    // }
-   
     
     return (
       <Router>
         <div className="main" style={this.state.modeStyle}>
-          {<Sidebar aData={this.state.aData} html={this.state.aData.html} toggoleSideBar={this.toggleSidebar} modeStyle={this.state.sideBarMode} ref="sidebar" />}
+          {<Sidebar aData={this.state.aData} toggoleSideBar={this.toggleSidebar} modeStyle={this.state.sideBarMode} ref="sidebar" />}
+
           <div style={this.state.modeStyle} className="main-content" >
             <div className="navigation">
               <button type="button" className="button button--nav " ref="openmenu" id="openmenu"
@@ -263,8 +194,8 @@ class App extends Component {
                 </a>
               </div>
             </div>
-
-            <div className="banners" >
+          {/* banners section, render one route by Route, and render one item by gifRoutes, or videoRoutes, or htmlRoutes */}
+            <div className="banners">
               <Route path={`${process.env.PUBLIC_URL}/`} exact component={DefaultIframe} />
               {gifRoutes}
               {videoRoutes}
