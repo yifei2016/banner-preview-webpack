@@ -125,17 +125,23 @@ class App extends Component {
     var htmlRoutes;
     var videoRoutes;
     var gifRoutes;
-    var defaultRoute = <Route  path={`${process.env.PUBLIC_URL}/`} render={(props) =>
-      <DefaultIframe data={this.state.aData} />
-    } />;
-    if(this.state.hasVideo){
+    var defaultRoute;
+
+    if (this.state.hasVideo) {
       videoRoutes = this.state.aData.sections.video.map(video =>
         <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
           <VideoFrame data={video} />
         } />
       )
+      if (!defaultRoute) {
+        var sectionHasMaster = this.state.aData.sections.video.find(x => { return ('master' in x) && x.master === true; });
+        if (sectionHasMaster !== undefined) {
+          defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
+            <VideoFrame data={sectionHasMaster} />
+          } />
+        }
+      }
     }
-    
     if(this.state.hasHtml){
       htmlRoutes = this.state.aData.sections.html.map(html => {
         var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
@@ -154,6 +160,21 @@ class App extends Component {
           } />
         }
       })
+      if (!defaultRoute) {
+        var sectionHasMaster = this.state.aData.sections.html.find(x => { return ('master' in x) && x.master === true; });
+        if (sectionHasMaster !== undefined) {
+          if (this.state.mode === 'cleanMode') {
+            defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
+              <HtmlFrame fallback={this.state.fallback} data={sectionHasMaster} modeStyle={this.state.modeStyle}/>
+            } />
+          }else{
+            defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
+              <HtmlFrameArticle data={sectionHasMaster} modeStyle={this.state.modeStyle}/>
+            } />
+          }
+         
+        }
+      }
     }
   //check if has gif, if has gif, render a route, and render a component, in GifFrame component, render gif.
     if (this.state.hasGif) {
@@ -162,6 +183,14 @@ class App extends Component {
           <GifFrame data={gif} />
         }/>
       )
+      if (!defaultRoute) {
+        var sectionHasMaster = this.state.aData.sections.gif.find(x => { return ('master' in x) && x.master === true; });
+        if (sectionHasMaster !== undefined) {
+          defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
+            <GifFrame data={sectionHasMaster} />
+          } />
+        }
+      }
     }
     
     return (
@@ -199,9 +228,8 @@ class App extends Component {
               </div>
             </div>
           {/* banners section, render one route by Route, and render one item by gifRoutes, or videoRoutes, or htmlRoutes */}
-            <div className="banners">
-              
-            {defaultRoute}
+            <div className="banners">  
+              {defaultRoute}
               {gifRoutes}
               {videoRoutes}
               {htmlRoutes}

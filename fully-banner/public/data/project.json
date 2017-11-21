@@ -57,21 +57,21 @@
           "width": 930,
           "height": 600,
           "filesize": 50,
-          "clicktag_type": "Adform"
+          "clicktag_type": "Adform",
+          "master": true
         },
         {
           "width": 980,
           "height": 300,
           "filesize": 150,
-          "clicktag_type": "Adform",
-          "master": true
+          "clicktag_type": "Adform"
         }
       ],
       "gif": [
         {
           "width": 320,
           "height": 320,
-          "filesize": 100  
+          "filesize": 100
         }
       ]
     }
