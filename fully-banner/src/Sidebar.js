@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import './App.css';
-import ImageLink from './ImageLink';
+import HtmlLink from './HtmlLink';
 import VideoLink from './VideoLink';
 import GifLink from './GifLink';
 import axios from 'axios';
@@ -54,11 +54,11 @@ class Sidebar extends Component {
         //go though keys'value 
         var items = this.state.sections[key].map((data, index) => {
           var ref = `${key}${index}`;
-          console.log('ref!!!!!!!!',ref);
+         
           //check keys in section json to show key links
           switch (key) {
             case "html":
-              return <ImageLink ref={ref} key={index} image={data} toggoleSideBar={this.state.toggoleSideBar} />
+              return <HtmlLink ref={ref} key={index} image={data} toggoleSideBar={this.state.toggoleSideBar} />
               break;
             case "video":
               return <VideoLink ref={ref} key={index} video={data} toggoleSideBar={this.state.toggoleSideBar} />
@@ -70,8 +70,8 @@ class Sidebar extends Component {
         });
         //items is array of links which is in keys. 
         return (
-          <div>
-            <li className="nav-link menu-item html5"><h4>{key.capitalize()}</h4></li>
+          <div key={index}>
+            <li className="nav-link menu-item html5" key={index}><h4>{key.capitalize()}</h4></li>
             {items}
           </div>
         )

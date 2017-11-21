@@ -7,12 +7,13 @@ import {
 } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import VideoFrame from './VideoFrame';
-import ImageFrame from './ImageFrame';
-import ImageFrameArticle from './ImageFrameArticle';
+import HtmlFrame from './HtmlFrame';
+import HtmlFrameArticle from './HtmlFrameArticle';
 import GifFrame from './GifFrame';
 import DefaultIframe from './DefaultIframe';
 import axios from 'axios';
 import ModeColor from './ModeColor.js';
+import Blank from './Blank';
 
 class App extends Component {
   constructor(props){
@@ -124,6 +125,9 @@ class App extends Component {
     var htmlRoutes;
     var videoRoutes;
     var gifRoutes;
+    var defaultRoute = <Route  path={`${process.env.PUBLIC_URL}/`} render={(props) =>
+      <DefaultIframe data={this.state.aData} />
+    } />;
     if(this.state.hasVideo){
       videoRoutes = this.state.aData.sections.video.map(video =>
         <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
@@ -140,12 +144,12 @@ class App extends Component {
         }
         if (this.state.mode === 'cleanMode') {
           return <Route key={k++} path={path} render={(props) =>
-            <ImageFrame fallback={this.state.fallback} data={html} modeStyle={this.state.modeStyle} />
+            <HtmlFrame fallback={this.state.fallback} data={html} modeStyle={this.state.modeStyle} />
           } />
         }else {
           // else case is article mode
           return <Route key={k++} path={path} render={(props) =>
-            <ImageFrameArticle data={html} modeStyle={this.state.modeStyle}
+            <HtmlFrameArticle data={html} modeStyle={this.state.modeStyle}
               />
           } />
         }
@@ -163,7 +167,7 @@ class App extends Component {
     return (
       <Router>
         <div className="main" style={this.state.modeStyle}>
-          {<Sidebar aData={this.state.aData} toggoleSideBar={this.toggleSidebar} modeStyle={this.state.sideBarMode} ref="sidebar" />}
+          <Sidebar aData={this.state.aData} toggoleSideBar={this.toggleSidebar} modeStyle={this.state.sideBarMode} ref="sidebar" />
 
           <div style={this.state.modeStyle} className="main-content" >
             <div className="navigation">
@@ -196,7 +200,8 @@ class App extends Component {
             </div>
           {/* banners section, render one route by Route, and render one item by gifRoutes, or videoRoutes, or htmlRoutes */}
             <div className="banners">
-              <Route path={`${process.env.PUBLIC_URL}/`} exact component={DefaultIframe} />
+              
+            {defaultRoute}
               {gifRoutes}
               {videoRoutes}
               {htmlRoutes}
