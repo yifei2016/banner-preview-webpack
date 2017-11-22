@@ -16,7 +16,13 @@ class HtmlFrame extends Component {
       modeStyle: this.props.modeStyle
       // frameWidth: this.props.data.width > this.props.data.height ? 980 : 300,
       // frameHeight: this.props.data.width > this.props.data.height ? 300 : 980
-		};
+    };
+    
+    this.handleImageErrored = this.handleImageErrored.bind(this)
+  }
+ 
+  handleImageErrored() {
+    this.refs.imageWrapper.classList.add('imageHide');
   }
   componentDidMount() {
     if (this.state.width > this.state.height) {
@@ -75,6 +81,7 @@ class HtmlFrame extends Component {
       )
     }
     //there is fallbacks, show html and fallbacks
+   
     return (
       <div className={this.state.className} >
         <div className="banner__wrap" style={{width: this.state.width}}>
@@ -95,24 +102,29 @@ class HtmlFrame extends Component {
             {this.state.clicktag}
           </div>
         </div>
-        <div className="fallback__wrap" style={{width: this.state.width}} >
-          <img
-            width={this.state.width}
-            height={this.state.height}
-            src={imageSource}
-            className="banner"
-            alt={`${this.state.width}x${this.state.height}`} 
+        
+          <div ref='imageWrapper' className="fallback__wrap" style={{ width: this.state.width }} >
+            <img
+              width={this.state.width}
+              height={this.state.height}
+              src={imageSource}
+              className="banner"
+              onError={this.handleImageErrored.bind(this)}
+              alt={`${this.state.width}x${this.state.height}`}
             />
-          <div className="banner__description">
-            {this.state.width}x{this.state.height}  - {this.state.modifier}<span className="kbMargin"> fallback </span>
-            <br/>
-            <span className="kbMargin">{this.state.filesize}</span>
-            <span>kb</span>
+            <div className="banner__description">
+              {this.state.width}x{this.state.height}  - {this.state.modifier}<span className="kbMargin"> fallback </span>
+              <br />
+              <span className="kbMargin">{this.state.filesize}</span>
+              <span>kb</span>
+            </div>
           </div>
-        </div>
+        
       </div>
     )
-  }
+   }
+   
+  
 }
 
 export default HtmlFrame;

@@ -192,6 +192,7 @@ Normal banner typ (and GIF)
 .banner-landscape .banner__wrap,
 .banner-landscape .fallback__wrap {
 	display: block;
+	margin: auto;
 }
 .banner-landscape .banner__wrap+.fallback__wrap {
 	margin-top: 2em;
@@ -270,7 +271,11 @@ iframe {
 .banner-landscape {	
 	/* display: flex;
 	flex-direction: column;
-	margin: 2em 0; */
+	margin: 0 auto;
+	align-content: center; */
+}
+.imageHide{
+	display: none;
 }
 .banner-landscape img {
 	margin-top:2em;
