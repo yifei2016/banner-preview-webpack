@@ -1,0 +1,16 @@
+{
+    "version": "1.0",
+    "title": "Standard HTML Ad 930x600",
+    "description": "Adform Standard banner; 930x600; Version 1.0",
+    "width": 930,
+    "height": 600,
+    "events": {
+        "enabled": 0,
+        "list": {
+        }
+    },
+    "clicktags": {
+        "clickTAG": "http:\/\/www.ikea.dk"
+    },
+    "source": "index.html"
+}

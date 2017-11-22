@@ -1,0 +1,16 @@
+{
+    "version": "1.0",
+    "title": "Standard HTML Ad 320x320",
+    "description": "Adform Standard banner; 320x320; Version 1.0",
+    "width": 320,
+    "height": 320,
+    "events": {
+        "enabled": 0,
+        "list": {
+        }
+    },
+    "clicktags": {
+        "clickTAG": "https:\/\/www.swedbank.se\/privat\/privatlan-och-krediter\/samla-lanen\/"
+    },
+    "source": "index.html"
+}
