@@ -10,10 +10,8 @@ import VideoFrame from './VideoFrame';
 import HtmlFrame from './HtmlFrame';
 import HtmlFrameArticle from './HtmlFrameArticle';
 import GifFrame from './GifFrame';
-import DefaultIframe from './DefaultIframe';
 import axios from 'axios';
 import ModeColor from './ModeColor.js';
-import Blank from './Blank';
 
 class App extends Component {
   constructor(props){
@@ -80,25 +78,19 @@ class App extends Component {
     var newArticleModeButtonStyle ;
     var newClientStyle = {};
     if (mode === 'articleMode') {
-      newModeStyle.backgroundColor = 'white';
-      newModeStyle.color = '#0A2A4F';
+      newModeStyle = ModeColor.ARTICLEMODECOLOR;
       newlogoStyle.fill = '#0A2A4F';
-      newSideBar.backgroundColor = '#f8f8f8';
-      newSideBar.color = '#0A2A4F';
+      newSideBar = ModeColor.ARTICLEMODESIDEBAR;
       newmodeBoxBorder.border = '2px solid #0A2A4F';
-      newClientStyle.boxShadow = "3px 3px 0 0 #0A2A4F";
-      newClientStyle.borderColor = "#0A2A4F";
+      newClientStyle = ModeColor.ARTICLEMODECLIENTCOLOR;
       newArticleModeButtonStyle = ModeColor.ACTIVE_BUTTON_STYLE;
       newCleanModeButtonStyle = ModeColor.BUTTON_STYLE;
     }else{
-      newModeStyle.backgroundColor = '#0A2A4F';
-      newModeStyle.color = 'white';
+      newModeStyle = ModeColor.CLEANMODECOLOR;
       newlogoStyle.fill = 'white';
-      newSideBar.backgroundColor = 'rgb(12, 37, 67)';
-      newSideBar.color = 'white';
+      newSideBar = ModeColor.CLEANMODECOLOR;
       newmodeBoxBorder.border = '2px solid white';
-      newClientStyle.boxShadow = "3px 3px 0 0 white";
-      newClientStyle.borderColor = "white";
+      newClientStyle = ModeColor.CLEANMODECLIENTCOLOR;
       newArticleModeButtonStyle = ModeColor.BUTTON_STYLE;
       newCleanModeButtonStyle = ModeColor.ACTIVE_BUTTON_STYLE;
     }
@@ -127,21 +119,7 @@ class App extends Component {
     var gifRoutes;
     var defaultRoute;
 
-    if (this.state.hasVideo) {
-      videoRoutes = this.state.aData.sections.video.map(video =>
-        <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
-          <VideoFrame data={video} />
-        } />
-      )
-      if (!defaultRoute) {
-        var sectionHasMaster = this.state.aData.sections.video.find(x => { return ('master' in x) && x.master === true; });
-        if (sectionHasMaster !== undefined) {
-          defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
-            <VideoFrame data={sectionHasMaster} />
-          } />
-        }
-      }
-    }
+
     if(this.state.hasHtml){
       htmlRoutes = this.state.aData.sections.html.map(html => {
         var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
@@ -160,6 +138,23 @@ class App extends Component {
           } />
         }
       })
+
+    if (this.state.hasVideo) {
+      videoRoutes = this.state.aData.sections.video.map(video =>
+        <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
+          <VideoFrame data={video} />
+        } />
+      )
+      if (!defaultRoute) {
+        var sectionHasMaster = this.state.aData.sections.video.find(x => { return ('master' in x) && x.master === true; });
+        if (sectionHasMaster !== undefined) {
+          defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
+            <VideoFrame data={sectionHasMaster} />
+          } />
+        }
+      }
+    }
+   
       if (!defaultRoute) {
         var sectionHasMaster = this.state.aData.sections.html.find(x => { return ('master' in x) && x.master === true; });
         if (sectionHasMaster !== undefined) {
@@ -172,7 +167,6 @@ class App extends Component {
               <HtmlFrameArticle data={sectionHasMaster} modeStyle={this.state.modeStyle}/>
             } />
           }
-         
         }
       }
     }
@@ -230,9 +224,10 @@ class App extends Component {
           {/* banners section, render one route by Route, and render one item by gifRoutes, or videoRoutes, or htmlRoutes */}
             <div className="banners">  
               {defaultRoute}
+              {htmlRoutes}
               {gifRoutes}
               {videoRoutes}
-              {htmlRoutes}
+             
             </div>
             {/* <div>
                   <Route path="/222507866" component={VideoICAFrame} />

@@ -128,11 +128,8 @@ strong {
 }
 
 @media(max-width: 800px) {
-	.banners {
-		/* display: flex;
-		flex: 2; */
-		/* margin: 2em 1em 2em 2.5em; */
-	}
+	
+
 }
 
 /* -------- 5. COMPONENTS -------- */
@@ -190,7 +187,6 @@ Normal banner typ (and GIF)
 
 .banner__wrap, .fallback__wrap {
 	/* margin-right: 2em; */
-	display: inline-block;
 	margin: 0 auto;
 }
 .banner-landscape .banner__wrap,
@@ -229,9 +225,12 @@ Banner type video
 
 @media(max-width: 500px){
 	.video {
-		width: 640px;
-		height: 360px;
-		margin-bottom: 0em;
+		/* width: 640px;
+		height: 360px; */
+		flex: 3;
+		width: 100%;
+		height: auto;
+	 
 	}
 }
 
