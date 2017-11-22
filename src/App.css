@@ -187,7 +187,7 @@ Normal banner typ (and GIF)
 
 .banner__wrap, .fallback__wrap {
 	/* margin-right: 2em; */
-	margin: 0 auto;
+	/* margin: 0 auto; */
 }
 .banner-landscape .banner__wrap,
 .banner-landscape .fallback__wrap {
@@ -284,7 +284,11 @@ iframe {
 }
 .banner-portrait {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
+}
+.banner-portrait .banner__wrap,
+.banner-portrait .fallback__wrap {
+	margin: 0 2em;
 }
 .banner-portrait svg {
 	flex-grow: 2;
@@ -307,6 +311,7 @@ iframe {
 	.banner-portrait{
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 	}
 	.banner-portrait img {
 		margin-top:2em;
