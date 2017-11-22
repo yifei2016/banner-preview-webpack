@@ -13,15 +13,17 @@ class GIfFrame extends Component {
   render() {
     return (
       <div className="banner__wrap" style={{ width: this.state.width }}>
-        <img src="https://media.giphy.com/media/3o85xt08p2Y0hanhwQ/giphy.gif"
-          width={this.state.width} height={this.state.height} alt="" className="banner"/>
-        
-        <div className="banner__description">{this.state.width}x{this.state.height}
-          <span className="kbMargin">-</span>
-          <span className="kbMargin"> gif </span>
-          <span className="kbMargin">-</span>
-          <span className="kbMargin">{this.state.filesize}</span>
-          <span>kb</span>
+        <div className="gifwrapper">
+          <img src="https://media.giphy.com/media/3o85xt08p2Y0hanhwQ/giphy.gif"
+            width={this.state.width} height={this.state.height} alt="" className="banner" />
+
+          <div className="banner__description">{this.state.width}x{this.state.height}
+            <span className="kbMargin">-</span>
+            <span className="kbMargin"> gif </span>
+            <span className="kbMargin">-</span>
+            <span className="kbMargin">{this.state.filesize}</span>
+            <span>kb</span>
+          </div>
         </div>
       </div>
     )

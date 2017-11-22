@@ -49,6 +49,7 @@ class App extends Component {
     axios.get(`${process.env.PUBLIC_URL}/data/project.json`)
       .then(res => {
         const aData = res.data;
+        document.title = aData.project;
         this.setState({ 
           aData: aData, 
           fallback: aData.fallback ? true : false,
@@ -118,7 +119,6 @@ class App extends Component {
     var videoRoutes;
     var gifRoutes;
     var defaultRoute;
-
 
     if(this.state.hasHtml){
       htmlRoutes = this.state.aData.sections.html.map(html => {

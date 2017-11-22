@@ -185,19 +185,14 @@ Normal banner typ (and GIF)
 	background-color: #f8f8f8;
 }
 
-.banner__wrap, .fallback__wrap {
-	/* margin-right: 2em; */
-	/* margin: 0 auto; */
-}
 .banner-landscape .banner__wrap,
 .banner-landscape .fallback__wrap {
 	display: block;
 	margin: auto;
 }
-.banner-landscape .banner__wrap+.fallback__wrap {
+.banner-landscape .banner__wrap +.fallback__wrap {
 	margin-top: 2em;
 }
-
 
 .banner__description {
 	text-align: right;
