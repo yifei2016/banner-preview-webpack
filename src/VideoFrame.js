@@ -11,7 +11,7 @@ class VideoFrame extends Component {
 	}
   render() {
     return (
-      <div>
+      <div className="bannerContainer">
         <div className="banner__wrap banner__wrap--video">
         
           <iframe ref="videoFrame"

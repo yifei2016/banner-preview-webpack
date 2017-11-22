@@ -13,7 +13,6 @@ class GIfFrame extends Component {
   render() {
     return (
       <div className="banner__wrap" style={{ width: this.state.width }}>
-        <div className="gifwrapper">
           <img src="https://media.giphy.com/media/3o85xt08p2Y0hanhwQ/giphy.gif"
             width={this.state.width} height={this.state.height} alt="" className="banner" />
 
@@ -25,7 +24,6 @@ class GIfFrame extends Component {
             <span>kb</span>
           </div>
         </div>
-      </div>
     )
   }
 }

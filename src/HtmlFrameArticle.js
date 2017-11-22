@@ -19,7 +19,7 @@ class HtmlFrameArticle extends Component {
 		};
   }
   componentDidMount() {
-    if (this.state.width > this.state.height) {
+    if (this.state.width >= this.state.height) {
       this.setState({
         className: 'banner-lansdcape'
       }) 

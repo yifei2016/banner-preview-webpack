@@ -207,7 +207,10 @@ Normal banner typ (and GIF)
 		justify-content: flex-end;
 	}
 }
-
+.bannerContainer{
+	max-width: 960px;
+	margin: auto;
+}
 /*
 Banner type video
 */
@@ -216,6 +219,7 @@ Banner type video
 	padding-bottom: 56.25%;
 	/* 16:9 */
 	height: 0;
+	
 }
 .video {
 	position: absolute;
@@ -224,6 +228,7 @@ Banner type video
 	width: 100%;
 	height: 100%;
 	background-color: #f8f8f8 ;
+	/* max-width: 960 px; */
 }
 
 /*
@@ -285,6 +290,9 @@ iframe {
 .banner-portrait .banner__wrap,
 .banner-portrait .fallback__wrap {
 	margin: 0 2em;
+}
+.banner__wrap{
+	margin: auto;
 }
 .banner-portrait svg {
 	flex-grow: 2;
