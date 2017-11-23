@@ -22,7 +22,6 @@ class App extends Component {
       hasVideo: false,
       hasHtml: false,
       hasGif: false,
-      fallback: false,
       modeBoxBorder: {
         border: '2px solid white'
       },
@@ -52,7 +51,6 @@ class App extends Component {
         document.title = aData.project;
         this.setState({ 
           aData: aData, 
-          fallback: aData.fallback ? true : false,
           hasHtml: ('html' in aData.sections) ? true : false,
           hasVideo: ('video' in aData.sections) ? true : false, 
           hasGif: ('gif' in aData.sections) ? true : false
@@ -128,7 +126,7 @@ class App extends Component {
         }
         if (this.state.mode === 'cleanMode') {
           return <Route key={k++} path={path} render={(props) =>
-            <HtmlFrame fallback={this.state.fallback} data={html} modeStyle={this.state.modeStyle} />
+            <HtmlFrame data={html} modeStyle={this.state.modeStyle} />
           } />
         }else {
           // else case is article mode
@@ -160,7 +158,7 @@ class App extends Component {
         if (sectionHasMaster !== undefined) {
           if (this.state.mode === 'cleanMode') {
             defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
-              <HtmlFrame fallback={this.state.fallback} data={sectionHasMaster} modeStyle={this.state.modeStyle}/>
+              <HtmlFrame  data={sectionHasMaster} modeStyle={this.state.modeStyle}/>
             } />
           }else{
             defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
