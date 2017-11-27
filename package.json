@@ -2,7 +2,7 @@
   "name": "fully-banner",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://demo.fullystudios.se/banner-preview/",
+  "homepage": "https://demo.fullystudios.se/",
   "dependencies": {
     "axios": "^0.17.1",
     "path-exists": "^3.0.0",

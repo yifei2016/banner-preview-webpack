@@ -13,7 +13,6 @@ class VideoFrame extends Component {
     return (
       <div className="bannerContainer">
         <div className="banner__wrap banner__wrap--video">
-        
           <iframe ref="videoFrame"
             title="video"
             src={`https://player.vimeo.com/video/${this.state.vimeo_id}?color=5F11E8&title=0&byline=0&portrait=0`}

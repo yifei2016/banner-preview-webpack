@@ -39,12 +39,12 @@ class HtmlFrame extends Component {
     var imageSource;
   
     if( !this.state.modifier){
-      iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}/index.html`;
-      imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
+      iframSource = `${process.env.PUBLIC_URL}/${aData.serverPath}/banners/${this.state.width}x${this.state.height}/index.html`;
+      imageSource = `${process.env.PUBLIC_URL}/${aData.serverPath}/banners/fallbacks/${this.state.width}x${this.state.height}.png`;
     }
     if (this.state.modifier) {
-      iframSource = `${process.env.PUBLIC_URL}/banners/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
-      imageSource = `${process.env.PUBLIC_URL}/banners/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
+      iframSource = `${process.env.PUBLIC_URL}/${aData.serverPath}/banners/${this.state.width}x${this.state.height}-${this.state.modifier}/index.html`;
+      imageSource = `${process.env.PUBLIC_URL}/${aData.serverPath}/banners/fallbacks/${this.state.width}x${this.state.height}-${this.state.modifier}.png`;
     }
     // there is no fallbacks, show html just
    

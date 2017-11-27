@@ -12,6 +12,7 @@ import HtmlFrameArticle from './HtmlFrameArticle';
 import GifFrame from './GifFrame';
 import axios from 'axios';
 import ModeColor from './ModeColor.js';
+import 'core-js/fn/array/find';
 
 class App extends Component {
   constructor(props){
@@ -120,9 +121,9 @@ class App extends Component {
 
     if(this.state.hasHtml){
       htmlRoutes = this.state.aData.sections.html.map(html => {
-        var path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}`;
+        var path = `${process.env.PUBLIC_URL}/${aData.serverPath}/${html.width}x${html.height}`;
         if (html.modifier) {
-          path = `${process.env.PUBLIC_URL}/${html.width}x${html.height}-${html.modifier}`
+          path = `${process.env.PUBLIC_URL}/${aData.serverPath}/${html.width}x${html.height}-${html.modifier}`
         }
         if (this.state.mode === 'cleanMode') {
           return <Route key={k++} path={path} render={(props) =>
@@ -139,14 +140,14 @@ class App extends Component {
 
     if (this.state.hasVideo) {
       videoRoutes = this.state.aData.sections.video.map(video =>
-        <Route key={k++} path={`${process.env.PUBLIC_URL}/${video.vimeo_id}`} render={(props) =>
+        <Route key={k++} path={`${process.env.PUBLIC_URL}/${aData.serverPath}/${video.vimeo_id}`} render={(props) =>
           <VideoFrame data={video} />
         } />
       )
       if (!defaultRoute) {
         var sectionHasMaster = this.state.aData.sections.video.find(x => { return ('master' in x) && x.master === true; });
         if (sectionHasMaster !== undefined) {
-          defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
+          defaultRoute = <Route path={`${process.env.PUBLIC_URL}/${aData.serverPath}`} exact render={(props) =>
             <VideoFrame data={sectionHasMaster} />
           } />
         }
@@ -157,11 +158,11 @@ class App extends Component {
         var sectionHasMaster = this.state.aData.sections.html.find(x => { return ('master' in x) && x.master === true; });
         if (sectionHasMaster !== undefined) {
           if (this.state.mode === 'cleanMode') {
-            defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
+            defaultRoute = <Route path={`${process.env.PUBLIC_URL}/${aData.serverPath}`} exact render={(props) =>
               <HtmlFrame  data={sectionHasMaster} modeStyle={this.state.modeStyle}/>
             } />
           }else{
-            defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
+            defaultRoute = <Route path={`${process.env.PUBLIC_URL}/${aData.serverPath}`} exact render={(props) =>
               <HtmlFrameArticle data={sectionHasMaster} modeStyle={this.state.modeStyle}/>
             } />
           }
@@ -171,14 +172,14 @@ class App extends Component {
   //check if has gif, if has gif, render a route, and render a component, in GifFrame component, render gif.
     if (this.state.hasGif) {
       gifRoutes = this.state.aData.sections.gif.map(gif =>
-        <Route key={k++} path={`${process.env.PUBLIC_URL}/gif/${gif.width}x${gif.height}`} render={(props) =>
+        <Route key={k++} path={`${process.env.PUBLIC_URL}/${aData.serverPath}/gif/${gif.width}x${gif.height}`} render={(props) =>
           <GifFrame data={gif} />
         }/>
       )
       if (!defaultRoute) {
         var sectionHasMaster = this.state.aData.sections.gif.find(x => { return ('master' in x) && x.master === true; });
         if (sectionHasMaster !== undefined) {
-          defaultRoute = <Route path={`${process.env.PUBLIC_URL}/`} exact render={(props) =>
+          defaultRoute = <Route path={`${process.env.PUBLIC_URL}/${aData.serverPath}`} exact render={(props) =>
             <GifFrame data={sectionHasMaster} />
           } />
         }

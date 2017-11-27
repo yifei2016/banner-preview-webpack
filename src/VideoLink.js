@@ -24,7 +24,7 @@ class VideoLink extends Component {
     return (
       <li className="nav-link">
         <NavLink onClick={this.state.toggoleSideBar} style={this.state.modeStyle}  
-        to={`${process.env.PUBLIC_URL}/${this.state.vimeo_id}`}>
+        to={`${process.env.PUBLIC_URL}/${aData.serverPath}/${this.state.vimeo_id}`}>
           {this.state.title}
         </NavLink>
       </li>
