@@ -1,0 +1,64 @@
+TODO:
+  --add webpack DONE
+  --add babel: jsx es6 6 to es5
+    -install
+    -add it to webpack as loader
+  --add react
+    --install react dependencies
+    --install babel-preset-react to compile react with babel
+  --add scss
+  --add webpack-dev-server
+  --build simple react app
+Done
+
+TODO2:
+ --react-hot-loader
+ --ESLint
+
+
+  // a babel preset that can automatically determine the babel plugins and polyfills you need based on your supported env.
+// webpack-dev-server: automatically bundle and reload
+//module.loaders => module.rules
+//module: {
+-   loaders: [
++   rules: [
+      {
+        test: /\.css$/,
+-       loaders: [
+-         "style-loader",
+-         "css-loader?modules=true"
++       use: [
++         {
++           loader: "style-loader"
++         },
++         {
++           loader: "css-loader",
++           options: {
++             modules: true
++           }
++         }
+        ]
+      },
+      {
+        test: /\.jsx$/,
+        loader: "babel-loader", // here do not write "use"
+        options: {
+          // ...
+        }
+      }
+    ]
+  }
+
+  //'use' can be loader array
+    module: {
+-   loaders: [{
++   rules: [{
+      test: /\.less$/,
+-     loader: "style-loader!css-loader!less-loader"
++     use: [
++       "style-loader",
++       "css-loader",
++       "less-loader"
++     ]
+    }]
+  }
