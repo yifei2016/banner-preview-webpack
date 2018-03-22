@@ -34,9 +34,9 @@ class HtmlLink extends Component {
 		return text;
 	}
 	render() {
-		var source = `${process.env.PUBLIC_URL}/${aData.serverPath}/${this.state.width}x${this.state.height}`;
+		var source = `${process.env.PUBLIC_URL}/${this.state.width}x${this.state.height}`;
 		if (this.state.modifier) {
-			source = `${process.env.PUBLIC_URL}/${aData.serverPath}/${this.state.width}x${this.state.height}-${this.state.modifier}`;
+			source = `${process.env.PUBLIC_URL}/${this.state.width}x${this.state.height}-${this.state.modifier}`;
 		}
 		return (
 			<li className="nav-link links">
